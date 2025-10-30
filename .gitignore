@@ -1,0 +1,24 @@
+# Node / Electron
+node_modules/
+dist/
+build/
+.vscode/
+.env
+npm-debug.log
+package-lock.json
+
+# TypeScript
+*.tsbuildinfo
+
+# Python / FastAPI
+__pycache__/
+*.py[cod]
+venv/
+
+# Database / binaries
+*.sqlite
+*.db
+
+# OS
+.DS_Store
+Thumbs.db
