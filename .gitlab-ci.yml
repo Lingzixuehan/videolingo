@@ -1,4 +1,4 @@
 stages: [lint, test, build]
 include:
   - local: 'backend/.gitlab-ci.backend.yml'
-  # - local: 'front/.gitlab-ci.front.yml'
+  - local: 'front/.gitlab-ci.front.yml'
