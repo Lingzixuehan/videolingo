@@ -1,0 +1,6 @@
+noop-front:
+  stage: lint
+  rules:
+    - changes: ["front/**/*"]
+  script:
+    - echo "front CI not defined yet, skipping…"
