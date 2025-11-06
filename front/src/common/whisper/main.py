@@ -114,17 +114,57 @@ def _poll_status():
     if updated or not status_queue.empty():
         root.after(200, _poll_status)
 
-# 设置文件选择
-def browse_file():
-    file_path = filedialog.askopenfilename()
+# 设置视频文件选择
+def browse_video_file():
+    file_path = filedialog.askopenfilename(
+        filetypes=[
+            ("视频文件", "*.mp4;*.avi;*.mkv;*.mov;*.wmv"),
+            ("所有文件", "*.*")
+        ]
+    )
     if file_path:
         path_label.config(text=file_path)
+
+# 设置字幕文件选择
+def browse_subtitle_file():
+    if path_label.cget("text") == "文件路径":
+        messagebox.showinfo(title='提示', message='请先选择视频文件')
+        return
+        
+    file_path = filedialog.askopenfilename(
+        filetypes=[
+            ("字幕文件", "*.srt;*.ass"),
+            ("SRT字幕", "*.srt"),
+            ("ASS字幕", "*.ass"),
+            ("所有文件", "*.*")
+        ]
+    )
+    if file_path:
+        video_path = path_label.cget("text")
+        if not video_path or video_path == "文件路径":
+            messagebox.showinfo(title='提示', message='请先选择视频文件')
+            return
+            
+        try:
+            status_label.config(text="正在嵌入外部字幕...")
+            root.update()
+            output_path = embed_subtitles(video_path, file_path)
+            if output_path:
+                messagebox.showinfo(title='成功', message=f'处理完成！\n带字幕的视频已保存到：\n{output_path}')
+                status_label.config(text="处理完成")
+            else:
+                messagebox.showerror(title='错误', message='字幕嵌入失败，请检查FFmpeg是否正确安装')
+                status_label.config(text="字幕嵌入失败")
+        except Exception as e:
+            print(f"错误: {str(e)}")
+            messagebox.showerror(title='错误', message=f'处理过程中出错：\n{str(e)}')
+            status_label.config(text="处理失败")
 
 # 调用whisper进行语音转文字并嵌入字幕
 def whisper():
     # 判断是否选择了文件
     if path_label.cget("text") == "文件路径":
-        messagebox.showinfo(title='提示', message='请先选择文件')
+        messagebox.showinfo(title='提示', message='请先选择视频文件')
         return
     
     video_path = path_label.cget("text")
@@ -221,7 +261,7 @@ if __name__ =='__main__':
     # 创建模型标签
     filepath_label = ttk.Label(file_row_frame, text="选择视频文件：", font=("微软雅黑", 14))
     filepath_label.pack(side="left")
-    filepath_button = tk.Button(file_row_frame, text="...", command=browse_file, width=10, bg="#3FABAF", fg="#F7EFE5", font=("微软雅黑", 14, "bold"))
+    filepath_button = tk.Button(file_row_frame, text="...", command=browse_video_file, width=10, bg="#3FABAF", fg="#F7EFE5", font=("微软雅黑", 14, "bold"))
     filepath_button.pack(side="left", padx=10)
     # 创建文件路径标签，标签居中对齐
     path_label = ttk.Label(root, text="文件路径", font=("微软雅黑", 14), justify="center")
@@ -232,8 +272,18 @@ if __name__ =='__main__':
     status_label.pack(pady=5)
     
     ################################操作按钮################################
-    whisper_Trans_button = tk.Button(root, text="提取并嵌入字幕", command=whisper, width=20, bg="#3FABAF", fg="#F7EFE5", font=("微软雅黑", 14, "bold"))
-    whisper_Trans_button.pack(pady=10)    
+    # 创建按钮容器框架
+    button_frame = ttk.Frame(root)
+    button_frame.pack(pady=10)
+    
+    # 提取并嵌入字幕按钮
+    whisper_Trans_button = tk.Button(button_frame, text="提取并嵌入字幕", command=whisper, width=20, bg="#3FABAF", fg="#F7EFE5", font=("微软雅黑", 14, "bold"))
+    whisper_Trans_button.pack(side="left", padx=10)
+    
+    # 导入本地字幕按钮
+    import_subtitle_button = tk.Button(button_frame, text="导入本地字幕", command=browse_subtitle_file, width=20, bg="#3FABAF", fg="#F7EFE5", font=("微软雅黑", 14, "bold"))
+    import_subtitle_button.pack(side="left", padx=10)
+    
     # 显示主窗口
     root.mainloop()
 
