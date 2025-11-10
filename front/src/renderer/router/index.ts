@@ -14,7 +14,8 @@ const routes: RouteRecordRaw[] = [
       { path: '/home', name: 'home', component: () => import('../pages/Home.vue') },
       { path: '/player', name: 'player', component: () => import('../pages/Player.vue') },
       { path: '/downloads', name: 'downloads', component: () => import('../pages/Downloads.vue') },
-      { path: '/settings', name: 'settings', component: () => import('../pages/Settings.vue') }
+      { path: '/settings', name: 'settings', component: () => import('../pages/Settings.vue') },
+      { path: '/videos', name: 'videos', component: () => import('../pages/Videos.vue') }
     ]
   },
   { path: '/:pathMatch(.*)*', name: '404', component: () => import('../pages/NotFound.vue') }
