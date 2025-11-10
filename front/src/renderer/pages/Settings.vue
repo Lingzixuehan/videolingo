@@ -18,9 +18,17 @@
 </template>
 
 <script setup lang="ts">
+import { useUserStore } from '../store/user';
+import { useRouter } from 'vue-router';
 import { onMounted, reactive, ref } from 'vue';
 const cfg = reactive<{ downloadDir: string }>({ downloadDir: '' });
 const saved = ref(false);
+const user = useUserStore();
+const router = useRouter();
+function logout() {
+  user.logout();
+  router.replace('/login');
+}
 
 onMounted(async () => {
   const res = await window.api?.config.read();
@@ -39,3 +47,9 @@ async function save() {
   saved.value = true; setTimeout(() => (saved.value = false), 1200);
 }
 </script>
+
+<template>
+  <div style="margin-top:24px;">
+    <button @click="logout">退出登录</button>
+  </div>
+</template>

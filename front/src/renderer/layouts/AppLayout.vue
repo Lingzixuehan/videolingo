@@ -45,21 +45,60 @@ const title = computed(() => {
   return map[route.path] ?? 'VideoLingo';
 });
 
-function logout() {
+function doLogout() {
   user.logout();
-  router.push('/login');
+  router.replace('/login');
 }
+
 </script>
 
+<template>
+  <header class="topbar">
+    <nav class="nav">
+      <router-link to="/">首页</router-link>
+      <router-link to="/downloads">视频</router-link>
+      <router-link to="/player">播放器</router-link>
+      <router-link to="/settings">设置</router-link>
+    </nav>
+    <div v-if="user.isAuthed" class="user-box">
+      <span class="email">{{ user.email }}</span>
+      <button @click="doLogout">退出</button>
+    </div>
+  </header>
+  <main>
+    <router-view />
+  </main>
+</template>
+
 <style scoped>
-.layout { display: grid; grid-template-columns: 220px 1fr; height: 100vh; }
-.sidebar { background: #0f172a; color: #e2e8f0; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-.logo { margin: 0 0 8px 0; font-size: 18px; }
-.sidebar a { display: block; color: #cbd5e1; text-decoration: none; padding: 6px 8px; border-radius: 6px; }
-.sidebar a.router-link-active { background: #1e293b; color: #fff; }
-.content { display: grid; grid-template-rows: 48px 1fr; }
-.topbar { display: flex; align-items: center; justify-content: space-between; padding: 0 12px; border-bottom: 1px solid #e5e7eb; }
-.title { font-weight: 600; }
-.page { padding: 16px; overflow: auto; }
-button { padding: 6px 10px; }
+.topbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:8px 16px;
+  background:#1f2937;
+  color:#fff;
+}
+.nav a {
+  margin-right:12px;
+  color:#fff;
+  text-decoration:none;
+}
+.nav a.router-link-active {
+  font-weight:600;
+  text-decoration:underline;
+}
+.user-box {
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.email {
+  font-size:13px;
+  opacity:.85;
+}
+button {
+  cursor:pointer;
+  padding:4px 10px;
+}
 </style>
