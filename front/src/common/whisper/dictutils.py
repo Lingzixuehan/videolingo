@@ -1022,8 +1022,8 @@ if __name__ == '__main__':
 		resemble.load('resemble.txt')
 		# print resemble.dump_text(resemble[0])
 		for wt in resemble['stimulate']:
-			print resemble.dump_html(wt, 1).encode('gbk', 'ignore')
-			print ''
+			print(resemble.dump_html(wt, 1).encode('gbk', 'ignore'))
+			print('')
 		return 0
 
 	def test3():
@@ -1038,7 +1038,7 @@ if __name__ == '__main__':
 		data = db['breakup']
 		# html = treasure.define_html(data['translation'])
 		html = treasure.get_collins(data).encode('gbk', 'ignore')
-		print html
+		print(html)
 
 	def test5():
 		name1 = 'anki-front.txt'
@@ -1052,12 +1052,12 @@ if __name__ == '__main__':
 		db = stardict.open_local('ultimate.db')
 		data = db['sting']
 		data['translation'] += u'\n> hahahah\n[网络] 你好'
-		import StringIO
-		sio = StringIO.StringIO()
+		from io import StringIO
+		sio = StringIO()
 		generator._generate_html(sio, data)
-		print sio.getvalue().encode('gbk', 'ignore')
+		print(sio.getvalue().encode('gbk', 'ignore'))
 
-	test6()
+test6()
 
 
 

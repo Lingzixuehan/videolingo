@@ -242,11 +242,11 @@ if __name__ == '__main__':
 			stem.add(c5, word.lower(), count)
 		for key in words:
 			stem = words[key]
-			for c5, word, count in stem.dump():
-				output.append((stem.root, stem.count, c5, word, count))
+		for c5, word, count in stem.dump():
+			output.append((stem.root, stem.count, c5, word, count))
 		output.sort(key = lambda x: (x[1], x[0]), reverse = True)
 		# ascmini.csv_save(output, 'bnc-clear.csv')
-		print 'count', len(words)
+		print('count', len(words))
 	def test3():
 		import ascmini
 		rows = ascmini.csv_load('bnc-clear.csv')
@@ -284,7 +284,7 @@ if __name__ == '__main__':
 		for _, _, text in lemmas:
 			fp.write(text + '\n')
 		ascmini.csv_save(output, 'bnc-test.csv')
-		print 'count', len(words)
+		print('count', len(words))
 		return 0
 	def test4():
 		import stardict
@@ -306,11 +306,11 @@ if __name__ == '__main__':
 				for word in childs:
 					word = word.lower()
 					if not word in obj:
-						print '%s -> %s'%(stem, word)
+						print('%s -> %s'%(stem, word))
 						count2 += 1
 			for word in childs:
 				lm1.add(stem, word.lower())
-		print 'count', count1, count2
+		print('count', count1, count2)
 		lm1.save('lemma-bnc.txt')
 		return 0
 	test4()
