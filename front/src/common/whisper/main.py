@@ -8,6 +8,7 @@ import threading
 import queue
 import re
 from datetime import datetime
+import label
 
 def embed_subtitles(video_path, subtitle_path):
     """将字幕嵌入视频文件"""
@@ -69,7 +70,15 @@ def _run_whisper_and_embed(video_path, model, outpath):
         # Whisper 结束后查找生成的 srt
         srt_path = os.path.join(outpath, os.path.splitext(os.path.basename(video_path))[0] + '.srt')
         if os.path.exists(srt_path):
-            status_queue.put('字幕生成完成，开始翻译（有道）...')
+            status_queue.put('字幕生成完成，开始词汇标注...')
+            # 生成词汇标签 JSON（基于原始英文 srt）
+            try:
+                lbl = label.Labeler()
+                lbl.process_subtitle_file(srt_path)
+                status_queue.put('词汇标注完成')
+            except Exception as e:
+                status_queue.put(f'词汇标注出错: {e}')
+            status_queue.put('开始翻译（有道）...')
             # 调用翻译器脚本生成中文与中英双语 srt
             try:
                 translator_py = os.path.join(os.path.dirname(__file__), 'whisperTranslator.py')
@@ -146,6 +155,18 @@ def browse_subtitle_file():
             return
             
         try:
+            # 在嵌入前先对所选字幕文件做词汇标注
+            try:
+                status_label.config(text="正在生成字幕词汇标签...")
+                root.update()
+                lbl = label.Labeler()
+                lbl.process_subtitle_file(file_path)
+                status_label.config(text="词汇标注完成")
+            except Exception as e:
+                # 标注失败不阻止嵌入，记录并继续
+                print(f"词汇标注失败: {e}")
+                status_label.config(text="词汇标注失败，继续嵌入")
+
             status_label.config(text="正在嵌入外部字幕...")
             root.update()
             output_path = embed_subtitles(video_path, file_path)
@@ -190,6 +211,17 @@ def whisper():
         srt_path = os.path.join(outpath, os.path.splitext(os.path.basename(video_path))[0] + '.srt')
 
         if os.path.exists(srt_path):
+            # 在翻译前先对原始 srt 做词汇标注
+            try:
+                status_label.config(text="正在生成字幕词汇标签...")
+                root.update()
+                lbl = label.Labeler()
+                lbl.process_subtitle_file(srt_path)
+                status_label.config(text="词汇标注完成")
+            except Exception as e:
+                print(f"词汇标注失败: {e}")
+                status_label.config(text="词汇标注失败")
+
             status_label.config(text="正在翻译字幕（有道）...")
             root.update()
             # 调用翻译脚本（whisperTranslator.py）生成中文和中英双语 srt
