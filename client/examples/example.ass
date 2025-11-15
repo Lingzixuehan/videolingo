@@ -1,0 +1,14 @@
+[Script Info]
+Title: Example ASS Subtitle
+ScriptType: v4.00+
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,20,&H00FFFFFF,&H000088EF,&H00000000,&H00666666,-1,0,0,0,100,100,0,0,1,2,0,2,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:01.50,0:00:04.20,Default,,0,0,0,,这是第一句话。
+Dialogue: 0,0:00:05.00,0:00:08.50,Default,,0,0,0,,这是第二句话，包含一些内容。
+Dialogue: 0,0:00:09.30,0:00:12.80,Default,,0,0,0,,{\b1}这是加粗的文字{\b0}，还有普通文字。
+Dialogue: 0,0:00:13.50,0:00:16.00,Default,,0,0,0,,最后一句话。

@@ -1,0 +1,310 @@
+{
+  "info": {
+    "name": "Videolingo 卡片同步 API",
+    "description": "Videolingo 项目的卡片同步 API 测试集合",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "认证",
+      "item": [
+        {
+          "name": "注册用户",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/register",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["register"]
+            }
+          }
+        },
+        {
+          "name": "用户登录",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["login"]
+            }
+          }
+        },
+        {
+          "name": "获取当前用户",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/users/me",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["users", "me"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "卡片操作",
+      "item": [
+        {
+          "name": "上传卡片",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"video_id\": \"video_001\",\n  \"timestamp\": 123.45,\n  \"tags\": \"Python,API\",\n  \"content\": {\n    \"title\": \"测试卡片\",\n    \"description\": \"这是一个测试卡片\",\n    \"note\": \"包含 JSON 格式的内容\"\n  }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/cards",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["cards"]
+            }
+          }
+        },
+        {
+          "name": "查询所有卡片",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/cards",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["cards"]
+            }
+          }
+        },
+        {
+          "name": "按视频ID查询",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/cards?video_id=video_001",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["cards"],
+              "query": [
+                {
+                  "key": "video_id",
+                  "value": "video_001"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "按标签查询",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/cards?tags=API",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["cards"],
+              "query": [
+                {
+                  "key": "tags",
+                  "value": "API"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "按时间戳范围查询",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/cards?timestamp_from=100.0&timestamp_to=200.0",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["cards"],
+              "query": [
+                {
+                  "key": "timestamp_from",
+                  "value": "100.0"
+                },
+                {
+                  "key": "timestamp_to",
+                  "value": "200.0"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "分页查询",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/cards?skip=0&limit=10",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["cards"],
+              "query": [
+                {
+                  "key": "skip",
+                  "value": "0"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "获取单个卡片",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/cards/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["cards", "1"]
+            }
+          }
+        },
+        {
+          "name": "更新卡片",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"timestamp\": 456.78,\n  \"tags\": \"Python,API,Updated\",\n  \"content\": {\n    \"title\": \"更新后的卡片\",\n    \"description\": \"这是一个已更新的测试卡片\",\n    \"note\": \"更新了 JSON 格式的内容\"\n  }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/cards/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["cards", "1"]
+            }
+          }
+        },
+        {
+          "name": "删除卡片",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/cards/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["cards", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "access_token",
+      "value": "",
+      "description": "JWT access token（从登录响应获取）"
+    }
+  ]
+}
