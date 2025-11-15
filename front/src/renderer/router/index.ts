@@ -1,6 +1,8 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import { useUserStore } from '../store/user';
 
+const publicPaths = new Set<string>(['/login', '/404']);
+
 const routes: RouteRecordRaw[] = [
   { path: '/', redirect: '/home' },
   { path: '/login', name: 'login', component: () => import('../pages/Login.vue') },
@@ -12,7 +14,8 @@ const routes: RouteRecordRaw[] = [
       { path: '/home', name: 'home', component: () => import('../pages/Home.vue') },
       { path: '/player', name: 'player', component: () => import('../pages/Player.vue') },
       { path: '/downloads', name: 'downloads', component: () => import('../pages/Downloads.vue') },
-      { path: '/settings', name: 'settings', component: () => import('../pages/Settings.vue') }
+      { path: '/settings', name: 'settings', component: () => import('../pages/Settings.vue') },
+      { path: '/videos', name: 'videos', component: () => import('../pages/Videos.vue') }
     ]
   },
   { path: '/:pathMatch(.*)*', name: '404', component: () => import('../pages/NotFound.vue') }
@@ -21,6 +24,13 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes
+});
+
+router.beforeEach((to) => {
+  const user = useUserStore();
+  if (!user.isAuthed && !publicPaths.has(to.path)) {
+    return '/login';
+  }
 });
 
 router.beforeEach((to) => {

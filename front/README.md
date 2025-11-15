@@ -1,8 +1,6 @@
-运行项目
+## 环境变量（前端）
+复制 `.env.example` 为 `.env.local` 并设置后端地址：
+VITE_API_BASE=http://127.0.0.1:8000
 
-在终端中运行以下命令来编译 TypeScript 代码并启动 Electron 应用：
+运行时 `import.meta.env.VITE_API_BASE` 将用于统一 API 客户端。
 
-```bash
-npm run build
-npm start
-```

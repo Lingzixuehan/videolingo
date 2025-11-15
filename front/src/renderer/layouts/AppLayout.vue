@@ -1,65 +1,52 @@
 <template>
   <div class="layout">
-    <aside class="sidebar">
-      <h3 class="logo">VideoLingo</h3>
-      <nav>
-        <router-link to="/home">首页</router-link>
+    <header class="topbar">
+      <nav class="nav">
+        <router-link to="/">首页</router-link>
+        <router-link to="/videos">视频</router-link>
+        <router-link to="/tasks">任务</router-link>
+        <router-link to="/subtitles">字幕</router-link>
         <router-link to="/player">播放器</router-link>
-        <router-link to="/downloads">下载中心</router-link>
+        <router-link to="/review">复习</router-link>
+        <router-link to="/analyze">分析</router-link>
         <router-link to="/settings">设置</router-link>
       </nav>
-    </aside>
-    <main class="content">
-      <header class="topbar">
-        <div class="left">
-          <span class="title">{{ title }}</span>
-        </div>
-        <div class="right">
-          <span v-if="user.username">👤 {{ user.username }}</span>
-          <button v-if="user.username" @click="logout">退出</button>
-        </div>
-      </header>
-      <section class="page">
-        <router-view />
-      </section>
+      <div v-if="user.isAuthed" class="user-box">
+        <span class="email">{{ user.displayName || user.email }}</span>
+        <button @click="doLogout">退出</button>
+      </div>
+    </header>
+    <main class="main">
+      <router-view />
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
 import { useUserStore } from '../store/user';
-
-const route = useRoute();
-const router = useRouter();
+import { useRouter } from 'vue-router';
 const user = useUserStore();
-
-const title = computed(() => {
-  const map: Record<string, string> = {
-    '/home': '首页',
-    '/player': '播放器',
-    '/downloads': '下载中心',
-    '/settings': '设置'
-  };
-  return map[route.path] ?? 'VideoLingo';
-});
-
-function logout() {
+const router = useRouter();
+function doLogout() {
   user.logout();
-  router.push('/login');
+  router.replace('/login');
 }
 </script>
 
 <style scoped>
-.layout { display: grid; grid-template-columns: 220px 1fr; height: 100vh; }
-.sidebar { background: #0f172a; color: #e2e8f0; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-.logo { margin: 0 0 8px 0; font-size: 18px; }
-.sidebar a { display: block; color: #cbd5e1; text-decoration: none; padding: 6px 8px; border-radius: 6px; }
-.sidebar a.router-link-active { background: #1e293b; color: #fff; }
-.content { display: grid; grid-template-rows: 48px 1fr; }
-.topbar { display: flex; align-items: center; justify-content: space-between; padding: 0 12px; border-bottom: 1px solid #e5e7eb; }
-.title { font-weight: 600; }
-.page { padding: 16px; overflow: auto; }
-button { padding: 6px 10px; }
+.layout { display:flex; flex-direction:column; min-height:100vh; }
+.topbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:8px 16px;
+  background:#1f2937;
+  color:#fff;
+}
+.nav a { margin-right:12px; color:#fff; text-decoration:none; }
+.nav a.router-link-active { font-weight:600; text-decoration:underline; }
+.user-box { display:flex; align-items:center; gap:8px; }
+.email { font-size:13px; opacity:.85; }
+button { cursor:pointer; padding:4px 10px; }
+.main { flex:1; padding:16px; background:#f5f6f8; }
 </style>
