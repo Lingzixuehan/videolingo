@@ -27,7 +27,6 @@ export const useVideosStore = defineStore('videos', {
 
   getters: {
     count: (state) => state.items.length,
-
     currentVideo(state): VideoItem | null {
       if (!state.currentVideoId) return null;
       return state.items.find((v) => v.id === state.currentVideoId) ?? null;
@@ -96,6 +95,16 @@ export const useVideosStore = defineStore('videos', {
     },
 
     /**
+     * 从文件路径数组批量添加视频（标题来自文件名）
+     */
+    addVideosFromPaths(filePaths: string[]) {
+      for (const filePath of filePaths) {
+        const title = this.extractTitleFromPath(filePath);
+        this.addVideo({ title, filePath });
+      }
+    },
+
+    /**
      * 更新视频（例如状态从 processing -> ready）
      */
     updateVideo(id: string, patch: Partial<VideoItem>) {
@@ -112,6 +121,15 @@ export const useVideosStore = defineStore('videos', {
       if (this.currentVideoId === id) {
         this.currentVideoId = null;
       }
+    },
+
+    /**
+     * 从路径中取出文件名作为标题
+     */
+    extractTitleFromPath(filePath: string): string {
+      const parts = filePath.split(/[\\/]/);
+      const filename = parts[parts.length - 1] || '';
+      return filename.replace(/\.[^.]+$/, '');
     },
   },
 });
