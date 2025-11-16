@@ -1,73 +1,117 @@
 import { defineStore } from 'pinia';
-import { isAllowedSize, isAllowedDuration } from '../utils/validators';
+
+export type VideoStatus = 'idle' | 'processing' | 'ready';
 
 export interface VideoItem {
   id: string;
-  name: string;
-  size: number;        // bytes
-  duration: number;    // seconds
-  createdAt: string;   // ISO
+  title: string;
+  filePath?: string;
+  duration?: number; // 秒
+  size?: number; // 字节
+  createdAt?: string; // ISO 字符串
+  status?: VideoStatus; // 字幕生成状态
+  notesCount?: number; // 标注数量
 }
 
-const STORAGE_KEY = 'videos_v1';
-
-function uuid(): string {
-  // 优先使用浏览器 crypto
-  // @ts-ignore
-  if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID();
-  return 'v_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+interface VideosState {
+  items: VideoItem[];
+  // 当前选中的视频 id（可选，用于 Player 等页面）
+  currentVideoId: string | null;
 }
 
 export const useVideosStore = defineStore('videos', {
-  state: () => ({
-    items: [] as VideoItem[],
-    error: '' as string
+  state: (): VideosState => ({
+    items: [],
+    currentVideoId: null,
   }),
+
   getters: {
-    count: (s) => s.items.length
+    count: (state) => state.items.length,
+
+    currentVideo(state): VideoItem | null {
+      if (!state.currentVideoId) return null;
+      return state.items.find((v) => v.id === state.currentVideoId) ?? null;
+    },
   },
+
   actions: {
-    load() {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        this.items = raw ? JSON.parse(raw) : [];
-      } catch {
-        this.items = [];
+    /**
+     * 仅用于前端开发阶段填充假数据，方便页面调试
+     */
+    seedMockData() {
+      if (this.items.length > 0) return;
+      const now = new Date();
+      this.items = [
+        {
+          id: '1',
+          title: '示例视频一：Learning English with Movies',
+          duration: 600,
+          size: 50 * 1024 * 1024,
+          createdAt: now.toISOString(),
+          status: 'ready',
+          notesCount: 3,
+        },
+        {
+          id: '2',
+          title: '示例视频二：TED Talk Sample',
+          duration: 1200,
+          size: 120 * 1024 * 1024,
+          createdAt: now.toISOString(),
+          status: 'processing',
+          notesCount: 0,
+        },
+        {
+          id: '3',
+          title: '示例视频三：Everyday English Conversations',
+          duration: 900,
+          size: 80 * 1024 * 1024,
+          createdAt: now.toISOString(),
+          status: 'idle',
+          notesCount: 1,
+        },
+      ];
+    },
+
+    /**
+     * 设置当前选中的视频
+     */
+    setCurrentVideo(id: string | null) {
+      this.currentVideoId = id;
+    },
+
+    /**
+     * 添加一个视频（后续可以从 Electron 文件选择结果构建 VideoItem）
+     */
+    addVideo(payload: Omit<VideoItem, 'id' | 'createdAt' | 'status' | 'notesCount'>) {
+      const id = Date.now().toString();
+      const createdAt = new Date().toISOString();
+      this.items.push({
+        id,
+        createdAt,
+        status: 'idle',
+        notesCount: 0,
+        ...payload,
+      });
+      return id;
+    },
+
+    /**
+     * 更新视频（例如状态从 processing -> ready）
+     */
+    updateVideo(id: string, patch: Partial<VideoItem>) {
+      const idx = this.items.findIndex((v) => v.id === id);
+      if (idx === -1) return;
+      this.items[idx] = { ...this.items[idx], ...patch };
+    },
+
+    /**
+     * 删除视频（以及相关本地数据的清理后续可以一起做）
+     */
+    removeVideo(id: string) {
+      this.items = this.items.filter((v) => v.id !== id);
+      if (this.currentVideoId === id) {
+        this.currentVideoId = null;
       }
     },
-    save() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.items));
-    },
-    clearError() {
-      this.error = '';
-    },
-    addFromFile(file: File, durationSec: number) {
-      this.clearError();
-      if (!isAllowedSize(file.size)) {
-        this.error = '文件过大，最大支持 500MB';
-        return;
-      }
-      if (!isAllowedDuration(durationSec)) {
-        this.error = '视频过长，最大支持 20 分钟';
-        return;
-      }
-      const item: VideoItem = {
-        id: uuid(),
-        name: file.name,
-        size: file.size,
-        duration: durationSec,
-        createdAt: new Date().toISOString()
-      };
-      this.items.unshift(item);
-      this.save();
-    },
-    remove(id: string) {
-      this.items = this.items.filter(v => v.id !== id);
-      this.save();
-    },
-    clear() {
-      this.items = [];
-      this.save();
-    }
-  }
+  },
 });
