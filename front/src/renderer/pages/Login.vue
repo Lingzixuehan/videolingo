@@ -3,12 +3,12 @@
     <h2>{{ title }}</h2>
     <form class="auth-form" @submit.prevent="submit">
       <label class="field">
-        <span>邮箱</span>
-        <input v-model="email" type="email" required autocomplete="email" />
+        <span>用户名或邮箱</span>
+        <input v-model.trim="identifier" type="text" required autocomplete="username email" />
       </label>
       <label class="field">
         <span>密码</span>
-        <input v-model="password" type="password" required autocomplete="current-password" />
+        <input v-model.trim="password" type="password" required autocomplete="current-password" />
       </label>
       <button type="submit" :disabled="loading">
         {{ loading ? '处理中...' : buttonText }}
@@ -30,7 +30,7 @@ import { computed, ref, watch } from 'vue';
 const user = useUserStore();
 const router = useRouter();
 
-const email = ref(user.email || '');
+const identifier = ref(user.username || user.email || '');
 const password = ref('');
 
 const loading = computed(() => user.loading);
@@ -38,13 +38,18 @@ const error = computed(() => user.error);
 const title = computed(() => user.mode === 'login' ? '登录' : '注册');
 const buttonText = computed(() => user.mode === 'login' ? '登录' : '注册并登录');
 
+function normalizeToEmail(id: string) {
+  return id.includes('@') ? id : `${id}@placeholder.local`;
+}
+
 async function submit() {
-  if (!email.value || !password.value) return;
+  if (!identifier.value || !password.value) return;
+  const email = normalizeToEmail(identifier.value);
   try {
     if (user.mode === 'login') {
-      await user.login(email.value, password.value);
+      await user.login(email, password.value, identifier.value);
     } else {
-      await user.register(email.value, password.value);
+      await user.register(email, password.value, identifier.value);
     }
     router.replace('/');
   } catch {

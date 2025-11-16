@@ -14,3 +14,17 @@ export default defineConfig({
     emptyOutDir: true
   }
 });
+
+
+
+//测试时用以下部分，  npm run test
+
+// import { defineConfig } from 'vitest/config';
+
+// export default defineConfig({
+//   test: {
+//     environment: 'jsdom',
+//     globals: true,
+//     include: ['test/**/*.spec.ts']
+//   }
+// });
