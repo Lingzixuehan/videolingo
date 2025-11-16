@@ -117,6 +117,8 @@ const filteredVideos = computed(() => {
   });
 });
 
+
+
 function onAddVideo() {
   showConsent.value = true;
   consentChecked.value = false;
@@ -127,12 +129,31 @@ function closeConsent() {
   consentChecked.value = false;
 }
 
-function chooseFiles() {
-  // TODO: 这里后续接 Electron 主进程的文件选择逻辑
-  // 现在先关闭弹窗，模拟已选择文件
-  showConsent.value = false;
-  consentChecked.value = false;
-  // 可以在这里调用 videosStore 的导入 action
+async function chooseFiles() {
+  if (!consentChecked.value) return;
+
+  try {
+    const api = window.api;
+    if (!api || !api.pickVideo) {
+      console.error('window.api.pickVideo 未定义，请检查 preload.ts 暴露的 API');
+      return;
+    }
+
+    const result = await api.pickVideo();
+    if (result.canceled || !result.filePaths?.length) {
+      // 用户取消选择
+      return;
+    }
+
+    // 写入到 videos store
+    videosStore.addVideosFromPaths(result.filePaths);
+  } catch (err) {
+    console.error('选择视频文件失败', err);
+  } finally {
+    // 无论成功失败都收起弹窗
+    showConsent.value = false;
+    consentChecked.value = false;
+  }
 }
 
 function goPlayer(id: string) {
