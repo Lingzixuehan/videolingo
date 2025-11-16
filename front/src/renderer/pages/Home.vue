@@ -2,44 +2,54 @@
   <div class="wrap">
     <h2>概览</h2>
     <div class="stats">
-      <div class="card">
-        <span>视频数</span>
-        <strong>{{ videos.count }}</strong>
-      </div>
-      <div class="card">
-        <span>进行中任务</span>
-        <strong>{{ tasks.active.length }}</strong>
-      </div>
-      <div class="card">
-        <span>当前用户</span>
-        <strong>{{ user.displayName }}</strong>
-      </div>
+      <StatCard label="视频数" :value="videos.count" />
+      <StatCard label="进行中任务" :value="tasks.active.length" />
+      <StatCard label="当前用户" :value="user.displayName || '--'" />
     </div>
     <div class="quick">
-      <button @click="go('/videos')">添加视频</button>
-      <button @click="go('/tasks')">查看任务</button>
-      <button @click="go('/subtitles')">字幕编辑</button>
-      <button @click="go('/review')">复习</button>
-      <button @click="go('/analyze')">分析</button>
+      <BaseButton variant="primary" @click="go('/videos')">添加视频</BaseButton>
+      <BaseButton @click="go('/tasks')">查看任务</BaseButton>
+      <BaseButton @click="go('/subtitles')">字幕编辑</BaseButton>
+      <BaseButton @click="go('/review')">复习</BaseButton>
+      <BaseButton @click="go('/analyze')">分析</BaseButton>
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { useVideosStore } from '../store/videos';
 import { useTasksStore } from '../store/tasks';
 import { useUserStore } from '../store/user';
+import BaseButton from '../components/BaseButton.vue';
+import StatCard from '../components/StatCard.vue';
+
 const router = useRouter();
 const videos = useVideosStore();
 const tasks = useTasksStore();
 const user = useUserStore();
-function go(p:string){ router.push(p); }
+
+function go(path: string) {
+  router.push(path);
+}
 </script>
+
 <style scoped>
-.wrap { padding:16px; }
-.stats { display:flex; gap:12px; flex-wrap:wrap; margin:12px 0 20px; }
-.card { background:#fff; border:1px solid #e5e7eb; border-radius:6px; padding:12px 16px; min-width:140px; }
-.card span { display:block; font-size:12px; color:#666; }
-.card strong { font-size:22px; }
-.quick button { margin:0 8px 8px 0; }
+.wrap {
+  padding: 4px;
+}
+h2 {
+  margin: 0 0 16px;
+}
+.stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.quick {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 </style>
