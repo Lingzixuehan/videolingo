@@ -1,55 +1,19 @@
 <template>
-  <div class="page">
+  <div class="wrap">
     <h2>设置</h2>
-
-    <section style="margin-top:12px;">
-      <h3>下载</h3>
-      <div style="display:flex; align-items:center; gap:8px;">
-        <input v-model="cfg.downloadDir" style="width:420px" placeholder="下载目录" />
-        <button @click="chooseDir">选择目录</button>
-      </div>
-    </section>
-
-    <div style="margin-top:16px;">
-      <button @click="save">保存</button>
-      <span v-if="saved" style="margin-left:8px;color:green;">已保存</span>
+    <div class="card section">
+      <h3>主题</h3>
+      <p>当前：<strong>{{ settings.theme }}</strong></p>
+      <BaseButton variant="primary" @click="settings.toggleTheme()">切换主题</BaseButton>
     </div>
   </div>
 </template>
-
 <script setup lang="ts">
-import { useUserStore } from '../store/user';
-import { useRouter } from 'vue-router';
-import { onMounted, reactive, ref } from 'vue';
-const cfg = reactive<{ downloadDir: string }>({ downloadDir: '' });
-const saved = ref(false);
-const user = useUserStore();
-const router = useRouter();
-function logout() {
-  user.logout();
-  router.replace('/login');
-}
-
-onMounted(async () => {
-  const res = await window.api?.config.read();
-  Object.assign(cfg, res ?? { downloadDir: '' });
-});
-
-async function chooseDir() {
-  const res = await window.api?.pickDirectory?.();
-  if (res && res.canceled === false && res.filePaths?.length) {
-    cfg.downloadDir = res.filePaths[0];
-  }
-}
-
-async function save() {
-  await window.api?.config.write(cfg);
-  saved.value = true; setTimeout(() => (saved.value = false), 1200);
-}
+import { useSettingsStore } from '../store/settings';
+import BaseButton from '../components/BaseButton.vue';
+const settings = useSettingsStore();
 </script>
-
-<template>
-  <div style="margin-top:24px;">
-    <button @click="logout">退出登录</button>
-  </div>
-</template>
+<style scoped>
+.wrap { padding:4px; }
+.section { margin-bottom:20px; }
+</style>
