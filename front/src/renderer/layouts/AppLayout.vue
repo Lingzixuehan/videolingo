@@ -1,66 +1,182 @@
 <template>
-  <div class="layout">
-    <header class="topbar card">
-      <div class="left">
-        <div class="brand" @click="$router.push('/')">VideoLingo</div>
-        <nav class="nav">
-          <router-link to="/">首页</router-link>
-          <router-link to="/videos">视频</router-link>
-          <router-link to="/tasks">任务</router-link>
-          <router-link to="/subtitles">字幕</router-link>
-          <router-link to="/player">播放器</router-link>
-          <router-link to="/review">复习</router-link>
-          <router-link to="/analyze">分析</router-link>
-          <router-link to="/settings">设置</router-link>
-        </nav>
-      </div>
-      <div class="right" v-if="user.isAuthed">
-        <span class="user">{{ user.displayName || user.email }}</span>
-        <BaseButton small @click="toggleTheme">{{ themeText }}</BaseButton>
-        <BaseButton small variant="danger" @click="doLogout">退出</BaseButton>
-      </div>
-    </header>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="logo">Videolingo</div>
+      <nav class="nav">
+        <RouterLink class="nav-item" :class="{ active: isActive('home') }" :to="{ name: 'home' }">
+          概览
+        </RouterLink>
+        <RouterLink class="nav-item" :class="{ active: isActive('videos') }" :to="{ name: 'videos' }">
+          我的视频
+        </RouterLink>
+
+        <div class="nav-group-title">学习</div>
+        <RouterLink
+          class="nav-item sub"
+          :class="{ active: isActive('study-review') }"
+          :to="{ name: 'study-review' }"
+        >
+          学习复习
+        </RouterLink>
+        <RouterLink
+          class="nav-item sub"
+          :class="{ active: isActive('study-cards') }"
+          :to="{ name: 'study-cards' }"
+        >
+          卡片管理
+        </RouterLink>
+
+        <div class="nav-group-title">账号与设置</div>
+        <RouterLink
+          class="nav-item sub"
+          :class="{ active: isSettingsActive }"
+          :to="{ name: 'settings' }"
+        >
+          设置概览
+        </RouterLink>
+        <RouterLink
+          class="nav-item sub"
+          :class="{ active: isActive('settings-plan') }"
+          :to="{ name: 'settings-plan' }"
+        >
+          学习计划
+        </RouterLink>
+        <RouterLink
+          class="nav-item sub"
+          :class="{ active: isActive('settings-privacy') }"
+          :to="{ name: 'settings-privacy' }"
+        >
+          数据与隐私
+        </RouterLink>
+      </nav>
+    </aside>
+
     <main class="main">
-      <router-view />
+      <header class="topbar">
+        <h1 class="topbar-title">{{ currentTitle }}</h1>
+        <div class="topbar-user">
+          <span class="username">{{ user.displayName || '未登录' }}</span>
+        </div>
+      </header>
+      <section class="content">
+        <RouterView />
+      </section>
     </main>
   </div>
 </template>
 
-
 <script setup lang="ts">
-import { useUserStore } from '../store/user';
-import { useRouter } from 'vue-router';
-import { useSettingsStore } from '../store/settings';
 import { computed } from 'vue';
-import BaseButton from '../components/BaseButton.vue';
+import { useRoute, RouterLink, RouterView } from 'vue-router';
+import { useUserStore } from '../store/user';
 
+const route = useRoute();
 const user = useUserStore();
-const router = useRouter();
-const settings = useSettingsStore();
 
-function doLogout() {
-  user.logout();
-  router.replace('/login');
+const currentTitle = computed(() => {
+  return (route.meta.title as string) || 'Videolingo';
+});
+
+function isActive(name: string) {
+  return route.name === name;
 }
-function toggleTheme() {
-  settings.toggleTheme();
-}
-const themeText = computed(() => settings.theme === 'light' ? '暗色' : '浅色');
+
+const isSettingsActive = computed(() =>
+  ['settings', 'settings-profile', 'settings-plan', 'settings-privacy'].includes(
+    (route.name as string) || '',
+  ),
+);
 </script>
 
 <style scoped>
-.layout { min-height:100vh; display:flex; flex-direction:column; }
+.app-layout {
+  display: flex;
+  height: 100vh;
+  background: #f5f5f5;
+  color: #111827;
+}
+
+.sidebar {
+  width: 220px;
+  background: #111827;
+  color: #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 12px;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.nav {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.nav-group-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #9ca3af;
+  padding: 10px 8px 4px;
+}
+
+.nav-item {
+  display: block;
+  padding: 8px 10px;
+  margin: 2px 0;
+  border-radius: 6px;
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.nav-item.sub {
+  padding-left: 20px;
+}
+
+.nav-item:hover {
+  background: #1f2937;
+}
+
+.nav-item.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .topbar {
-  display:flex; justify-content:space-between; align-items:center; padding:10px 18px;
-  margin:0; border-radius:0; border:0; border-bottom:1px solid var(--c-border); box-shadow:none;
+  height: 52px;
+  padding: 0 20px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
 }
-.brand { font-weight:700; margin-right:20px; cursor:pointer; }
-.nav a {
-  margin-right:14px; font-size:14px; color:var(--c-text-dim); padding:6px 8px;
-  border-radius:4px; transition:var(--transition);
+
+.topbar-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
 }
-.nav a.router-link-active, .nav a:hover { background:var(--c-primary); color:#fff; }
-.right { display:flex; align-items:center; gap:10px; }
-.user { font-size:13px; color:var(--c-text-dim); }
-.main { flex:1; padding:20px; max-width:1280px; width:100%; margin:0 auto; }
+
+.topbar-user {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.content {
+  flex: 1;
+  padding: 16px 20px 20px;
+  overflow: auto;
+}
 </style>
