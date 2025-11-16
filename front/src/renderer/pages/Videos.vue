@@ -87,6 +87,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
 import { useVideosStore } from '../store/videos';
+import { useSubtitlesStore } from '../store/subtitles';
 
 const router = useRouter();
 const videosStore = useVideosStore();
