@@ -1,84 +1,82 @@
 <template>
-  <div class="videos-page">
-    <header class="toolbar">
-      <div class="left">
-        <BaseButton variant="primary" @click="onAddVideo">添加视频</BaseButton>
-      </div>
-      <div class="right">
+  <div class="page videos-page">
+    <header class="page-header">
+      <h1 class="page-title">我的视频</h1>
+
+      <div class="page-header-actions">
         <input
           v-model="keyword"
-          class="search"
           type="text"
+          class="input"
           placeholder="按标题搜索视频"
         />
-        <select v-model="statusFilter" class="filter">
+        <select v-model="statusFilter" class="input input-select">
           <option value="">全部状态</option>
-          <option value="idle">未生成字幕</option>
-          <option value="processing">生成中</option>
-          <option value="ready">已有字幕</option>
+          <option value="no-sub">暂无字幕</option>
+          <option value="has-sub">已有字幕</option>
         </select>
+
+        <BaseButton size="sm" @click="onClickAddVideo">添加视频</BaseButton>
       </div>
     </header>
 
-    <main>
-      <div v-if="filteredVideos.length === 0" class="empty">
-        <p>还没有视频，点击「添加视频」导入你的第一个学习素材。</p>
+    <!-- 合规弹窗 -->
+    <div v-if="showConsent" class="consent-backdrop" @click.self="closeConsent">
+      <div class="consent-dialog">
+        <h2 class="consent-title">使用前确认</h2>
+        <p class="consent-text">
+          本应用仅用于个人学习，请确保你对所导入的视频拥有合法的学习使用权，不得用于传播、商业用途或其他违法违规行为。
+        </p>
+        <label class="consent-checkbox">
+          <input v-model="consentChecked" type="checkbox" />
+          <span>我已阅读并同意以上说明</span>
+        </label>
+        <div class="consent-actions">
+          <button class="btn-secondary" @click="closeConsent">取消</button>
+          <button class="btn-primary" :disabled="!consentChecked" @click="confirmConsent">
+            继续选择视频
+          </button>
+        </div>
       </div>
+    </div>
 
-      <table v-else class="table">
+    <section v-if="filteredVideos.length" class="video-list-wrapper">
+      <table class="table-reset video-table">
         <thead>
           <tr>
             <th>标题</th>
-            <th>时长</th>
-            <th>大小</th>
-            <th>上传时间</th>
-            <th>字幕状态</th>
-            <th>标注数</th>
-            <th style="width: 260px">操作</th>
+            <th style="width: 120px">时长</th>
+            <th style="width: 120px">大小</th>
+            <th style="width: 120px">字幕状态</th>
+            <th style="width: 220px">操作</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="v in filteredVideos" :key="v.id">
-            <td class="title-cell">{{ v.title }}</td>
+            <td class="video-title-cell">
+              <div class="video-title">{{ v.title }}</div>
+              <div class="video-path" v-if="v.filePath">{{ v.filePath }}</div>
+            </td>
             <td>{{ formatDuration(v.duration) }}</td>
             <td>{{ formatSize(v.size) }}</td>
-            <td>{{ formatDate(v.createdAt) }}</td>
-            <td>{{ formatStatus(v.status) }}</td>
-            <td>{{ v.notesCount ?? 0 }}</td>
             <td>
-              <div class="actions">
-                <BaseButton size="sm" @click="goPlayer(v.id)">进入学习</BaseButton>
-                <BaseButton size="sm" variant="secondary" @click="onGenerateSubtitles(v)">
-                  {{ v.status === 'ready' ? '重新生成字幕' : '生成字幕' }}
-                </BaseButton>
-                <BaseButton size="sm" variant="ghost" @click="onManageSubtitles(v)">
-                  管理字幕
-                </BaseButton>
-                <BaseButton size="sm" variant="danger" @click="onDelete(v)">删除</BaseButton>
-              </div>
+              <span class="tag" :class="subtitleStatusClass(v)">
+                {{ subtitleStatusText(v) }}
+              </span>
+            </td>
+            <td>
+              <button class="btn-link" @click="goPlayer(v.id)">进入学习</button>
+              <button class="btn-link" @click="onGenerateSubtitles(v)">生成字幕</button>
             </td>
           </tr>
         </tbody>
       </table>
-    </main>
+    </section>
 
-    <!-- 合规确认对话框（简易实现） -->
-    <div v-if="showConsent" class="dialog-backdrop">
-      <div class="dialog">
-        <h3>导入前提示</h3>
-        <p>请确认你对将要导入的视频拥有合法的学习使用权，本应用仅用于个人学习。</p>
-        <label class="checkbox">
-          <input v-model="consentChecked" type="checkbox" />
-          <span>我确认拥有这些视频的学习使用权</span>
-        </label>
-        <div class="dialog-actions">
-          <BaseButton size="sm" variant="ghost" @click="closeConsent">取消</BaseButton>
-          <BaseButton size="sm" :disabled="!consentChecked" @click="chooseFiles">
-            继续选择文件
-          </BaseButton>
-        </div>
-      </div>
-    </div>
+    <section v-else class="empty-state">
+      <p>还没有导入任何视频。</p>
+      <p class="text-secondary">点击右上角「添加视频」开始你的第一个学习视频。</p>
+    </section>
   </div>
 </template>
 
@@ -87,10 +85,18 @@ import { computed, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
 import { useVideosStore } from '../store/videos';
-import { useSubtitlesStore } from '../store/subtitles';
 
 const router = useRouter();
 const videosStore = useVideosStore();
+
+declare global {
+  interface Window {
+    api?: {
+      pickVideo: () => Promise<{ canceled: boolean; filePaths: string[] }>;
+      getFileInfo?: (path: string) => Promise<{ size: number }>;
+    };
+  }
+}
 
 const keyword = ref('');
 const statusFilter = ref<string>('');
@@ -99,209 +105,213 @@ const showConsent = ref(false);
 const consentChecked = ref(false);
 
 onMounted(() => {
-  // 仅为了前端开发演示，后续可去掉
-  // @ts-ignore
-  if (videosStore.seedMockData) {
-    // @ts-ignore
-    videosStore.seedMockData();
-  }
+  // 保证刷新后至少有一个示例视频
+  videosStore.ensureBuiltinSample();
 });
 
+const videos = computed(() => videosStore.items);
+
 const filteredVideos = computed(() => {
-  return videosStore.items.filter((v: any) => {
-    const matchKeyword =
-      !keyword.value || v.title.toLowerCase().includes(keyword.value.toLowerCase());
-    const matchStatus =
-      !statusFilter.value || v.status === statusFilter.value;
-    return matchKeyword && matchStatus;
+  const kw = keyword.value.trim().toLowerCase();
+  const status = statusFilter.value;
+  return videos.value.filter((v) => {
+    if (kw && !v.title.toLowerCase().includes(kw)) return false;
+    if (status === 'no-sub' && (v as any).status === 'ready') return false;
+    if (status === 'has-sub' && (v as any).status !== 'ready') return false;
+    return true;
   });
 });
 
-
-
-function onAddVideo() {
-  showConsent.value = true;
-  consentChecked.value = false;
+function formatDuration(sec?: number) {
+  if (!sec || !Number.isFinite(sec)) return '--:--';
+  const s = Math.floor(sec);
+  const m = Math.floor(s / 60);
+  const r = s % 60;
+  return `${m.toString().padStart(2, '0')}:${r.toString().padStart(2, '0')}`;
 }
 
-function closeConsent() {
-  showConsent.value = false;
-  consentChecked.value = false;
+function formatSize(bytes?: number) {
+  if (!bytes || !Number.isFinite(bytes)) return '-';
+  const kb = bytes / 1024;
+  if (kb < 1024) return `${kb.toFixed(0)} KB`;
+  const mb = kb / 1024;
+  if (mb < 1024) return `${mb.toFixed(1)} MB`;
+  const gb = mb / 1024;
+  return `${gb.toFixed(2)} GB`;
 }
 
-async function chooseFiles() {
-  if (!consentChecked.value) return;
+function subtitleStatusText(v: { status?: string }) {
+  return v.status === 'ready' ? '已有字幕' : '暂无字幕';
+}
 
-  try {
-    const api = window.api;
-    if (!api || !api.pickVideo) {
-      console.error('window.api.pickVideo 未定义，请检查 preload.ts 暴露的 API');
-      return;
-    }
-
-    const result = await api.pickVideo();
-    if (result.canceled || !result.filePaths?.length) {
-      // 用户取消选择
-      return;
-    }
-
-    // 写入到 videos store
-    videosStore.addVideosFromPaths(result.filePaths);
-  } catch (err) {
-    console.error('选择视频文件失败', err);
-  } finally {
-    // 无论成功失败都收起弹窗
-    showConsent.value = false;
-    consentChecked.value = false;
-  }
+function subtitleStatusClass(v: { status?: string }) {
+  return v.status === 'ready' ? 'tag-success' : 'tag-gray';
 }
 
 function goPlayer(id: string) {
   router.push({ name: 'player', params: { id } });
 }
 
-function onGenerateSubtitles(v: any) {
-  // TODO: 调用生成字幕的 action / API
-  console.log('generate subtitles for', v.id);
+function onClickAddVideo() {
+  showConsent.value = true;
+  consentChecked.value = false;
 }
 
-function onManageSubtitles(v: any) {
-  // TODO: 打开字幕管理弹窗或跳转到字幕页面
-  console.log('manage subtitles for', v.id);
+function closeConsent() {
+  showConsent.value = false;
 }
 
-function onDelete(v: any) {
-  if (!confirm(`确定要删除视频「${v.title}」及其本地字幕和笔记吗？`)) return;
-  // TODO: 调用删除 action
-  console.log('delete video', v.id);
+async function confirmConsent() {
+  if (!consentChecked.value) return;
+  showConsent.value = false;
+  await pickAndAddVideos();
 }
 
-function formatDuration(seconds?: number) {
-  if (!seconds) return '-';
-  const m = Math.floor(seconds / 60);
-  const s = seconds % 60;
-  return `${m}分${s.toString().padStart(2, '0')}秒`;
-}
+async function pickAndAddVideos() {
+  const api = window.api;
+  if (!api || !api.pickVideo) {
+    alert('当前环境不支持选择本地视频（缺少 Electron API）。');
+    return;
+  }
 
-function formatSize(bytes?: number) {
-  if (!bytes) return '-';
-  const mb = bytes / (1024 * 1024);
-  if (mb < 1024) return `${mb.toFixed(1)} MB`;
-  const gb = mb / 1024;
-  return `${gb.toFixed(2)} GB`;
-}
-
-function formatDate(iso?: string) {
-  if (!iso) return '-';
   try {
-    const d = new Date(iso);
-    return `${d.getFullYear()}-${(d.getMonth() + 1)
-      .toString()
-      .padStart(2, '0')}-${d
-      .getDate()
-      .toString()
-      .padStart(2, '0')} ${d.getHours().toString().padStart(2, '0')}:${d
-      .getMinutes()
-      .toString()
-      .padStart(2, '0')}`;
-  } catch {
-    return iso;
+    const result = await api.pickVideo();
+    if (result.canceled || !result.filePaths.length) return;
+
+    const fileInfos: { path: string; size?: number }[] = [];
+    for (const path of result.filePaths) {
+      let size: number | undefined;
+      if (api.getFileInfo) {
+        try {
+          const info = await api.getFileInfo(path);
+          size = info.size;
+        } catch (e) {
+          console.warn('获取文件大小失败', path, e);
+        }
+      }
+      fileInfos.push({ path, size });
+    }
+
+    videosStore.addVideosFromPaths(fileInfos);
+  } catch (err) {
+    console.error('pickVideo error:', err);
+    alert('选择视频时出现错误，请稍后重试。');
   }
 }
 
-function formatStatus(status?: string) {
-  switch (status) {
-    case 'idle':
-      return '未生成字幕';
-    case 'processing':
-      return '生成中';
-    case 'ready':
-      return '已有字幕';
-    default:
-      return '-';
-  }
+function onGenerateSubtitles(_v: any) {
+  alert('字幕生成功能稍后接入：会调用后端/本地 Whisper 生成字幕。');
 }
 </script>
 
 <style scoped>
-.videos-page {
+.page {
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding: 16px 20px;
 }
 
-.toolbar {
+.page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
-.right {
+.page-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.page-header-actions {
   display: flex;
   gap: 8px;
-  align-items: center;
 }
 
-.search {
-  width: 220px;
-  padding: 6px 8px;
+.input {
+  height: 32px;
+  padding: 4px 10px;
   border-radius: 6px;
-  border: 1px solid #d1d5db;
+  border: 1px solid #e5e7eb;
   font-size: 13px;
 }
 
-.filter {
-  padding: 6px 8px;
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
-  font-size: 13px;
+.input-select {
+  min-width: 120px;
 }
 
-.empty {
-  padding: 16px;
-  background: #f9fafb;
-  border-radius: 8px;
-  color: #6b7280;
-  font-size: 14px;
+.video-list-wrapper {
+  flex: 1;
+  overflow: auto;
 }
 
-.table {
+.video-table {
   width: 100%;
   border-collapse: collapse;
-  background: #ffffff;
-  border-radius: 8px;
-  overflow: hidden;
+  font-size: 13px;
 }
 
-.table th,
-.table td {
+.video-table th,
+.video-table td {
   padding: 8px 10px;
   border-bottom: 1px solid #e5e7eb;
-  font-size: 13px;
   text-align: left;
 }
 
-.table th {
-  background: #f3f4f6;
+.video-title-cell {
+  max-width: 420px;
+}
+
+.video-title {
   font-weight: 500;
 }
 
-.title-cell {
-  max-width: 260px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.video-path {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 2px;
 }
 
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+.tag {
+  display: inline-flex;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
 }
 
-/* 简单对话框样式 */
-.dialog-backdrop {
+.tag-success {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.tag-gray {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.text-secondary {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.btn-link {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  cursor: pointer;
+  color: #2563eb;
+  margin-right: 8px;
+}
+
+.empty-state {
+  margin-top: 40px;
+  color: #4b5563;
+}
+
+/* 合规弹窗样式 */
+.consent-backdrop {
   position: fixed;
   inset: 0;
   background: rgba(15, 23, 42, 0.45);
@@ -311,36 +321,64 @@ function formatStatus(status?: string) {
   z-index: 40;
 }
 
-.dialog {
-  width: 380px;
+.consent-dialog {
+  width: 420px;
+  max-width: 90vw;
   background: #ffffff;
-  border-radius: 10px;
-  padding: 16px 18px 14px;
-  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.25);
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.45);
 }
 
-.dialog h3 {
-  margin: 0 0 8px;
-  font-size: 16px;
-}
-
-.dialog p {
+.consent-title {
   margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.consent-text {
   font-size: 13px;
   color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 12px;
 }
 
-.checkbox {
+.consent-checkbox {
   display: flex;
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  margin-bottom: 12px;
+  color: #374151;
+  margin-bottom: 16px;
 }
 
-.dialog-actions {
+.consent-actions {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
+}
+
+.btn-primary,
+.btn-secondary {
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.btn-primary:disabled {
+  background: #9ca3af;
+  cursor: default;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #111827;
 }
 </style>

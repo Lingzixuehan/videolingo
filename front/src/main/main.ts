@@ -16,11 +16,13 @@ async function ensureDir(p: string) {
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 1100, height: 700,
+    width: 1100,
+    height: 700,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      contextIsolation: true, nodeIntegration: false
-    }
+      contextIsolation: true,
+      nodeIntegration: false,
+    },
   });
 
   if (isDev) {
@@ -33,7 +35,9 @@ function createWindow() {
   win.on('closed', () => (win = null));
 }
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
+  await ensureDir(getConfigPath().dir);
+
   createWindow();
 
   ipcMain.handle('ping', () => 'pong');
@@ -43,9 +47,9 @@ app.whenReady().then(() => {
       title: '选择视频文件',
       properties: ['openFile'],
       filters: [
-        { name: 'Video', extensions: ['mp4','mkv','mov','webm','avi'] },
-        { name: 'All Files', extensions: ['*'] }
-      ]
+        { name: 'Video', extensions: ['mp4', 'mkv', 'mov', 'webm', 'avi'] },
+        { name: 'All Files', extensions: ['*'] },
+      ],
     });
     return { canceled: res.canceled, filePaths: res.filePaths };
   });
@@ -53,7 +57,7 @@ app.whenReady().then(() => {
   ipcMain.handle('dialog:openDirectory', async () => {
     const res = await dialog.showOpenDialog(win!, {
       title: '选择目录',
-      properties: ['openDirectory', 'createDirectory']
+      properties: ['openDirectory', 'createDirectory'],
     });
     return { canceled: res.canceled, filePaths: res.filePaths };
   });
@@ -77,6 +81,15 @@ app.whenReady().then(() => {
       return true;
     } catch {
       return false;
+    }
+  });
+
+  ipcMain.handle('file:getInfo', async (_e, filePath: string) => {
+    try {
+      const stat = await fs.stat(filePath);
+      return { size: stat.size };
+    } catch {
+      return { size: 0 };
     }
   });
 

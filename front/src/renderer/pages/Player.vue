@@ -7,6 +7,8 @@
           ref="videoRef"
           class="video"
           controls
+          muted
+          autoplay
           :src="videoSrc"
         >
           您的系统暂不支持 video 标签。
@@ -59,6 +61,7 @@
               :key="s.id"
               :class="['subtitle-item', { active: s.id === currentSubtitleId }]"
               @click="seekTo(s.start)"
+              :ref="el => setSubtitleItemRef(el as HTMLLIElement | null, s.id)"
             >
               <div class="time">{{ formatTime(s.start) }}</div>
               <div class="text">
@@ -124,9 +127,31 @@
 
         <!-- Tab6：本视频相关卡片 -->
         <div v-else-if="activeTab === 'cards'" class="tab-panel">
-          <p class="placeholder">
-            这里将展示从该视频生成的学习卡片，可以直接进入复习或编辑。
-          </p>
+          <div v-if="videoCards.length === 0" class="placeholder">
+            还没有从本视频生成任何卡片。你可以点击下方字幕中的单词，收藏为卡片。
+          </div>
+          <ul v-else class="video-cards-list">
+            <li v-for="c in videoCards" :key="c.id" class="video-card-item">
+              <div class="video-card-main">
+                <div class="video-card-front">{{ c.front }}</div>
+                <div v-if="c.back" class="video-card-back">{{ c.back }}</div>
+                <div class="video-card-meta">
+                  <button
+                    v-if="typeof c.videoTime === 'number'"
+                    class="video-card-time"
+                    @click="seekTo(c.videoTime!)"
+                  >
+                    跳到 {{ formatTimeShort(c.videoTime!) }}
+                  </button>
+                  <span v-if="c.videoTitle" class="video-card-title">{{ c.videoTitle }}</span>
+                </div>
+              </div>
+              <div class="video-card-actions">
+                <button class="video-card-btn" @click="goToReview">去复习</button>
+                <button class="video-card-btn delete" @click="deleteCard(c.id)">删除</button>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -141,25 +166,43 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, reactive, ref } from 'vue';
+import { computed, onMounted, onUnmounted, reactive, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useVideosStore } from '../store/videos';
 import { useSubtitlesStore } from '../store/subtitles';
 import { useNotesStore } from '../store/notes';
+import { useCardsStore } from '../store/cards';
 
 const route = useRoute();
 const router = useRouter();
 const videosStore = useVideosStore();
 const subtitlesStore = useSubtitlesStore();
 const notesStore = useNotesStore();
+const cardsStore = useCardsStore();
+const subtitleItemRefs = ref<Record<string, HTMLLIElement | null>>({});
+
+const isMockTiming = import.meta.env.DEV; // 只在 dev 下用假时间轴
+let mockTimer: number | null = null;
+
 
 const videoRef = ref<HTMLVideoElement | null>(null);
+
 const activeTab = ref<'subtitles' | 'words' | 'phrases' | 'grammar' | 'notes' | 'cards'>(
   'subtitles',
 );
 const currentVideoId = computed(() => route.params.id as string | undefined);
+const currentVideo = computed(() =>
+  currentVideoId.value
+    ? videosStore.items.find(v => v.id === currentVideoId.value) ?? null
+    : null
+);
 
-
+// 本视频相关卡片
+const videoCards = computed(() => {
+  const id = currentVideoId.value;
+  if (!id) return [];
+  return cardsStore.itemsAll.filter((c) => c.videoId === id);
+});
 // tabs 配置
 const tabs = [
   { key: 'subtitles', label: '滚动字幕' },
@@ -170,11 +213,21 @@ const tabs = [
   { key: 'cards', label: '本视频卡片' },
 ];
 
-// 当前视频
-const currentVideo = computed(() => {
-  const id = currentVideoId.value;
-  if (!id) return null;
-  return videosStore.items.find((v) => v.id === id) ?? null;
+// 用于网络环境下的演示视频（备用）
+const fallbackVideoSrc = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
+
+const videoSrc = computed(() => {
+  const v = currentVideo.value;
+
+  // 情况 1：内置示例视频等静态资源（指向 public 目录）
+  if (v?.filePath && v.filePath.startsWith('/')) {
+    console.log('[Player] use static asset', v.filePath);
+    return v.filePath;
+  }
+
+  // 情况 2：暂时没有有效 filePath 时，使用内置示例 test.mp4（要求存在于 public/videos/test.mp4）
+  console.log('[Player] fallback to built-in /videos/test.mp4');
+  return '/videos/test.mp4';
 });
 
 // 当前视频的笔记列表
@@ -184,16 +237,9 @@ const notes = computed(() => {
   return notesStore.notesForVideo(id);
 });
 
-
-// 先用一个假 src，占位用
-const videoSrc = computed(() => {
-  // 真实项目中应从 currentVideo.filePath 或后端地址获取
-  return '';
-});
-
 const newNoteText = ref('');
 
-// 播放进度 & 时长（简单占位）
+// 播放进度 & 时长
 const position = ref(0);
 const duration = ref(0);
 
@@ -255,21 +301,40 @@ function goBackToVideos() {
   router.push({ name: 'videos' });
 }
 
-function onWordClick(word: string, event?: MouseEvent) {
-  wordPopup.word = word.replace(/[.,!?]/g, '');
-  wordPopup.visible = true;
-  if (event) {
-    wordPopup.x = event.clientX + 10;
-    wordPopup.y = event.clientY - 40;
-  } else {
-    wordPopup.x = 200;
-    wordPopup.y = 200;
-  }
+function goToReview() {
+  router.push({ name: 'study-review' });
 }
 
+function onWordClick(word: string, event?: MouseEvent) {
+  const cleanWord = word.replace(/[.,!?]/g, '');
+
+  wordPopup.word = cleanWord;
+  wordPopup.visible = true;
+  
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  wordPopup.x = vw / 2;
+  wordPopup.y = vh / 2;
+}
+
+
+
 function onCollectWord() {
-  // TODO: 调用卡片创建逻辑
-  alert(`将来这里会把单词「${wordPopup.word}」收藏成一张学习卡片。`);
+  const word = wordPopup.word.trim();
+  if (!word) return;
+
+  const videoId = currentVideoId.value ?? '';
+  const videoTitle = currentVideo.value?.title ?? '';
+
+  cardsStore.addFromVideo({
+    wordOrSentence: word,
+    meaning: '',
+    type: 'word',
+    videoId,
+    videoTitle,
+    videoTime: position.value,
+  });
+
   wordPopup.visible = false;
 }
 
@@ -306,6 +371,11 @@ function removeNote(noteId: string) {
   notesStore.removeNote(id, noteId);
 }
 
+function deleteCard(id: string) {
+  if (!confirm('确定要删除这张卡片吗？')) return;
+  cardsStore.removeById(id);
+}
+
 function formatTimeShort(sec: number) {
   const s = Math.floor(sec);
   const m = Math.floor(s / 60);
@@ -313,31 +383,88 @@ function formatTimeShort(sec: number) {
   return `${m.toString().padStart(2, '0')}:${ss.toString().padStart(2, '0')}`;
 }
 
+function setSubtitleItemRef(el: HTMLLIElement | null, id: string) {
+  if (!el) return;
+  subtitleItemRefs.value[id] = el;
+}
 
 
 
 onMounted(() => {
-  // 绑定 video 事件
   if (videoRef.value) {
-    videoRef.value.addEventListener('timeupdate', onTimeUpdate);
-    videoRef.value.addEventListener('loadedmetadata', onLoadedMetadata);
+    const el = videoRef.value;
+    el.addEventListener('loadedmetadata', () => {
+      console.log('[Player] loadedmetadata duration =', el.duration);
+    });
+    el.addEventListener('error', () => {
+      console.log('[Player] video error', el.error);
+    });
+    el.addEventListener('play', () => {
+      console.log('[Player] play event fired');
+    });
+
+        // 尝试主动播放一次
+    const p = el.play();
+    if (p && typeof p.then === 'function') {
+      p.then(() => {
+        console.log('[Player] play() resolved');
+      }).catch(err => {
+        console.log('[Player] play() rejected', err);
+      });
+    }
+  }
+
+
+
+  const video = videoRef.value;
+  if (video) {
+    video.addEventListener('timeupdate', onTimeUpdate);
+    video.addEventListener('loadedmetadata', onLoadedMetadata);
   }
   document.addEventListener('click', onClickDocument);
 
-  // 开发阶段：为当前视频自动填充假字幕
   const id = currentVideoId.value;
   if (id) {
     subtitlesStore.seedMockForVideo(id);
   }
+
+  // dev 下：不依赖真实视频，直接用 0~120 秒的假时间轴驱动字幕
+  if (isMockTiming) {
+    duration.value = 120;
+    position.value = 0;
+    mockTimer = window.setInterval(() => {
+      position.value = (position.value + 0.5) % duration.value;
+    }, 500);
+  }
 });
 
 onUnmounted(() => {
-  if (videoRef.value) {
-    videoRef.value.removeEventListener('timeupdate', onTimeUpdate);
-    videoRef.value.removeEventListener('loadedmetadata', onLoadedMetadata);
+  const video = videoRef.value;
+  if (video) {
+    video.removeEventListener('timeupdate', onTimeUpdate);
+    video.removeEventListener('loadedmetadata', onLoadedMetadata);
   }
   document.removeEventListener('click', onClickDocument);
+
+  if (mockTimer !== null) {
+    clearInterval(mockTimer);
+    mockTimer = null;
+  }
 });
+
+watch(currentSubtitleId, (id) => {
+  if (!id) return;
+  const el = subtitleItemRefs.value[id];
+  if (!el) return;
+  const container = el.closest('.subtitle-list');
+  if (!container) return;
+
+  const rect = el.getBoundingClientRect();
+  const crect = (container as HTMLElement).getBoundingClientRect();
+  const offset = rect.top - crect.top - crect.height / 3;
+  (container as HTMLElement).scrollBy({ top: offset, behavior: 'smooth' });
+});
+
 
 function formatTime(sec: number | undefined) {
   if (!sec && sec !== 0) return '--:--';
@@ -346,6 +473,19 @@ function formatTime(sec: number | undefined) {
   const ss = s % 60;
   return `${m.toString().padStart(2, '0')}:${ss.toString().padStart(2, '0')}`;
 }
+
+function addWordCard(word: string, meaning: string | undefined, time: number) {
+  cardsStore.addFromVideo({
+    wordOrSentence: word,
+    meaning,
+    type: 'word',
+    videoId: currentVideoId.value,
+    videoTitle: currentVideo.value?.title,
+    videoTime: time,
+  });
+}
+
+
 </script>
 
 <style scoped>
@@ -475,6 +615,77 @@ function formatTime(sec: number | undefined) {
   color: #6b7280;
 }
 
+/* 本视频卡片列表 */
+.video-cards-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.video-card-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #f9fafb;
+}
+
+.video-card-front {
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.video-card-back {
+  font-size: 13px;
+  color: #4b5563;
+  margin-bottom: 4px;
+}
+
+.video-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.video-card-time {
+  border-radius: 999px;
+  border: none;
+  padding: 2px 8px;
+  background: #e5e7eb;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.video-card-title {
+  font-size: 12px;
+}
+
+.video-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.video-card-btn {
+  border-radius: 999px;
+  border: none;
+  padding: 3px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.video-card-btn.delete {
+  background: #ef4444;
+}
+
 /* 滚动字幕列表 */
 .subtitle-list {
   list-style: none;
@@ -508,36 +719,40 @@ function formatTime(sec: number | undefined) {
 /* 单词浮层 */
 .word-popup {
   position: fixed;
-  z-index: 50;
-  min-width: 200px;
-  max-width: 260px;
-  background: #111827;
-  color: #f9fafb;
-  border-radius: 8px;
-  padding: 8px 10px;
-  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.45);
-  font-size: 13px;
+  z-index: 9999;
+  min-width: 320px;
+  max-width: 420px;
+  background: #ffffff;
+  color: #111827;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
+  font-size: 14px;
+  transform: translate(-50%, -50%);
 }
 
 .word-popup-word {
-  font-weight: 600;
-  margin-bottom: 4px;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 8px;
 }
 
 .word-popup-brief {
-  color: #d1d5db;
-  margin-bottom: 6px;
+  color: #6b7280;
+  margin-bottom: 12px;
+  font-size: 13px;
 }
 
 .word-popup-btn {
   border: none;
-  padding: 4px 8px;
-  font-size: 12px;
+  padding: 6px 12px;
+  font-size: 13px;
   border-radius: 999px;
   background: #2563eb;
   color: #ffffff;
   cursor: pointer;
 }
+
 
 .subtitle-item .text-cn {
   font-size: 12px;
