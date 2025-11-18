@@ -5,11 +5,11 @@ export type CardType = 'word' | 'phrase' | 'sentence' | 'grammar' | 'note';
 export interface CardItem {
   id: string;
   type: CardType;
-  front: string; // 正面：题干，例如英文单词/句子
-  back: string; // 反面：释义/答案
+  front: string;
+  back: string;
   videoId?: string;
   videoTitle?: string;
-  videoTime?: number; // 来源视频时间（秒）
+  videoTime?: number;
   ease?: 'hard' | 'normal' | 'easy';
   lastReviewedAt?: string;
   nextReviewAt?: string;
@@ -17,6 +17,7 @@ export interface CardItem {
 
 interface CardsState {
   todayTarget: number;
+  itemsAll: CardItem[];   
   itemsToday: CardItem[];
   currentIndex: number;
   doneCount: number;
@@ -25,85 +26,126 @@ interface CardsState {
 export const useCardsStore = defineStore('cards', {
   state: (): CardsState => ({
     todayTarget: 20,
+    itemsAll: [],       
     itemsToday: [],
     currentIndex: 0,
     doneCount: 0,
   }),
 
   getters: {
-    currentCard(state): CardItem | null {
+    currentToday(state): CardItem | null {
       if (!state.itemsToday.length) return null;
       return state.itemsToday[state.currentIndex] ?? null;
     },
     remainingCount(state): number {
-      return Math.max(state.todayTarget - state.doneCount, 0);
+      return Math.max(state.itemsToday.length - state.doneCount, 0);
     },
   },
 
   actions: {
+    // 用于测试或重置
     seedMockToday() {
-      if (this.itemsToday.length) return;
       const now = new Date().toISOString();
-      this.itemsToday = [
+      this.itemsAll = [
         {
-          id: 'c1',
+          id: 'demo-1',
           type: 'word',
-          front: 'notorious',
-          back: '臭名昭著的；声名狼藉的',
-          videoId: '1',
-          videoTitle: '示例视频一：Learning English with Movies',
-          videoTime: 120,
+          front: 'example',
+          back: '示例；例子',
           ease: 'normal',
           lastReviewedAt: now,
+          nextReviewAt: now,
         },
         {
-          id: 'c2',
+          id: 'demo-2',
           type: 'sentence',
-          front: 'Learning English with videos can be fun and effective.',
-          back: '通过视频学习英语既有趣又高效。',
-          videoId: '1',
-          videoTitle: '示例视频一：Learning English with Movies',
-          videoTime: 600,
-          ease: 'hard',
-        },
-        {
-          id: 'c3',
-          type: 'grammar',
-          front: 'Find the subject and the main verb in this sentence: "Here comes the second subtitle line."',
-          back: '主语是 "the second subtitle line"，谓语是 "comes"。',
-          videoId: '1',
-          videoTitle: '示例视频一：Learning English with Movies',
-          videoTime: 300,
-          ease: 'easy',
+          front: 'This is a sample sentence for review.',
+          back: '这是一句用于复习的示例句子。',
+          ease: 'normal',
+          lastReviewedAt: now,
+          nextReviewAt: now,
         },
       ];
-      this.todayTarget = 20;
+      this.itemsToday = [...this.itemsAll];
       this.currentIndex = 0;
       this.doneCount = 0;
     },
 
     answerCurrent(ease: 'hard' | 'normal' | 'easy') {
-      const card = this.currentCard;
+      const card = this.currentToday;
       if (!card) return;
-      const now = new Date().toISOString();
-      card.ease = ease;
-      card.lastReviewedAt = now;
-      // TODO: 这里以后接真正的 SRS 算法，计算 nextReviewAt
-      card.nextReviewAt = now;
+
+      const idx = this.itemsToday.findIndex((c) => c.id === card.id);
+      if (idx === -1) return;
+
+      const now = new Date();
+      const base = now.getTime();
+      let nextMs = base + 24 * 60 * 60 * 1000; // 默认 1 天
+      if (ease === 'hard') {
+        nextMs = base + 12 * 60 * 60 * 1000;
+      } else if (ease === 'easy') {
+        nextMs = base + 2 * 24 * 60 * 60 * 1000;
+      }
+
+      const updated: CardItem = {
+        ...card,
+        ease,
+        lastReviewedAt: now.toISOString(),
+        nextReviewAt: new Date(nextMs).toISOString(),
+      };
+
+      this.itemsToday.splice(idx, 1, updated);
+
+      const allIdx = this.itemsAll.findIndex((c) => c.id === card.id);
+      if (allIdx !== -1) {
+        this.itemsAll.splice(allIdx, 1, updated);
+      }
 
       this.doneCount += 1;
-
       if (this.currentIndex < this.itemsToday.length - 1) {
         this.currentIndex += 1;
-      } else {
-        // 已到最后一张，保持在最后
-        this.currentIndex = this.itemsToday.length - 1;
       }
     },
 
     restartToday() {
       this.currentIndex = 0;
       this.doneCount = 0;
+    },
+
+    addFromVideo(payload: {
+      wordOrSentence: string;
+      meaning?: string;
+      type?: CardType;
+      videoId?: string;
+      videoTitle?: string;
+      videoTime?: number;
+    }) {
+      const id =
+        Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+      const now = new Date().toISOString();
+      const card: CardItem = {
+        id,
+        type: payload.type ?? 'word',
+        front: payload.wordOrSentence,
+        back: payload.meaning ?? '',
+        videoId: payload.videoId,
+        videoTitle: payload.videoTitle,
+        videoTime: payload.videoTime,
+        ease: 'normal',
+        lastReviewedAt: now,
+        nextReviewAt: now,
+      };
+
+      this.itemsAll.push(card);
+      this.itemsToday.push(card);
+    },
+
+    removeById(id: string) {
+      this.itemsAll = this.itemsAll.filter((c) => c.id !== id);
+      this.itemsToday = this.itemsToday.filter((c) => c.id !== id);
+      if (this.currentIndex >= this.itemsToday.length) {
+        this.currentIndex = Math.max(this.itemsToday.length - 1, 0);
+      }
     },
   },
 });

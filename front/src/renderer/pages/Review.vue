@@ -23,7 +23,7 @@
     <main class="main">
       <div v-if="!currentCard" class="empty">
         <p>今天还没有可复习的卡片。</p>
-        <p>后续会从你收藏的单词、句子和笔记中自动生成复习队列。</p>
+        <p>去「我的视频 → 进入学习」页面，点击字幕中的单词收藏为卡片，这里就会出现新的复习内容。</p>
       </div>
 
       <div v-else class="card">
@@ -70,9 +70,8 @@ const router = useRouter();
 
 const showBack = ref(false);
 
-// 初始化今日卡片（假数据）
+// 仅注册键盘监听，不再自动注入 mock 数据，直接使用真实卡片队列
 onMounted(() => {
-  cardsStore.seedMockToday();
   window.addEventListener('keydown', onKeyDown);
 });
 
@@ -80,7 +79,7 @@ onBeforeUnmount(() => {
   window.removeEventListener('keydown', onKeyDown);
 });
 
-const currentCard = computed(() => cardsStore.currentCard);
+const currentCard = computed(() => cardsStore.currentToday);
 const totalCount = computed(() => cardsStore.itemsToday.length);
 const displayIndex = computed(() =>
   currentCard.value ? cardsStore.currentIndex + 1 : 0,
