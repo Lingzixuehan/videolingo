@@ -1,8 +1,8 @@
 <template>
   <div class="wrap">
-    <section class="welcome">
+    <section class="welcome surface-card">
       <div>
-        <h2>你好，{{ user.displayName || '学习者' }}</h2>
+        <h2 class="welcome-title">你好，{{ user.displayName || '学习者' }}</h2>
         <p class="subtitle">今天也一起从真实视频里学语言吧。</p>
       </div>
       <div class="today-plan">
@@ -19,7 +19,7 @@
       <StatCard label="累计学习时长(分钟)" :value="totalMinutes" />
     </section>
 
-    <section class="quick">
+    <section class="quick surface-card">
       <BaseButton variant="primary" @click="go('/videos')">上传/管理视频</BaseButton>
       <BaseButton @click="go('/study/review')">开始学习</BaseButton>
       <BaseButton @click="go('/study/cards')">卡片管理</BaseButton>
@@ -27,8 +27,8 @@
     </section>
 
     <section class="lists">
-      <div class="list-block">
-        <h3>最近视频</h3>
+      <div class="list-block surface-card">
+        <h3 class="block-title">最近视频</h3>
         <div v-if="recentVideos.length === 0" class="empty">还没有视频，先去上传一个吧。</div>
         <ul v-else class="list">
           <li v-for="v in recentVideos" :key="v.id" class="list-item">
@@ -43,9 +43,9 @@
         </ul>
       </div>
 
-      <div class="list-block">
-        <h3>最近卡片</h3>
-        <div class="empty">卡片系统还没接上，后续会展示最近生成的学习卡片。</div>
+      <div class="list-block surface-card">
+        <h3 class="block-title">最近卡片</h3>
+        <div class="empty muted">卡片系统还没接上，后续会展示最近生成的学习卡片。</div>
       </div>
     </section>
   </div>
@@ -54,10 +54,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { useVideosStore } from '../store/videos';
-import { useUserStore } from '../store/user';
 import BaseButton from '../components/BaseButton.vue';
 import StatCard from '../components/StatCard.vue';
+import { useUserStore } from '../store/user';
+import { useVideosStore } from '../store/videos';
 
 const router = useRouter();
 const videos = useVideosStore();
@@ -84,25 +84,30 @@ function go(path: string) {
 
 <style scoped>
 .wrap {
-  padding: 8px;
+  padding: 6px 6px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .welcome {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 16px;
+  gap: 18px;
 }
 
-.welcome h2 {
+.welcome-title {
   margin: 0;
   font-size: 22px;
+  font-weight: 650;
 }
 
 .subtitle {
   margin: 4px 0 0;
-  color: #6b7280;
-  font-size: 13px;
+  color: var(--c-text-dim);
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .today-plan {
@@ -110,12 +115,14 @@ function go(path: string) {
 }
 
 .plan-label {
-  font-size: 12px;
-  color: #9ca3af;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-text-dim);
 }
 
 .plan-value {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -123,14 +130,12 @@ function go(path: string) {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 18px;
 }
 
 .quick {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 18px;
 }
 
 .lists {
@@ -139,17 +144,23 @@ function go(path: string) {
   gap: 16px;
 }
 
-.list-block h3 {
+.block-title {
   margin: 0 0 10px;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--c-text-dim);
 }
 
 .empty {
   padding: 12px;
-  font-size: 13px;
-  color: #6b7280;
-  background: #f9fafb;
-  border-radius: 6px;
+  font-size: 14px;
+  color: var(--c-text);
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: var(--radius-md);
+}
+
+.empty.muted {
+  color: var(--c-text-muted);
 }
 
 .list {
@@ -162,21 +173,22 @@ function go(path: string) {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 10px;
-  background: #ffffff;
-  border-radius: 6px;
-  border: 1px solid #e5e7eb;
+  padding: 8px 12px;
+  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.05), transparent 60%),
+    rgba(15, 23, 42, 0.9);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--c-border-subtle);
   margin-bottom: 6px;
 }
 
 .list-main .title {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
 }
 
 .list-main .meta {
   font-size: 12px;
-  color: #9ca3af;
+  color: var(--c-text-muted);
 }
 
 .list-actions {
