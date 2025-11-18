@@ -218,16 +218,20 @@ const fallbackVideoSrc = 'https://interactive-examples.mdn.mozilla.net/media/cc0
 
 const videoSrc = computed(() => {
   const v = currentVideo.value;
+  const serverBase = 'http://127.0.0.1:3421';
 
-  // 情况 1：内置示例视频等静态资源（指向 public 目录）
-  if (v?.filePath && v.filePath.startsWith('/')) {
-    console.log('[Player] use static asset', v.filePath);
-    return v.filePath;
+  // 情况 1：有 filePath（本地或相对）
+  if (v?.filePath) {
+    try {
+      // Use the local video-server to stream files with Range support
+      return `${serverBase}/video?path=${encodeURIComponent(v.filePath)}`;
+    } catch (e) {
+      console.warn('[Player] encode video path fail', e);
+    }
   }
 
-  // 情况 2：暂时没有有效 filePath 时，使用内置示例 test.mp4（要求存在于 public/videos/test.mp4）
-  console.log('[Player] fallback to built-in /videos/test.mp4');
-  return '/videos/test.mp4';
+  // 情况 2：暂时没有有效 filePath 时，使用内置示例 test.mp4（通过 video-server）
+  return `${serverBase}/video?path=${encodeURIComponent('/public/videos/test.mp4')}`;
 });
 
 // 当前视频的笔记列表
