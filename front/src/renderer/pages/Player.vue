@@ -168,10 +168,10 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, reactive, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useVideosStore } from '../store/videos';
-import { useSubtitlesStore } from '../store/subtitles';
-import { useNotesStore } from '../store/notes';
 import { useCardsStore } from '../store/cards';
+import { useNotesStore } from '../store/notes';
+import { useSubtitlesStore } from '../store/subtitles';
+import { useVideosStore } from '../store/videos';
 
 const route = useRoute();
 const router = useRouter();
@@ -512,30 +512,35 @@ function addWordCard(word: string, meaning: string | undefined, time: number) {
 
 .video {
   width: 100%;
-  height: 360px;
+  height: 420px;
   background: #000;
 }
 
 /* 底部字幕条 */
-.subtitle-bar {
-  margin-top: auto;
-  padding: 8px 10px;
-  border-radius: 6px;
-  background: rgba(15, 23, 42, 0.9);
-  color: #f9fafb;
-  font-size: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
+  .subtitle-bar {
+    margin-top: auto;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: rgba(10, 16, 28, 0.85);
+    color: var(--c-text);
+    font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
 
-.subtitle-word {
-  cursor: pointer;
-}
+  .subtitle-word {
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.02);
+    transition: background .12s ease, color .12s ease;
+  }
 
-.subtitle-word:hover {
-  text-decoration: underline;
-}
+  .subtitle-word:hover {
+    background: rgba(56,189,248,0.14);
+    color: #fff;
+  }
 
 /* 右侧 */
 .right {
@@ -547,72 +552,77 @@ function addWordCard(word: string, meaning: string | undefined, time: number) {
 .right-header {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* 原本是 baseline，可以改成 center，看你喜好 */
-  margin-bottom: 8px;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .right-header-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .back-btn {
-  border: 1px solid #d1d5db;
-  background: #ffffff;
+  border: 1px solid rgba(148,163,184,.25);
+  background: transparent;
   border-radius: 999px;
-  padding: 4px 10px;
-  font-size: 12px;
+  padding: 6px 12px;
+  font-size: 13px;
   cursor: pointer;
-  color: #374151;
+  color: var(--c-text);
 }
 
 .back-btn:hover {
-  background: #f3f4f6;
+  background: rgba(56,189,248,0.06);
 }
 
 .right-header .title {
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--c-text);
 }
 
 .right-header .time {
-  font-size: 12px;
-  color: #6b7280;
+  font-size: 13px;
+  color: var(--c-text-dim);
 }
+
 
 .tabs {
   display: flex;
-  gap: 4px;
-  margin-bottom: 8px;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
 .tab {
-  padding: 6px 10px;
+  padding: 8px 12px;
   font-size: 13px;
   border-radius: 999px;
   border: none;
-  background: #e5e7eb;
+  background: rgba(255,255,255,0.03);
+  color: var(--c-text-dim);
   cursor: pointer;
 }
 
 .tab.active {
-  background: #2563eb;
-  color: #ffffff;
+  background: linear-gradient(135deg, rgba(56,189,248,0.18), rgba(14,165,233,0.18));
+  color: var(--c-text);
+  box-shadow: 0 6px 20px rgba(2,6,23,0.45);
 }
 
 .tab-content {
   flex: 1;
-  padding: 8px;
-  border-radius: 8px;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(10,16,28,0.96);
+  border: 1px solid rgba(148,163,184,0.08);
+  color: var(--c-text);
   overflow: auto;
 }
 
 .placeholder {
-  font-size: 13px;
-  color: #6b7280;
+  font-size: 14px;
+  color: var(--c-text-dim);
 }
 
 /* 本视频卡片列表 */
@@ -695,25 +705,28 @@ function addWordCard(word: string, meaning: string | undefined, time: number) {
 
 .subtitle-item {
   display: grid;
-  grid-template-columns: 60px minmax(0, 1fr);
-  gap: 8px;
-  padding: 6px 4px;
-  border-radius: 6px;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px 8px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14px;
+  color: var(--c-text);
 }
 
 .subtitle-item:hover {
-  background: #f3f4f6;
+  background: rgba(56,189,248,0.04);
 }
 
 .subtitle-item.active {
-  background: #dbeafe;
+  background: rgba(56,189,248,0.12);
+  box-shadow: 0 8px 20px rgba(2,6,23,0.45);
 }
 
 .subtitle-item .time {
-  color: #6b7280;
+  color: var(--c-text-dim);
   font-variant-numeric: tabular-nums;
+  font-weight: 600;
 }
 
 /* 单词浮层 */
