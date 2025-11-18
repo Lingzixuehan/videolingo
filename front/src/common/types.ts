@@ -8,6 +8,7 @@ export interface RendererAPI {
     read: () => Promise<Record<string, any> | null>;
     write: (data: Record<string, any>) => Promise<boolean>;
   };
+  getFileInfo?: (path: string) => Promise<{ size: number }>;
 }
 
 declare global {

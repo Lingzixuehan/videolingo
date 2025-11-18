@@ -39,7 +39,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'study/cards',
         name: 'study-cards',
-        component: () => import('../pages/Analyze.vue'), // 先临时占位，后面再换成真正的卡片管理页
+        component: () => import('../pages/Cards.vue'),
         meta: { title: '卡片管理' },
       },
       {
