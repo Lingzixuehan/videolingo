@@ -1,7 +1,10 @@
 <template>
   <div class="page videos-page">
-    <header class="page-header">
-      <h1 class="page-title">我的视频</h1>
+    <header class="page-header surface-card">
+      <div class="page-header-main">
+        <h1 class="page-title">我的视频</h1>
+        <p class="page-subtitle">管理你的学习视频，随时继续从上次看到的地方开始。</p>
+      </div>
 
       <div class="page-header-actions">
         <input
@@ -16,7 +19,7 @@
           <option value="has-sub">已有字幕</option>
         </select>
 
-        <BaseButton size="sm" @click="onClickAddVideo">添加视频</BaseButton>
+        <BaseButton size="sm" variant="primary" @click="onClickAddVideo">添加视频</BaseButton>
       </div>
     </header>
 
@@ -41,36 +44,33 @@
     </div>
 
     <section v-if="filteredVideos.length" class="video-list-wrapper">
-      <table class="table-reset video-table">
-        <thead>
-          <tr>
-            <th>标题</th>
-            <th style="width: 120px">时长</th>
-            <th style="width: 120px">大小</th>
-            <th style="width: 120px">字幕状态</th>
-            <th style="width: 220px">操作</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="v in filteredVideos" :key="v.id">
-            <td class="video-title-cell">
+      <ul class="video-list">
+        <li v-for="v in filteredVideos" :key="v.id" class="video-item">
+          <div class="video-main">
+            <div class="video-title-row">
               <div class="video-title">{{ v.title }}</div>
-              <div class="video-path" v-if="v.filePath">{{ v.filePath }}</div>
-            </td>
-            <td>{{ formatDuration(v.duration) }}</td>
-            <td>{{ formatSize(v.size) }}</td>
-            <td>
               <span class="tag" :class="subtitleStatusClass(v)">
                 {{ subtitleStatusText(v) }}
               </span>
-            </td>
-            <td>
-              <button class="btn-link" @click="goPlayer(v.id)">进入学习</button>
-              <button class="btn-link" @click="onGenerateSubtitles(v)">生成字幕</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </div>
+            <div v-if="v.filePath" class="video-path">{{ v.filePath }}</div>
+          </div>
+          <div class="video-meta">
+            <div class="meta-block">
+              <div class="meta-label">时长</div>
+              <div class="meta-value">{{ formatDuration(v.duration) }}</div>
+            </div>
+            <div class="meta-block">
+              <div class="meta-label">大小</div>
+              <div class="meta-value">{{ formatSize(v.size) }}</div>
+            </div>
+          </div>
+          <div class="video-actions">
+            <BaseButton size="sm" @click="goPlayer(v.id)">进入学习</BaseButton>
+            <button class="btn-link" @click="onGenerateSubtitles(v)">生成字幕</button>
+          </div>
+        </li>
+      </ul>
     </section>
 
     <section v-else class="empty-state">
@@ -209,36 +209,57 @@ function onGenerateSubtitles(_v: any) {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 16px 20px;
+  padding: 8px 8px 10px;
+  gap: 14px;
 }
 
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  gap: 16px;
 }
 
 .page-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
+}
+
+.page-subtitle {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--c-text-dim);
+  font-weight: 500;
+}
+
+.page-header-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .page-header-actions {
   display: flex;
   gap: 8px;
+  align-items: center;
 }
 
 .input {
   height: 32px;
   padding: 4px 10px;
-  border-radius: 6px;
-  border: 1px solid #e5e7eb;
-  font-size: 13px;
+  border-radius: 999px;
+  border: 1px solid var(--c-border-subtle);
+  font-size: 14px;
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--c-text);
 }
 
 .input-select {
   min-width: 120px;
+}
+
+.input::placeholder {
+  color: var(--c-text-muted);
 }
 
 .video-list-wrapper {
@@ -246,52 +267,100 @@ function onGenerateSubtitles(_v: any) {
   overflow: auto;
 }
 
-.video-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
+.video-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.video-table th,
-.video-table td {
-  padding: 8px 10px;
-  border-bottom: 1px solid #e5e7eb;
-  text-align: left;
+.video-item {
+  display: grid;
+  grid-template-columns: minmax(0, 2.6fr) minmax(0, 1.4fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--c-border-subtle);
+  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.05), transparent 60%),
+    rgba(15, 23, 42, 0.9);
+  box-shadow: var(--shadow-soft);
 }
 
-.video-title-cell {
-  max-width: 420px;
+.video-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.video-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .video-title {
+  font-size: 15px;
   font-weight: 500;
+  line-height: 1.4;
 }
 
 .video-path {
-  font-size: 11px;
-  color: #9ca3af;
-  margin-top: 2px;
+  font-size: 12px;
+  color: var(--c-text-muted);
+  line-height: 1.5;
+}
+
+.video-meta {
+  display: flex;
+  gap: 16px;
+}
+
+.meta-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-label {
+  font-size: 12px;
+  color: var(--c-text-muted);
+}
+
+.meta-value {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.video-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-end;
 }
 
 .tag {
   display: inline-flex;
+  align-items: center;
   padding: 2px 8px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .tag-success {
-  background: #dcfce7;
-  color: #15803d;
+  background: rgba(22, 163, 74, 0.16);
+  color: #4ade80;
 }
 
 .tag-gray {
-  background: #e5e7eb;
-  color: #374151;
+  background: rgba(148, 163, 184, 0.18);
+  color: #e5e7eb;
 }
 
 .text-secondary {
-  color: #6b7280;
+  color: var(--c-text-dim);
   font-size: 12px;
 }
 
@@ -299,15 +368,15 @@ function onGenerateSubtitles(_v: any) {
   background: transparent;
   border: none;
   padding: 0;
-  font-size: 13px;
+  font-size: 14px;
   cursor: pointer;
-  color: #2563eb;
+  color: var(--c-primary);
   margin-right: 8px;
 }
 
 .empty-state {
   margin-top: 40px;
-  color: #4b5563;
+  color: var(--c-text-dim);
 }
 
 /* 合规弹窗样式 */
@@ -324,10 +393,12 @@ function onGenerateSubtitles(_v: any) {
 .consent-dialog {
   width: 420px;
   max-width: 90vw;
-  background: #ffffff;
-  border-radius: 12px;
+  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent 60%),
+    rgba(15, 23, 42, 0.98);
+  border-radius: 16px;
   padding: 20px 24px;
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.45);
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.55);
 }
 
 .consent-title {
@@ -338,7 +409,7 @@ function onGenerateSubtitles(_v: any) {
 
 .consent-text {
   font-size: 13px;
-  color: #4b5563;
+  color: var(--c-text-dim);
   line-height: 1.6;
   margin-bottom: 12px;
 }
@@ -348,7 +419,7 @@ function onGenerateSubtitles(_v: any) {
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  color: #374151;
+  color: var(--c-text);
   margin-bottom: 16px;
 }
 
@@ -360,7 +431,7 @@ function onGenerateSubtitles(_v: any) {
 
 .btn-primary,
 .btn-secondary {
-  border-radius: 6px;
+  border-radius: 999px;
   padding: 6px 14px;
   font-size: 13px;
   border: none;
@@ -368,8 +439,8 @@ function onGenerateSubtitles(_v: any) {
 }
 
 .btn-primary {
-  background: #2563eb;
-  color: #ffffff;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #f9fafb;
 }
 
 .btn-primary:disabled {
@@ -378,7 +449,8 @@ function onGenerateSubtitles(_v: any) {
 }
 
 .btn-secondary {
-  background: #e5e7eb;
-  color: #111827;
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--c-text-dim);
+  border: 1px solid var(--c-border-subtle);
 }
 </style>
