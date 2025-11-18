@@ -1,0 +1,706 @@
+{
+  "source": "temp_test.srt",
+  "path": "D:\\workspace\\videolingo\\front\\src\\common\\whisper\\temp_test.srt",
+  "blocks": [
+    {
+      "index": 1,
+      "start": "00:00:01,000",
+      "end": "00:00:03,000",
+      "text": "Hello world, welcome to Python programming.",
+      "words": [
+        {
+          "original": "Hello",
+          "entry": {
+            "word": "Hello",
+            "phonetic": "",
+            "definition": "",
+            "translation": "",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "world",
+          "entry": {
+            "word": "world",
+            "phonetic": "",
+            "definition": "",
+            "translation": "",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "welcome",
+          "entry": {
+            "word": "welcome",
+            "phonetic": "",
+            "definition": "",
+            "translation": "",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "to",
+          "entry": {
+            "word": "to",
+            "phonetic": "",
+            "definition": "",
+            "translation": "",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "Python",
+          "entry": {
+            "word": "Python",
+            "phonetic": "",
+            "definition": "",
+            "translation": "",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "programming",
+          "entry": {
+            "word": "programming",
+            "phonetic": "",
+            "definition": "",
+            "translation": "",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": "00:00:03,000",
+      "end": "00:00:05,000",
+      "text": "This is a simple example for testing.",
+      "words": [
+        {
+          "original": "This",
+          "entry": {
+            "word": "This",
+            "phonetic": "",
+            "definition": "",
+            "translation": "",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "is",
+          "entry": {
+            "word": "is",
+            "phonetic": "",
+            "definition": "",
+            "translation": "",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "a",
+          "entry": {
+            "word": "a",
+            "phonetic": "",
+            "definition": "",
+            "translation": "",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "simple",
+          "entry": {
+            "word": "simple",
+            "phonetic": "",
+            "definition": "",
+            "translation": "",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "example",
+          "entry": {
+            "word": "example",
+            "phonetic": "",
+            "definition": "",
+            "translation": "",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "for",
+          "entry": {
+            "word": "for",
+            "phonetic": "",
+            "definition": "",
+            "translation": "",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "testing",
+          "entry": {
+            "word": "testing",
+            "phonetic": "",
+            "definition": "",
+            "translation": "",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        }
+      ]
+    }
+  ],
+  "word_map": {
+    "hello": {
+      "entry": {
+        "word": "Hello",
+        "phonetic": "",
+        "definition": "",
+        "translation": "",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Hello world, welcome to Python programming."
+        }
+      ]
+    },
+    "world": {
+      "entry": {
+        "word": "world",
+        "phonetic": "",
+        "definition": "",
+        "translation": "",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Hello world, welcome to Python programming."
+        }
+      ]
+    },
+    "welcome": {
+      "entry": {
+        "word": "welcome",
+        "phonetic": "",
+        "definition": "",
+        "translation": "",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Hello world, welcome to Python programming."
+        }
+      ]
+    },
+    "to": {
+      "entry": {
+        "word": "to",
+        "phonetic": "",
+        "definition": "",
+        "translation": "",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Hello world, welcome to Python programming."
+        }
+      ]
+    },
+    "python": {
+      "entry": {
+        "word": "Python",
+        "phonetic": "",
+        "definition": "",
+        "translation": "",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Hello world, welcome to Python programming."
+        }
+      ]
+    },
+    "programming": {
+      "entry": {
+        "word": "programming",
+        "phonetic": "",
+        "definition": "",
+        "translation": "",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Hello world, welcome to Python programming."
+        }
+      ]
+    },
+    "this": {
+      "entry": {
+        "word": "This",
+        "phonetic": "",
+        "definition": "",
+        "translation": "",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "This is a simple example for testing."
+        }
+      ]
+    },
+    "is": {
+      "entry": {
+        "word": "is",
+        "phonetic": "",
+        "definition": "",
+        "translation": "",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "This is a simple example for testing."
+        }
+      ]
+    },
+    "a": {
+      "entry": {
+        "word": "a",
+        "phonetic": "",
+        "definition": "",
+        "translation": "",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "This is a simple example for testing."
+        }
+      ]
+    },
+    "simple": {
+      "entry": {
+        "word": "simple",
+        "phonetic": "",
+        "definition": "",
+        "translation": "",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "This is a simple example for testing."
+        }
+      ]
+    },
+    "example": {
+      "entry": {
+        "word": "example",
+        "phonetic": "",
+        "definition": "",
+        "translation": "",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "This is a simple example for testing."
+        }
+      ]
+    },
+    "for": {
+      "entry": {
+        "word": "for",
+        "phonetic": "",
+        "definition": "",
+        "translation": "",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "This is a simple example for testing."
+        }
+      ]
+    },
+    "testing": {
+      "entry": {
+        "word": "testing",
+        "phonetic": "",
+        "definition": "",
+        "translation": "",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "This is a simple example for testing."
+        }
+      ]
+    }
+  },
+  "new_words": [
+    {
+      "word": "Hello",
+      "translation": "",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 1,
+        "sentence_text": "Hello world, welcome to Python programming.",
+        "timestamp": "00:00:01,000 --> 00:00:03,000"
+      }
+    },
+    {
+      "word": "world",
+      "translation": "",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 1,
+        "sentence_text": "Hello world, welcome to Python programming.",
+        "timestamp": "00:00:01,000 --> 00:00:03,000"
+      }
+    },
+    {
+      "word": "welcome",
+      "translation": "",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 1,
+        "sentence_text": "Hello world, welcome to Python programming.",
+        "timestamp": "00:00:01,000 --> 00:00:03,000"
+      }
+    },
+    {
+      "word": "Python",
+      "translation": "",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 1,
+        "sentence_text": "Hello world, welcome to Python programming.",
+        "timestamp": "00:00:01,000 --> 00:00:03,000"
+      }
+    },
+    {
+      "word": "programming",
+      "translation": "",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 1,
+        "sentence_text": "Hello world, welcome to Python programming.",
+        "timestamp": "00:00:01,000 --> 00:00:03,000"
+      }
+    },
+    {
+      "word": "is",
+      "translation": "",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 2,
+        "sentence_text": "This is a simple example for testing.",
+        "timestamp": "00:00:03,000 --> 00:00:05,000"
+      }
+    },
+    {
+      "word": "simple",
+      "translation": "",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 2,
+        "sentence_text": "This is a simple example for testing.",
+        "timestamp": "00:00:03,000 --> 00:00:05,000"
+      }
+    },
+    {
+      "word": "example",
+      "translation": "",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 2,
+        "sentence_text": "This is a simple example for testing.",
+        "timestamp": "00:00:03,000 --> 00:00:05,000"
+      }
+    },
+    {
+      "word": "testing",
+      "translation": "",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 2,
+        "sentence_text": "This is a simple example for testing.",
+        "timestamp": "00:00:03,000 --> 00:00:05,000"
+      }
+    }
+  ],
+  "statistics": {
+    "total_words": 13,
+    "new_words_count": 9,
+    "coverage_rate": 30.77
+  }
+}

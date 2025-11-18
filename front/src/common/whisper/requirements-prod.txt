@@ -1,0 +1,38 @@
+# 生产环境依赖 (最小化)
+# 用于生产环境中运行 Whisper 模块
+
+# 字幕处理
+pysubs2>=1.8.0
+
+# 音频处理和语音识别
+openai-whisper>=20250625
+ffmpeg-python>=0.2.0
+
+# 深度学习 (必须单独安装 PyTorch)
+# 根据系统配置安装对应版本的 torch
+
+# 后端
+fastapi>=0.115
+uvicorn[standard]>=0.29
+pydantic>=2.5
+pydantic-settings>=2.3
+
+# 数据库
+sqlalchemy>=2.0.0
+databases[sqlite]>=0.8.0
+
+# 网络和 API
+requests>=2.31.0
+
+# 数据处理
+numpy>=1.24.0
+
+# 安全
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+cryptography>=41.0.0
+bcrypt>=5.0.0
+
+# 工具
+python-dotenv>=1.0.0
+tqdm>=4.65.0
