@@ -1,0 +1,3359 @@
+{
+  "source": "input.srt",
+  "path": "D:\\workspace\\videolingo\\front\\src\\common\\whisper\\examples\\test_output\\input.srt",
+  "blocks": [
+    {
+      "index": 1,
+      "start": "00:00:00,000",
+      "end": "00:00:08,000",
+      "text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first",
+      "words": [
+        {
+          "original": "Yes",
+          "entry": {
+            "word": "yes",
+            "phonetic": "jes",
+            "definition": "n. an affirmative",
+            "translation": "adv. 是\nn. 是, 同意\nv. 同意",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 144,
+            "frq": 258,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "I",
+          "entry": {
+            "word": "I",
+            "phonetic": "ai",
+            "definition": "n. the 9th letter of the Roman alphabet",
+            "translation": "pron. 我\n[计] 电流, 中断, 指令, 指示符",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 4624,
+            "frq": 11,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "came",
+          "entry": {
+            "word": "came",
+            "phonetic": "keim",
+            "definition": "v move toward, travel toward something or somebody or approach something or somebody\nv reach a destination; arrive by movement or progress\nv come to pass; arrive, as in due course\nv reach or enter a state, relation, condition, use, or position\nv to be the product or result\nv be found or available; The furniture comes unassembled\"\nv come forth\nv be a native of\nv extend or reach\nv exist or occur in a certain point in a series\nv cover a certain distance\nv come under, be classified or included\nv happen as a result\nv add up in number or quantity\nv develop into\nv be received\nv come to one's mind; suggest itself\nv come from; be connected by a relationship of blood, for example\nv proceed or get along\nv experience orgasm\nv have a certain priority",
+            "translation": "come的过去式",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "0:come/1:p/3:cames/s:cames",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "here",
+          "entry": {
+            "word": "here",
+            "phonetic": "hiә",
+            "definition": "n. the present location; this place\ns. being here now\nr. in or at this place; where the speaker or writer is\nr. in this circumstance or respect or on this point or detail",
+            "translation": "adv. 在这里, 此时, 这里\nn. 这里",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 117,
+            "frq": 96,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "I",
+          "entry": {
+            "word": "I",
+            "phonetic": "ai",
+            "definition": "n. the 9th letter of the Roman alphabet",
+            "translation": "pron. 我\n[计] 电流, 中断, 指令, 指示符",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 4624,
+            "frq": 11,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "think",
+          "entry": {
+            "word": "think",
+            "phonetic": "θiŋk",
+            "definition": "n. an instance of deliberate thinking\nv. judge or regard; look upon; judge\nv. expect, believe, or suppose\nv. use or exercise the mind or one's power of reason in order to make inferences, decisions, or arrive at a solution or judgments",
+            "translation": "vt. 想, 考虑, 想起, 想像, 打算, 认为\nvi. 思考, 料想\nn. 想法\na. 思想的",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 64,
+            "frq": 56,
+            "exchange": "p:thought/d:thought/i:thinking/3:thinks",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "about",
+          "entry": {
+            "word": "about",
+            "phonetic": "ә'baut",
+            "definition": "s. on the move\nr. all around or on all sides\nr. in the area or vicinity\nr. used of movement to or among many different places or in no particular direction",
+            "translation": "prep. 在...周围, 大约, 有关, 关于\nadv. 大约, 四处, 在附近, 周围",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 63,
+            "frq": 46,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "five",
+          "entry": {
+            "word": "five",
+            "phonetic": "faiv",
+            "definition": "n. the cardinal number that is the sum of four and one\ns. being one more than four",
+            "translation": "num. 五, 五个",
+            "pos": "",
+            "collins": 5,
+            "oxford": "",
+            "tag": "zk gk",
+            "bnc": 207,
+            "frq": 299,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "years",
+          "entry": {
+            "word": "years",
+            "phonetic": "",
+            "definition": "n a late time of life\nn a prolonged period of time\nn the time during which someone's life continues\nn a period of time containing 365 (or 366) days\nn a period of time occupying a regular part of a calendar year that is used for some particular activity\nn the period of time that it takes for a planet (as, e.g., Earth or Mars) to make a complete revolution around the sun\nn a body of students who graduate together",
+            "translation": "n. 年代；岁月；年；年龄",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "0:year/1:s",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "ago",
+          "entry": {
+            "word": "ago",
+            "phonetic": "ә'gәu",
+            "definition": "s. gone by; or in the past\nr. in the past",
+            "translation": "adv. 以前",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 504,
+            "frq": 316,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "I",
+          "entry": {
+            "word": "I",
+            "phonetic": "ai",
+            "definition": "n. the 9th letter of the Roman alphabet",
+            "translation": "pron. 我\n[计] 电流, 中断, 指令, 指示符",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 4624,
+            "frq": 11,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "was",
+          "entry": {
+            "word": "was",
+            "phonetic": "wɒz",
+            "definition": "n a state in northwestern United States on the Pacific\nv have the quality of being; (copula, used with an adjective or a predicate noun)\nv be identical to; be someone or something\nv occupy a certain position or area; be somewhere\nv have an existence, be extant\nv happen, occur, take place; this was during the visit to my parents' house\"\nv be identical or equivalent to\nv form or compose\nv work in a specific place, with a specific subject, or in a specific function\nv represent, as of a character on stage\nv spend or use time\nv have life, be alive\nv to remain unmolested, undisturbed, or uninterrupted -- used only in infinitive form\nv be priced at",
+            "translation": "be的过去式",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": 41040,
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "and",
+          "entry": {
+            "word": "and",
+            "phonetic": "ænd",
+            "definition": "conj. A particle which expresses the relation of connection or\n   addition. It is used to conjoin a word with a word, a clause with a\n   clause, or a sentence with a sentence.\nconj. In order to; -- used instead of the infinitival to,\n   especially after try, come, go.\nconj. It is sometimes, in old songs, a mere expletive.\nconj. If; though. See An, conj.",
+            "translation": "conj. 和, 与\n[计] 与",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 4,
+            "frq": 3,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "just",
+          "entry": {
+            "word": "just",
+            "phonetic": "dʒʌst",
+            "definition": "a. used especially of what is legally or ethically right or proper or fitting\nr. only a moment ago\nr. absolutely\nr. exactly at this moment or the moment described;",
+            "translation": "a. 正直的, 合理的, 正确的, 应得的\nadv. 刚刚, 正好, 仅仅",
+            "pos": "",
+            "collins": 1,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 72,
+            "frq": 66,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "about",
+          "entry": {
+            "word": "about",
+            "phonetic": "ә'baut",
+            "definition": "s. on the move\nr. all around or on all sides\nr. in the area or vicinity\nr. used of movement to or among many different places or in no particular direction",
+            "translation": "prep. 在...周围, 大约, 有关, 关于\nadv. 大约, 四处, 在附近, 周围",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 63,
+            "frq": 46,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "to",
+          "entry": {
+            "word": "to",
+            "phonetic": "tu:",
+            "definition": "prep. The preposition to primarily indicates approach and arrival,\n   motion made in the direction of a place or thing and attaining it,\n   access; and also, motion or tendency without arrival; movement toward;\n   -- opposed to from.\nprep. Hence, it indicates motion, course, or tendency toward a\n   time, a state or condition, an aim, or anything capable of being\n   regarded as a limit to a tendency, movement, or action; as, he is going\n   to a trade; he is rising to wealth and honor.\nprep. In a very general way, and with innumerable varieties of\n   application, to connects transitive verbs with their remoter or\n   indirect object, and adjectives, nouns, and neuter or passive verbs\n   with a following noun which limits their action. Its sphere verges upon\n   that of for, but it contains less the idea of design or appropriation;\n   as, these remarks were addressed to a large audience; let us keep this\n   seat to ourselves; a substance sweet to the taste; an event painful to\n   the mind; duty to God and to our parents; a dislike to spirituous\n   liquor.\nprep. As sign of the infinitive, to had originally the use of last\n   defined, governing the infinitive as a verbal noun, and connecting it\n   as indirect object with a preceding verb or adjective; thus, ready to\n   go, i.e., ready unto going; good to eat, i.e., good for eating; I do my\n   utmost to lead my life pleasantly. But it has come to be the almost\n   constant prefix to the infinitive, even in situations where it has no\n   prepositional meaning, as where the infinitive is direct object or\n   subject; thus, I love to learn, i.e., I love learning; to die for one's\n   country is noble, i.e., the dying for one's country. Where the\n   infinitive denotes the design or purpose, good usage formerly allowed\n   the prefixing of for to the to; as, what went ye out for see? (Matt.\n   xi. 8).\nprep. In many phrases, and in connection with many other words, to\n   has a pregnant meaning, or is used elliptically.\nprep. Extent; limit; degree of comprehension; inclusion as far as;\n   as, they met us to the number of three hundred.\nprep. Effect; end; consequence; as, the prince was flattered to\n   his ruin; he engaged in a war to his cost; violent factions exist to\n   the prejudice of the state.\nprep. Apposition; connection; antithesis; opposition; as, they\n   engaged hand to hand.\nprep. Accord; adaptation; as, an occupation to his taste; she has\n   a husband to her mind.\nprep. Comparison; as, three is to nine as nine is to twenty-seven;\n   it is ten to one that you will offend him.\nprep. Addition; union; accumulation.\nprep. Accompaniment; as, she sang to his guitar; they danced to\n   the music of a piano.\nprep. Character; condition of being; purpose subserved or office\n   filled.",
+            "translation": "prep. 到, 向, 趋于\nadv. 向前",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 7,
+            "frq": 7,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "release",
+          "entry": {
+            "word": "release",
+            "phonetic": "ri'li:s",
+            "definition": "n. merchandise issued for sale or public showing (especially a record or film)\nn. a process that liberates or discharges something\nn. a device that when pressed will release part of a mechanism\nn. activity that frees or expresses creative energy or emotion",
+            "translation": "n. 释放, 发泄, 豁免, 发行, 释放证书\nvt. 释放, 解除, 放松, 豁免, 免除, 发布, 放弃, 让与\nn. 发布\n[计] 版本, 发布",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "cet4 cet6 ky toefl ielts gre",
+            "bnc": 1232,
+            "frq": 1120,
+            "exchange": "d:released/i:releasing/p:released/s:releases/3:releases",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "GRE词汇"
+        },
+        {
+          "original": "my",
+          "entry": {
+            "word": "my",
+            "phonetic": "mai",
+            "definition": "a. Of or belonging to me; -- used always attributively; as, my\n   body; my book; -- mine is used in the predicate; as, the book is mine.\n   See Mine.",
+            "translation": "pron. 我的\n[医] 迈尔(热容单位)",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 61,
+            "frq": 44,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "first",
+          "entry": {
+            "word": "first",
+            "phonetic": "fә:st",
+            "definition": "n. the first or highest in an ordering or series\nn. the first element in a countable series\nn. an honours degree of the highest class\na. preceding all others in time or space or degree",
+            "translation": "adv. 首先, 第一, 优先\na. 第一的\nnum. 第一\nn. 开始, 第一",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 79,
+            "frq": 86,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": "00:00:08,000",
+      "end": "00:00:17,600",
+      "text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing",
+      "words": [
+        {
+          "original": "single",
+          "entry": {
+            "word": "single",
+            "phonetic": "'siŋgl",
+            "definition": "n. a base hit on which the batter stops safely at first base\nv. hit a single\na. used of flowers having usually only one row or whorl of petals\na. existing alone or consisting of one entity or part or aspect or individual",
+            "translation": "a. 单身的, 单程的, 单一的, 个别的, 孤独的, 专一的\nn. 一个, 单打, 单程票\nvt. 选出\nvi. 击出一垒打\n[计] 单精度型",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk ielts",
+            "bnc": 569,
+            "frq": 632,
+            "exchange": "s:singles/d:singled/p:singled/i:singling/3:singles",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "雅思词汇"
+        },
+        {
+          "original": "Tim",
+          "entry": {
+            "word": "tim",
+            "phonetic": "tim",
+            "definition": "",
+            "translation": "n. 蒂姆（男子名）",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": 2509,
+            "frq": "",
+            "exchange": "s:tims",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "高频词"
+        },
+        {
+          "original": "McGraw",
+          "entry": {
+            "word": "mcgraw",
+            "phonetic": "",
+            "definition": "n. United States baseball player and manager (1873-1934)",
+            "translation": "麦格劳（人名）（苏格兰人、爱尔兰人姓氏）（美国地名）",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "and",
+          "entry": {
+            "word": "and",
+            "phonetic": "ænd",
+            "definition": "conj. A particle which expresses the relation of connection or\n   addition. It is used to conjoin a word with a word, a clause with a\n   clause, or a sentence with a sentence.\nconj. In order to; -- used instead of the infinitival to,\n   especially after try, come, go.\nconj. It is sometimes, in old songs, a mere expletive.\nconj. If; though. See An, conj.",
+            "translation": "conj. 和, 与\n[计] 与",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 4,
+            "frq": 3,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "so",
+          "entry": {
+            "word": "so",
+            "phonetic": "sәu",
+            "definition": "r. to a very great extent or degree\nr. in a manner that facilitates\nr. in such a condition or manner, especially as expressed or implied\nr. to a certain unspecified extent or degree",
+            "translation": "adv. 如此, 如是, 如...那样\nconj. 所以, 因此\npron. 这样",
+            "pos": "",
+            "collins": 3,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 48,
+            "frq": 55,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "we",
+          "entry": {
+            "word": "we",
+            "phonetic": "wi:",
+            "definition": "pl.  of I\nobj. The plural nominative case of the pronoun of the first\n   person; the word with which a person in speaking or writing denotes a\n   number or company of which he is one, as the subject of an action\n   expressed by a verb.",
+            "translation": "pron. 我们",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 26,
+            "frq": 24,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "were",
+          "entry": {
+            "word": "were",
+            "phonetic": "wә:",
+            "definition": "v have the quality of being; (copula, used with an adjective or a predicate noun)\nv be identical to; be someone or something\nv occupy a certain position or area; be somewhere\nv have an existence, be extant\nv happen, occur, take place; this was during the visit to my parents' house\"\nv be identical or equivalent to\nv form or compose\nv work in a specific place, with a specific subject, or in a specific function\nv represent, as of a character on stage\nv spend or use time\nv have life, be alive\nv to remain unmolested, undisturbed, or uninterrupted -- used only in infinitive form\nv be priced at",
+            "translation": "be的过去式",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "1:p/0:be",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "traveling",
+          "entry": {
+            "word": "traveling",
+            "phonetic": "'trævliŋ",
+            "definition": "n the act of going from one place to another\nv change location; move, travel, or proceed, also metaphorically\nv undertake a journey or trip\nv make a trip for pleasure\nv travel upon or across\nv undergo transportation as in a vehicle\nv travel from place to place, as for the purpose of finding work, preaching, or acting as a judge",
+            "translation": "a. 旅行的, 旅行用的, 移动的",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "ielts",
+            "bnc": "",
+            "frq": 9505,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "雅思词汇"
+        },
+        {
+          "original": "up",
+          "entry": {
+            "word": "up",
+            "phonetic": "ʌp",
+            "definition": "v. raise\na. being or moving higher in position or greater in some value; being above a former position or level\ns. extending or moving toward a higher place\ns. (usually followed by `on' or `for') in readiness",
+            "translation": "a. 向上的, 起床的, 涨的\nadv. 向上, 上涨\nprep. 在...上面, 向...的较高处",
+            "pos": "",
+            "collins": 2,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 52,
+            "frq": 50,
+            "exchange": "d:upped/0:up/i:upping/3:up/1:3/p:upped/s:ups",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "the",
+          "entry": {
+            "word": "the",
+            "phonetic": "ðә",
+            "definition": "v. i. See Thee.\ndefinite article. A word placed before nouns to limit or\n   individualize their meaning.\nadv. By that; by how much; by so much; on that account; -- used\n   before comparatives; as, the longer we continue in sin, the more\n   difficult it is to reform.",
+            "translation": "art. 那",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 1,
+            "frq": 1,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "West",
+          "entry": {
+            "word": "west",
+            "phonetic": "west",
+            "definition": "n. the countries of (originally) Europe and (now including) North America and South America\nn. the cardinal compass point that is a 270 degrees\nn. the region of the United States lying to the west of the Mississippi River\nn. the direction corresponding to the westward cardinal compass point",
+            "translation": "n. 西方, 西部\na. 西方的, 向西的\nadv. 向西, 自西方, 在西方",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk ielts",
+            "bnc": 789,
+            "frq": 665,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "雅思词汇"
+        },
+        {
+          "original": "Coast",
+          "entry": {
+            "word": "coast",
+            "phonetic": "kәust",
+            "definition": "n. a slope down which sleds may coast\nn. the area within view\nv. move effortlessly; by force of gravity",
+            "translation": "n. 海岸, 滑坡\nv. 沿海岸而行",
+            "pos": "",
+            "collins": 4,
+            "oxford": 1,
+            "tag": "zk gk cet4 cet6 ky",
+            "bnc": 1854,
+            "frq": 2436,
+            "exchange": "s:coasts/i:coasting/p:coasted/3:coasts/d:coasted",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "六级词汇"
+        },
+        {
+          "original": "in",
+          "entry": {
+            "word": "in",
+            "phonetic": "in",
+            "definition": "s. holding office\ns. directed or bound inward\ns. currently fashionable\nr. to or toward the inside of",
+            "translation": "prep. 在...期间, 在...之内, 处于...之中, 从事于, 按照, 穿着\nadv. 进入, 朝里, 在里面, 在屋里\na. 在里面的, 在朝的\nn. 执政者, 交情",
+            "pos": "",
+            "collins": 2,
+            "oxford": 1,
+            "tag": "zk gk ielts",
+            "bnc": 6,
+            "frq": 6,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "a",
+          "entry": {
+            "word": "a",
+            "phonetic": "ei",
+            "definition": "n. the 1st letter of the Roman alphabet\nn. the blood group whose red cells carry the A antigen",
+            "translation": "第一个字母 A; 一个; 第一的\r\nart. [计] 累加器, 加法器, 地址, 振幅, 模拟, 区域, 面积, 汇编, 组件, 异步",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 5,
+            "frq": 5,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "rental",
+          "entry": {
+            "word": "rental",
+            "phonetic": "'rentl",
+            "definition": "n. the act of paying for the use of something (as an apartment or house or car)\na. available to rent or lease\na. of or relating to rent",
+            "translation": "n. 租费, 租金收入\na. 租赁的, 收取租金的",
+            "pos": "",
+            "collins": 2,
+            "oxford": "",
+            "tag": "toefl ielts",
+            "bnc": 7700,
+            "frq": 4746,
+            "exchange": "s:rentals",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "托福词汇"
+        },
+        {
+          "original": "car",
+          "entry": {
+            "word": "car",
+            "phonetic": "kɑ:",
+            "definition": "n. a motor vehicle with four wheels; usually propelled by an internal combustion engine\nn. a wheeled vehicle adapted to the rails of railroad\nn. the compartment that is suspended from an airship and that carries personnel and the cargo and the power plant\nn. where passengers ride up and down",
+            "translation": "n. 汽车, 客车\n[机] 车",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 247,
+            "frq": 289,
+            "exchange": "s:cars",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "and",
+          "entry": {
+            "word": "and",
+            "phonetic": "ænd",
+            "definition": "conj. A particle which expresses the relation of connection or\n   addition. It is used to conjoin a word with a word, a clause with a\n   clause, or a sentence with a sentence.\nconj. In order to; -- used instead of the infinitival to,\n   especially after try, come, go.\nconj. It is sometimes, in old songs, a mere expletive.\nconj. If; though. See An, conj.",
+            "translation": "conj. 和, 与\n[计] 与",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 4,
+            "frq": 3,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "I",
+          "entry": {
+            "word": "I",
+            "phonetic": "ai",
+            "definition": "n. the 9th letter of the Roman alphabet",
+            "translation": "pron. 我\n[计] 电流, 中断, 指令, 指示符",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 4624,
+            "frq": 11,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "was",
+          "entry": {
+            "word": "was",
+            "phonetic": "wɒz",
+            "definition": "n a state in northwestern United States on the Pacific\nv have the quality of being; (copula, used with an adjective or a predicate noun)\nv be identical to; be someone or something\nv occupy a certain position or area; be somewhere\nv have an existence, be extant\nv happen, occur, take place; this was during the visit to my parents' house\"\nv be identical or equivalent to\nv form or compose\nv work in a specific place, with a specific subject, or in a specific function\nv represent, as of a character on stage\nv spend or use time\nv have life, be alive\nv to remain unmolested, undisturbed, or uninterrupted -- used only in infinitive form\nv be priced at",
+            "translation": "be的过去式",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": 41040,
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "doing",
+          "entry": {
+            "word": "doing",
+            "phonetic": "'du:iŋ",
+            "definition": "v engage in\nv carry out or perform an action\nv get (something) done\nv proceed or get along\nv give rise to; cause to happen or occur, not always intentionally\nv carry out or practice; as of jobs and professions\nv be sufficient; be adequate, either in quality or quantity\nv create or design, often in a certain way\nv behave in a certain manner; show a certain behavior; conduct or comport oneself\nv spend time in prison or in a labor camp\nv carry on or function\nv arrange attractively\nv travel or traverse (a distance)",
+            "translation": "n. 行为, 活动",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": 5939,
+            "frq": "",
+            "exchange": "1:i/0:do/s:doings",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "中频词"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": "00:00:17,600",
+      "end": "00:00:21,760",
+      "text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back",
+      "words": [
+        {
+          "original": "my",
+          "entry": {
+            "word": "my",
+            "phonetic": "mai",
+            "definition": "a. Of or belonging to me; -- used always attributively; as, my\n   body; my book; -- mine is used in the predicate; as, the book is mine.\n   See Mine.",
+            "translation": "pron. 我的\n[医] 迈尔(热容单位)",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 61,
+            "frq": 44,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "homework",
+          "entry": {
+            "word": "homework",
+            "phonetic": "'hәumwә:k",
+            "definition": "n. preparatory school work done outside school (especially at home)",
+            "translation": "n. 家庭作业, 家里做的工作\n[经] 家庭作业",
+            "pos": "",
+            "collins": 1,
+            "oxford": 1,
+            "tag": "zk gk ielts",
+            "bnc": 6447,
+            "frq": 4778,
+            "exchange": "s:homeworks/i:homeworking",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "雅思词汇"
+        },
+        {
+          "original": "in",
+          "entry": {
+            "word": "in",
+            "phonetic": "in",
+            "definition": "s. holding office\ns. directed or bound inward\ns. currently fashionable\nr. to or toward the inside of",
+            "translation": "prep. 在...期间, 在...之内, 处于...之中, 从事于, 按照, 穿着\nadv. 进入, 朝里, 在里面, 在屋里\na. 在里面的, 在朝的\nn. 执政者, 交情",
+            "pos": "",
+            "collins": 2,
+            "oxford": 1,
+            "tag": "zk gk ielts",
+            "bnc": 6,
+            "frq": 6,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "the",
+          "entry": {
+            "word": "the",
+            "phonetic": "ðә",
+            "definition": "v. i. See Thee.\ndefinite article. A word placed before nouns to limit or\n   individualize their meaning.\nadv. By that; by how much; by so much; on that account; -- used\n   before comparatives; as, the longer we continue in sin, the more\n   difficult it is to reform.",
+            "translation": "art. 那",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 1,
+            "frq": 1,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "backseat",
+          "entry": {
+            "word": "backseat",
+            "phonetic": "'bæksi:t",
+            "definition": "n. a secondary or inferior position or status\nn. a seat at the back of a vehicle (especially the seat at the back of an automobile)",
+            "translation": "n. 后座, 次要位置",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": 40350,
+            "frq": 11127,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "I",
+          "entry": {
+            "word": "I",
+            "phonetic": "ai",
+            "definition": "n. the 9th letter of the Roman alphabet",
+            "translation": "pron. 我\n[计] 电流, 中断, 指令, 指示符",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 4624,
+            "frq": 11,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "was",
+          "entry": {
+            "word": "was",
+            "phonetic": "wɒz",
+            "definition": "n a state in northwestern United States on the Pacific\nv have the quality of being; (copula, used with an adjective or a predicate noun)\nv be identical to; be someone or something\nv occupy a certain position or area; be somewhere\nv have an existence, be extant\nv happen, occur, take place; this was during the visit to my parents' house\"\nv be identical or equivalent to\nv form or compose\nv work in a specific place, with a specific subject, or in a specific function\nv represent, as of a character on stage\nv spend or use time\nv have life, be alive\nv to remain unmolested, undisturbed, or uninterrupted -- used only in infinitive form\nv be priced at",
+            "translation": "be的过去式",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": 41040,
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "like",
+          "entry": {
+            "word": "like",
+            "phonetic": "laik",
+            "definition": "n. a similar kind\nn. a kind of person\nv. find enjoyable or agreeable\nv. be fond of",
+            "translation": "a. 相似的, 同样的\nvt. 喜欢, 愿意, 想\nvi. 喜欢, 希望\nn. 爱好, 同样的人(或物)\nprep. 象, 如同\nadv. 可能",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 88,
+            "frq": 74,
+            "exchange": "p:liked/3:likes/d:liked/s:likes/i:liking",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "homeschooled",
+          "entry": {
+            "word": "homeschooled",
+            "phonetic": "",
+            "definition": "",
+            "translation": "",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "in",
+          "entry": {
+            "word": "in",
+            "phonetic": "in",
+            "definition": "s. holding office\ns. directed or bound inward\ns. currently fashionable\nr. to or toward the inside of",
+            "translation": "prep. 在...期间, 在...之内, 处于...之中, 从事于, 按照, 穿着\nadv. 进入, 朝里, 在里面, 在屋里\na. 在里面的, 在朝的\nn. 执政者, 交情",
+            "pos": "",
+            "collins": 2,
+            "oxford": 1,
+            "tag": "zk gk ielts",
+            "bnc": 6,
+            "frq": 6,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "th",
+          "entry": {
+            "word": "Th",
+            "phonetic": "",
+            "definition": "n the fifth day of the week; the fourth working day\nn a soft silvery-white tetravalent radioactive metallic element; isotope 232 is used as a power source in nuclear reactors; occurs in thorite and in monazite sands",
+            "translation": "[医] 钍(90号元素)",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": 2321,
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "高频词"
+        },
+        {
+          "original": "grade",
+          "entry": {
+            "word": "grade",
+            "phonetic": "greid",
+            "definition": "n. a relative position or degree of value in a graded group\nn. the gradient of a slope or road or other surface\nn. a degree of ablaut\nn. the height of the ground on which something stands",
+            "translation": "n. 等级, 年级, 阶段, 成绩, 程度, 坡度, 斜坡\nvt. 分等, 分级, 评分\nvi. 属于某等级, 逐渐变化",
+            "pos": "",
+            "collins": 3,
+            "oxford": 1,
+            "tag": "zk gk ielts",
+            "bnc": 2822,
+            "frq": 1426,
+            "exchange": "s:grades/d:graded/p:graded/i:grading/3:grades",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "雅思词汇"
+        },
+        {
+          "original": "and",
+          "entry": {
+            "word": "and",
+            "phonetic": "ænd",
+            "definition": "conj. A particle which expresses the relation of connection or\n   addition. It is used to conjoin a word with a word, a clause with a\n   clause, or a sentence with a sentence.\nconj. In order to; -- used instead of the infinitival to,\n   especially after try, come, go.\nconj. It is sometimes, in old songs, a mere expletive.\nconj. If; though. See An, conj.",
+            "translation": "conj. 和, 与\n[计] 与",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 4,
+            "frq": 3,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "it's",
+          "entry": {
+            "word": "it's",
+            "phonetic": "its",
+            "definition": "",
+            "translation": "it is的缩写, it has的缩写",
+            "pos": "",
+            "collins": 5,
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "wonderful",
+          "entry": {
+            "word": "wonderful",
+            "phonetic": "'wʌndәful",
+            "definition": "s extraordinarily good or great; used especially as intensifiers",
+            "translation": "a. 令人惊奇的, 奇妙的, 极好的",
+            "pos": "",
+            "collins": 4,
+            "oxford": 1,
+            "tag": "zk gk cet4 cet6 ky",
+            "bnc": 1864,
+            "frq": 1405,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "六级词汇"
+        },
+        {
+          "original": "to",
+          "entry": {
+            "word": "to",
+            "phonetic": "tu:",
+            "definition": "prep. The preposition to primarily indicates approach and arrival,\n   motion made in the direction of a place or thing and attaining it,\n   access; and also, motion or tendency without arrival; movement toward;\n   -- opposed to from.\nprep. Hence, it indicates motion, course, or tendency toward a\n   time, a state or condition, an aim, or anything capable of being\n   regarded as a limit to a tendency, movement, or action; as, he is going\n   to a trade; he is rising to wealth and honor.\nprep. In a very general way, and with innumerable varieties of\n   application, to connects transitive verbs with their remoter or\n   indirect object, and adjectives, nouns, and neuter or passive verbs\n   with a following noun which limits their action. Its sphere verges upon\n   that of for, but it contains less the idea of design or appropriation;\n   as, these remarks were addressed to a large audience; let us keep this\n   seat to ourselves; a substance sweet to the taste; an event painful to\n   the mind; duty to God and to our parents; a dislike to spirituous\n   liquor.\nprep. As sign of the infinitive, to had originally the use of last\n   defined, governing the infinitive as a verbal noun, and connecting it\n   as indirect object with a preceding verb or adjective; thus, ready to\n   go, i.e., ready unto going; good to eat, i.e., good for eating; I do my\n   utmost to lead my life pleasantly. But it has come to be the almost\n   constant prefix to the infinitive, even in situations where it has no\n   prepositional meaning, as where the infinitive is direct object or\n   subject; thus, I love to learn, i.e., I love learning; to die for one's\n   country is noble, i.e., the dying for one's country. Where the\n   infinitive denotes the design or purpose, good usage formerly allowed\n   the prefixing of for to the to; as, what went ye out for see? (Matt.\n   xi. 8).\nprep. In many phrases, and in connection with many other words, to\n   has a pregnant meaning, or is used elliptically.\nprep. Extent; limit; degree of comprehension; inclusion as far as;\n   as, they met us to the number of three hundred.\nprep. Effect; end; consequence; as, the prince was flattered to\n   his ruin; he engaged in a war to his cost; violent factions exist to\n   the prejudice of the state.\nprep. Apposition; connection; antithesis; opposition; as, they\n   engaged hand to hand.\nprep. Accord; adaptation; as, an occupation to his taste; she has\n   a husband to her mind.\nprep. Comparison; as, three is to nine as nine is to twenty-seven;\n   it is ten to one that you will offend him.\nprep. Addition; union; accumulation.\nprep. Accompaniment; as, she sang to his guitar; they danced to\n   the music of a piano.\nprep. Character; condition of being; purpose subserved or office\n   filled.",
+            "translation": "prep. 到, 向, 趋于\nadv. 向前",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 7,
+            "frq": 7,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "be",
+          "entry": {
+            "word": "be",
+            "phonetic": "bi:",
+            "definition": "v. have the quality of being; (copula, used with an adjective or a predicate noun)\nv. be identical to; be someone or something\nv. occupy a certain position or area; be somewhere\nv. happen, occur, take place; this was during the visit to my parents' house\"",
+            "translation": "v. 是, 表示, 在\n[计] 后端, 总线允许",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 2,
+            "frq": 2,
+            "exchange": "p:was/3:is/d:been/i:being",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "back",
+          "entry": {
+            "word": "back",
+            "phonetic": "bæk",
+            "definition": "n. the posterior part of a human (or animal) body from the neck to the end of the spine\nn. the part of something that is furthest from the normal viewer\nn. (football) a person who plays in the backfield\nn. the part of a garment that covers the back of your body",
+            "translation": "a. 后面的\nvt. 使后退, 支持\nvi. 倒退, 背靠\nadv. 向后地\nn. 背部, 后面",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk ielts",
+            "bnc": 105,
+            "frq": 108,
+            "exchange": "d:backed/s:backs/p:backed/i:backing/3:backs",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "雅思词汇"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": "00:00:21,760",
+      "end": "00:00:28,199",
+      "text": "here and have so many of you come out this time around. It's amazing. Yes, I came here.",
+      "words": [
+        {
+          "original": "here",
+          "entry": {
+            "word": "here",
+            "phonetic": "hiә",
+            "definition": "n. the present location; this place\ns. being here now\nr. in or at this place; where the speaker or writer is\nr. in this circumstance or respect or on this point or detail",
+            "translation": "adv. 在这里, 此时, 这里\nn. 这里",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 117,
+            "frq": 96,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "and",
+          "entry": {
+            "word": "and",
+            "phonetic": "ænd",
+            "definition": "conj. A particle which expresses the relation of connection or\n   addition. It is used to conjoin a word with a word, a clause with a\n   clause, or a sentence with a sentence.\nconj. In order to; -- used instead of the infinitival to,\n   especially after try, come, go.\nconj. It is sometimes, in old songs, a mere expletive.\nconj. If; though. See An, conj.",
+            "translation": "conj. 和, 与\n[计] 与",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 4,
+            "frq": 3,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "have",
+          "entry": {
+            "word": "have",
+            "phonetic": "hæv",
+            "definition": "v. have or possess, either in a concrete or an abstract sense\nv. have as a feature\nv. have a personal or business relationship with someone\nv. have left",
+            "translation": "vt. 有, 怀有, 拿, 进行\naux. 已经",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 8,
+            "frq": 8,
+            "exchange": "i:having/p:had/3:has/d:had",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "so",
+          "entry": {
+            "word": "so",
+            "phonetic": "sәu",
+            "definition": "r. to a very great extent or degree\nr. in a manner that facilitates\nr. in such a condition or manner, especially as expressed or implied\nr. to a certain unspecified extent or degree",
+            "translation": "adv. 如此, 如是, 如...那样\nconj. 所以, 因此\npron. 这样",
+            "pos": "",
+            "collins": 3,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 48,
+            "frq": 55,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "many",
+          "entry": {
+            "word": "many",
+            "phonetic": "'meni",
+            "definition": "a. a quantifier that can be used with count nouns and is often preceded by `as' or `too' or `so' or `that'; amounting to a large but indefinite number",
+            "translation": "n. 多数, 多数人\na. 许多的\npron. 许多",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 98,
+            "frq": 99,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "of",
+          "entry": {
+            "word": "of",
+            "phonetic": "ɒv",
+            "definition": "prep. In a general sense, from, or out from; proceeding from;\n   belonging to; relating to; concerning; -- used in a variety of\n   applications; as:\nprep. Denoting that from which anything proceeds; indicating\n   origin, source, descent, and the like; as, he is of a race of kings; he\n   is of noble blood.\nprep. Denoting possession or ownership, or the relation of subject\n   to attribute; as, the apartment of the consul: the power of the king; a\n   man of courage; the gate of heaven.\nprep. Denoting the material of which anything is composed, or that\n   which it contains; as, a throne of gold; a sword of steel; a wreath of\n   mist; a cup of water.\nprep. Denoting part of an aggregate or whole; belonging to a\n   number or quantity mentioned; out of; from amongst; as, of this little\n   he had some to spare; some of the mines were unproductive; most of the\n   company.\nprep. Denoting that by which a person or thing is actuated or\n   impelled; also, the source of a purpose or action; as, they went of\n   their own will; no body can move of itself; he did it of necessity.\nprep. Denoting reference to a thing; about; concerning; relating\n   to; as, to boast of one's achievements.\nprep. Denoting nearness or distance, either in space or time;\n   from; as, within a league of the town; within an hour of the appointed\n   time.\nprep. Denoting identity or equivalence; -- used with a name or\n   appellation, and equivalent to the relation of apposition; as, the\n   continent of America; the city of Rome; the Island of Cuba.\nprep. Denoting the agent, or person by whom, or thing by which,\n   anything is, or is done; by.\nprep. Denoting relation to place or time; belonging to, or\n   connected with; as, men of Athens; the people of the Middle Ages; in\n   the days of Herod.\nprep. Denoting passage from one state to another; from.\nprep. During; in the course of.",
+            "translation": "prep. 的, 属于",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 3,
+            "frq": 4,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "you",
+          "entry": {
+            "word": "you",
+            "phonetic": "ju:",
+            "definition": "dat. & obj. The pronoun of the second person, in the nominative,\n   dative, and objective case, indicating the person or persons addressed.\n   See the Note under Ye.",
+            "translation": "pron. 你, 你们",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 15,
+            "frq": 14,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "come",
+          "entry": {
+            "word": "come",
+            "phonetic": "kʌm",
+            "definition": "v. move toward, travel toward something or somebody or approach something or somebody\nv. come to pass; arrive, as in due course\nv. reach or enter a state, relation, condition, use, or position\nv. to be the product or result",
+            "translation": "vi. 过来, 来, 到达, 出现, 开始\ninterj. 喂",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk ielts",
+            "bnc": 65,
+            "frq": 70,
+            "exchange": "p:came/i:coming/3:comes/d:come/0:come/1:d",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "雅思词汇"
+        },
+        {
+          "original": "out",
+          "entry": {
+            "word": "out",
+            "phonetic": "aut",
+            "definition": "n. (baseball) a failure by a batter or runner to reach a base safely in baseball\nv. reveal (something) about somebody's identity or lifestyle\nv. be made known; be disclosed or revealed\na. not allowed to continue to bat or run",
+            "translation": "a. 外面的, 熄灭的, 结束的\nadv. 在外, 熄灭, 出现\nprep. 出自, 离去, 向",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 62,
+            "frq": 64,
+            "exchange": "i:outing/p:outed/3:outs/d:outed",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "this",
+          "entry": {
+            "word": "this",
+            "phonetic": "θis",
+            "definition": "pron. & a. As a demonstrative pronoun, this denotes something\n   that is present or near in place or time, or something just mentioned,\n   or that is just about to be mentioned.\npron. & a. As an adjective, this has the same demonstrative\n   force as the pronoun, but is followed by a noun; as, this book; this\n   way to town.",
+            "translation": "pron. 这, 本\na. 这, 本\nadv. 这么",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 23,
+            "frq": 20,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "time",
+          "entry": {
+            "word": "time",
+            "phonetic": "taim",
+            "definition": "n. an instance or single occasion for some event\nn. a period of time considered as a resource under your control and sufficient to accomplish something\nn. an indefinite period (usually marked by specific attributes or activities)\nn. a suitable moment",
+            "translation": "n. 时间, 时侯, 时机, 时期, 期限, 次数, 节拍, 暂停, 规定时间\nvt. 测定...的时间, 记录...的时间, 计时, 定时\na. 时间的, 记时的, 定时的, 定期的, 分期的\n[计] DOS内部命令:用于显示或设定系统的时间",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk ielts",
+            "bnc": 50,
+            "frq": 52,
+            "exchange": "s:times/d:timed/i:timing/p:timed/3:times",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "雅思词汇"
+        },
+        {
+          "original": "around",
+          "entry": {
+            "word": "around",
+            "phonetic": "ә'raund",
+            "definition": "r. by a circular or circuitous route\nr. in a circle or circular motion\nr. to a particular destination either specified or understood\nr. in circumference",
+            "translation": "prep. 包围, 在...周围, 四处\nadv. 兜着圈子, 在附近, 到处",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 397,
+            "frq": 264,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "It's",
+          "entry": {
+            "word": "it's",
+            "phonetic": "its",
+            "definition": "",
+            "translation": "it is的缩写, it has的缩写",
+            "pos": "",
+            "collins": 5,
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "amazing",
+          "entry": {
+            "word": "amazing",
+            "phonetic": "ә'meiziŋ",
+            "definition": "s. surprising greatly\ns. inspiring awe or admiration or wonder",
+            "translation": "a. 令人惊异的",
+            "pos": "",
+            "collins": 3,
+            "oxford": 1,
+            "tag": "gk toefl ielts",
+            "bnc": 3667,
+            "frq": 2294,
+            "exchange": "i:amazing/0:amazing/1:i",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "托福词汇"
+        },
+        {
+          "original": "Yes",
+          "entry": {
+            "word": "yes",
+            "phonetic": "jes",
+            "definition": "n. an affirmative",
+            "translation": "adv. 是\nn. 是, 同意\nv. 同意",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 144,
+            "frq": 258,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "I",
+          "entry": {
+            "word": "I",
+            "phonetic": "ai",
+            "definition": "n. the 9th letter of the Roman alphabet",
+            "translation": "pron. 我\n[计] 电流, 中断, 指令, 指示符",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 4624,
+            "frq": 11,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "came",
+          "entry": {
+            "word": "came",
+            "phonetic": "keim",
+            "definition": "v move toward, travel toward something or somebody or approach something or somebody\nv reach a destination; arrive by movement or progress\nv come to pass; arrive, as in due course\nv reach or enter a state, relation, condition, use, or position\nv to be the product or result\nv be found or available; The furniture comes unassembled\"\nv come forth\nv be a native of\nv extend or reach\nv exist or occur in a certain point in a series\nv cover a certain distance\nv come under, be classified or included\nv happen as a result\nv add up in number or quantity\nv develop into\nv be received\nv come to one's mind; suggest itself\nv come from; be connected by a relationship of blood, for example\nv proceed or get along\nv experience orgasm\nv have a certain priority",
+            "translation": "come的过去式",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "0:come/1:p/3:cames/s:cames",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "here",
+          "entry": {
+            "word": "here",
+            "phonetic": "hiә",
+            "definition": "n. the present location; this place\ns. being here now\nr. in or at this place; where the speaker or writer is\nr. in this circumstance or respect or on this point or detail",
+            "translation": "adv. 在这里, 此时, 这里\nn. 这里",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 117,
+            "frq": 96,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": "00:00:28,199",
+      "end": "00:00:30,199",
+      "text": "I think about five years ago. I was",
+      "words": [
+        {
+          "original": "I",
+          "entry": {
+            "word": "I",
+            "phonetic": "ai",
+            "definition": "n. the 9th letter of the Roman alphabet",
+            "translation": "pron. 我\n[计] 电流, 中断, 指令, 指示符",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 4624,
+            "frq": 11,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "think",
+          "entry": {
+            "word": "think",
+            "phonetic": "θiŋk",
+            "definition": "n. an instance of deliberate thinking\nv. judge or regard; look upon; judge\nv. expect, believe, or suppose\nv. use or exercise the mind or one's power of reason in order to make inferences, decisions, or arrive at a solution or judgments",
+            "translation": "vt. 想, 考虑, 想起, 想像, 打算, 认为\nvi. 思考, 料想\nn. 想法\na. 思想的",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 64,
+            "frq": 56,
+            "exchange": "p:thought/d:thought/i:thinking/3:thinks",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "about",
+          "entry": {
+            "word": "about",
+            "phonetic": "ә'baut",
+            "definition": "s. on the move\nr. all around or on all sides\nr. in the area or vicinity\nr. used of movement to or among many different places or in no particular direction",
+            "translation": "prep. 在...周围, 大约, 有关, 关于\nadv. 大约, 四处, 在附近, 周围",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 63,
+            "frq": 46,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "five",
+          "entry": {
+            "word": "five",
+            "phonetic": "faiv",
+            "definition": "n. the cardinal number that is the sum of four and one\ns. being one more than four",
+            "translation": "num. 五, 五个",
+            "pos": "",
+            "collins": 5,
+            "oxford": "",
+            "tag": "zk gk",
+            "bnc": 207,
+            "frq": 299,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "years",
+          "entry": {
+            "word": "years",
+            "phonetic": "",
+            "definition": "n a late time of life\nn a prolonged period of time\nn the time during which someone's life continues\nn a period of time containing 365 (or 366) days\nn a period of time occupying a regular part of a calendar year that is used for some particular activity\nn the period of time that it takes for a planet (as, e.g., Earth or Mars) to make a complete revolution around the sun\nn a body of students who graduate together",
+            "translation": "n. 年代；岁月；年；年龄",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": "",
+            "frq": "",
+            "exchange": "0:year/1:s",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        },
+        {
+          "original": "ago",
+          "entry": {
+            "word": "ago",
+            "phonetic": "ә'gәu",
+            "definition": "s. gone by; or in the past\nr. in the past",
+            "translation": "adv. 以前",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 504,
+            "frq": 316,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "基础词汇"
+        },
+        {
+          "original": "I",
+          "entry": {
+            "word": "I",
+            "phonetic": "ai",
+            "definition": "n. the 9th letter of the Roman alphabet",
+            "translation": "pron. 我\n[计] 电流, 中断, 指令, 指示符",
+            "pos": "",
+            "collins": 5,
+            "oxford": 1,
+            "tag": "zk gk",
+            "bnc": 4624,
+            "frq": 11,
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": false,
+          "difficulty": "常用词"
+        },
+        {
+          "original": "was",
+          "entry": {
+            "word": "was",
+            "phonetic": "wɒz",
+            "definition": "n a state in northwestern United States on the Pacific\nv have the quality of being; (copula, used with an adjective or a predicate noun)\nv be identical to; be someone or something\nv occupy a certain position or area; be somewhere\nv have an existence, be extant\nv happen, occur, take place; this was during the visit to my parents' house\"\nv be identical or equivalent to\nv form or compose\nv work in a specific place, with a specific subject, or in a specific function\nv represent, as of a character on stage\nv spend or use time\nv have life, be alive\nv to remain unmolested, undisturbed, or uninterrupted -- used only in infinitive form\nv be priced at",
+            "translation": "be的过去式",
+            "pos": "",
+            "collins": "",
+            "oxford": "",
+            "tag": "",
+            "bnc": 41040,
+            "frq": "",
+            "exchange": "",
+            "detail": "",
+            "audio": ""
+          },
+          "is_new": true,
+          "difficulty": "低频词"
+        }
+      ]
+    }
+  ],
+  "word_map": {
+    "yes": {
+      "entry": {
+        "word": "yes",
+        "phonetic": "jes",
+        "definition": "n. an affirmative",
+        "translation": "adv. 是\nn. 是, 同意\nv. 同意",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 144,
+        "frq": 258,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "基础词汇",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    },
+    "i": {
+      "entry": {
+        "word": "I",
+        "phonetic": "ai",
+        "definition": "n. the 9th letter of the Roman alphabet",
+        "translation": "pron. 我\n[计] 电流, 中断, 指令, 指示符",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 4624,
+        "frq": 11,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        },
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        },
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        },
+        {
+          "sentence_index": 5,
+          "sentence_text": "I think about five years ago. I was"
+        },
+        {
+          "sentence_index": 5,
+          "sentence_text": "I think about five years ago. I was"
+        }
+      ]
+    },
+    "came": {
+      "entry": {
+        "word": "came",
+        "phonetic": "keim",
+        "definition": "v move toward, travel toward something or somebody or approach something or somebody\nv reach a destination; arrive by movement or progress\nv come to pass; arrive, as in due course\nv reach or enter a state, relation, condition, use, or position\nv to be the product or result\nv be found or available; The furniture comes unassembled\"\nv come forth\nv be a native of\nv extend or reach\nv exist or occur in a certain point in a series\nv cover a certain distance\nv come under, be classified or included\nv happen as a result\nv add up in number or quantity\nv develop into\nv be received\nv come to one's mind; suggest itself\nv come from; be connected by a relationship of blood, for example\nv proceed or get along\nv experience orgasm\nv have a certain priority",
+        "translation": "come的过去式",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "0:come/1:p/3:cames/s:cames",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    },
+    "here": {
+      "entry": {
+        "word": "here",
+        "phonetic": "hiә",
+        "definition": "n. the present location; this place\ns. being here now\nr. in or at this place; where the speaker or writer is\nr. in this circumstance or respect or on this point or detail",
+        "translation": "adv. 在这里, 此时, 这里\nn. 这里",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 117,
+        "frq": 96,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "基础词汇",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        },
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    },
+    "think": {
+      "entry": {
+        "word": "think",
+        "phonetic": "θiŋk",
+        "definition": "n. an instance of deliberate thinking\nv. judge or regard; look upon; judge\nv. expect, believe, or suppose\nv. use or exercise the mind or one's power of reason in order to make inferences, decisions, or arrive at a solution or judgments",
+        "translation": "vt. 想, 考虑, 想起, 想像, 打算, 认为\nvi. 思考, 料想\nn. 想法\na. 思想的",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 64,
+        "frq": 56,
+        "exchange": "p:thought/d:thought/i:thinking/3:thinks",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "基础词汇",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 5,
+          "sentence_text": "I think about five years ago. I was"
+        }
+      ]
+    },
+    "about": {
+      "entry": {
+        "word": "about",
+        "phonetic": "ә'baut",
+        "definition": "s. on the move\nr. all around or on all sides\nr. in the area or vicinity\nr. used of movement to or among many different places or in no particular direction",
+        "translation": "prep. 在...周围, 大约, 有关, 关于\nadv. 大约, 四处, 在附近, 周围",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 63,
+        "frq": 46,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "基础词汇",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 5,
+          "sentence_text": "I think about five years ago. I was"
+        }
+      ]
+    },
+    "five": {
+      "entry": {
+        "word": "five",
+        "phonetic": "faiv",
+        "definition": "n. the cardinal number that is the sum of four and one\ns. being one more than four",
+        "translation": "num. 五, 五个",
+        "pos": "",
+        "collins": 5,
+        "oxford": "",
+        "tag": "zk gk",
+        "bnc": 207,
+        "frq": 299,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "基础词汇",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 5,
+          "sentence_text": "I think about five years ago. I was"
+        }
+      ]
+    },
+    "years": {
+      "entry": {
+        "word": "years",
+        "phonetic": "",
+        "definition": "n a late time of life\nn a prolonged period of time\nn the time during which someone's life continues\nn a period of time containing 365 (or 366) days\nn a period of time occupying a regular part of a calendar year that is used for some particular activity\nn the period of time that it takes for a planet (as, e.g., Earth or Mars) to make a complete revolution around the sun\nn a body of students who graduate together",
+        "translation": "n. 年代；岁月；年；年龄",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "0:year/1:s",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 5,
+          "sentence_text": "I think about five years ago. I was"
+        }
+      ]
+    },
+    "ago": {
+      "entry": {
+        "word": "ago",
+        "phonetic": "ә'gәu",
+        "definition": "s. gone by; or in the past\nr. in the past",
+        "translation": "adv. 以前",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 504,
+        "frq": 316,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "基础词汇",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 5,
+          "sentence_text": "I think about five years ago. I was"
+        }
+      ]
+    },
+    "was": {
+      "entry": {
+        "word": "was",
+        "phonetic": "wɒz",
+        "definition": "n a state in northwestern United States on the Pacific\nv have the quality of being; (copula, used with an adjective or a predicate noun)\nv be identical to; be someone or something\nv occupy a certain position or area; be somewhere\nv have an existence, be extant\nv happen, occur, take place; this was during the visit to my parents' house\"\nv be identical or equivalent to\nv form or compose\nv work in a specific place, with a specific subject, or in a specific function\nv represent, as of a character on stage\nv spend or use time\nv have life, be alive\nv to remain unmolested, undisturbed, or uninterrupted -- used only in infinitive form\nv be priced at",
+        "translation": "be的过去式",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": 41040,
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        },
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        },
+        {
+          "sentence_index": 5,
+          "sentence_text": "I think about five years ago. I was"
+        }
+      ]
+    },
+    "and": {
+      "entry": {
+        "word": "and",
+        "phonetic": "ænd",
+        "definition": "conj. A particle which expresses the relation of connection or\n   addition. It is used to conjoin a word with a word, a clause with a\n   clause, or a sentence with a sentence.\nconj. In order to; -- used instead of the infinitival to,\n   especially after try, come, go.\nconj. It is sometimes, in old songs, a mere expletive.\nconj. If; though. See An, conj.",
+        "translation": "conj. 和, 与\n[计] 与",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 4,
+        "frq": 3,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        },
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        },
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        },
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    },
+    "just": {
+      "entry": {
+        "word": "just",
+        "phonetic": "dʒʌst",
+        "definition": "a. used especially of what is legally or ethically right or proper or fitting\nr. only a moment ago\nr. absolutely\nr. exactly at this moment or the moment described;",
+        "translation": "a. 正直的, 合理的, 正确的, 应得的\nadv. 刚刚, 正好, 仅仅",
+        "pos": "",
+        "collins": 1,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 72,
+        "frq": 66,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "基础词汇",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        }
+      ]
+    },
+    "to": {
+      "entry": {
+        "word": "to",
+        "phonetic": "tu:",
+        "definition": "prep. The preposition to primarily indicates approach and arrival,\n   motion made in the direction of a place or thing and attaining it,\n   access; and also, motion or tendency without arrival; movement toward;\n   -- opposed to from.\nprep. Hence, it indicates motion, course, or tendency toward a\n   time, a state or condition, an aim, or anything capable of being\n   regarded as a limit to a tendency, movement, or action; as, he is going\n   to a trade; he is rising to wealth and honor.\nprep. In a very general way, and with innumerable varieties of\n   application, to connects transitive verbs with their remoter or\n   indirect object, and adjectives, nouns, and neuter or passive verbs\n   with a following noun which limits their action. Its sphere verges upon\n   that of for, but it contains less the idea of design or appropriation;\n   as, these remarks were addressed to a large audience; let us keep this\n   seat to ourselves; a substance sweet to the taste; an event painful to\n   the mind; duty to God and to our parents; a dislike to spirituous\n   liquor.\nprep. As sign of the infinitive, to had originally the use of last\n   defined, governing the infinitive as a verbal noun, and connecting it\n   as indirect object with a preceding verb or adjective; thus, ready to\n   go, i.e., ready unto going; good to eat, i.e., good for eating; I do my\n   utmost to lead my life pleasantly. But it has come to be the almost\n   constant prefix to the infinitive, even in situations where it has no\n   prepositional meaning, as where the infinitive is direct object or\n   subject; thus, I love to learn, i.e., I love learning; to die for one's\n   country is noble, i.e., the dying for one's country. Where the\n   infinitive denotes the design or purpose, good usage formerly allowed\n   the prefixing of for to the to; as, what went ye out for see? (Matt.\n   xi. 8).\nprep. In many phrases, and in connection with many other words, to\n   has a pregnant meaning, or is used elliptically.\nprep. Extent; limit; degree of comprehension; inclusion as far as;\n   as, they met us to the number of three hundred.\nprep. Effect; end; consequence; as, the prince was flattered to\n   his ruin; he engaged in a war to his cost; violent factions exist to\n   the prejudice of the state.\nprep. Apposition; connection; antithesis; opposition; as, they\n   engaged hand to hand.\nprep. Accord; adaptation; as, an occupation to his taste; she has\n   a husband to her mind.\nprep. Comparison; as, three is to nine as nine is to twenty-seven;\n   it is ten to one that you will offend him.\nprep. Addition; union; accumulation.\nprep. Accompaniment; as, she sang to his guitar; they danced to\n   the music of a piano.\nprep. Character; condition of being; purpose subserved or office\n   filled.",
+        "translation": "prep. 到, 向, 趋于\nadv. 向前",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 7,
+        "frq": 7,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        }
+      ]
+    },
+    "release": {
+      "entry": {
+        "word": "release",
+        "phonetic": "ri'li:s",
+        "definition": "n. merchandise issued for sale or public showing (especially a record or film)\nn. a process that liberates or discharges something\nn. a device that when pressed will release part of a mechanism\nn. activity that frees or expresses creative energy or emotion",
+        "translation": "n. 释放, 发泄, 豁免, 发行, 释放证书\nvt. 释放, 解除, 放松, 豁免, 免除, 发布, 放弃, 让与\nn. 发布\n[计] 版本, 发布",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "cet4 cet6 ky toefl ielts gre",
+        "bnc": 1232,
+        "frq": 1120,
+        "exchange": "d:released/i:releasing/p:released/s:releases/3:releases",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "GRE词汇",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        }
+      ]
+    },
+    "my": {
+      "entry": {
+        "word": "my",
+        "phonetic": "mai",
+        "definition": "a. Of or belonging to me; -- used always attributively; as, my\n   body; my book; -- mine is used in the predicate; as, the book is mine.\n   See Mine.",
+        "translation": "pron. 我的\n[医] 迈尔(热容单位)",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 61,
+        "frq": 44,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        },
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        }
+      ]
+    },
+    "first": {
+      "entry": {
+        "word": "first",
+        "phonetic": "fә:st",
+        "definition": "n. the first or highest in an ordering or series\nn. the first element in a countable series\nn. an honours degree of the highest class\na. preceding all others in time or space or degree",
+        "translation": "adv. 首先, 第一, 优先\na. 第一的\nnum. 第一\nn. 开始, 第一",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 79,
+        "frq": 86,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "基础词汇",
+      "occurrences": [
+        {
+          "sentence_index": 1,
+          "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first"
+        }
+      ]
+    },
+    "single": {
+      "entry": {
+        "word": "single",
+        "phonetic": "'siŋgl",
+        "definition": "n. a base hit on which the batter stops safely at first base\nv. hit a single\na. used of flowers having usually only one row or whorl of petals\na. existing alone or consisting of one entity or part or aspect or individual",
+        "translation": "a. 单身的, 单程的, 单一的, 个别的, 孤独的, 专一的\nn. 一个, 单打, 单程票\nvt. 选出\nvi. 击出一垒打\n[计] 单精度型",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk ielts",
+        "bnc": 569,
+        "frq": 632,
+        "exchange": "s:singles/d:singled/p:singled/i:singling/3:singles",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "雅思词汇",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        }
+      ]
+    },
+    "tim": {
+      "entry": {
+        "word": "tim",
+        "phonetic": "tim",
+        "definition": "",
+        "translation": "n. 蒂姆（男子名）",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": 2509,
+        "frq": "",
+        "exchange": "s:tims",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "高频词",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        }
+      ]
+    },
+    "mcgraw": {
+      "entry": {
+        "word": "mcgraw",
+        "phonetic": "",
+        "definition": "n. United States baseball player and manager (1873-1934)",
+        "translation": "麦格劳（人名）（苏格兰人、爱尔兰人姓氏）（美国地名）",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        }
+      ]
+    },
+    "so": {
+      "entry": {
+        "word": "so",
+        "phonetic": "sәu",
+        "definition": "r. to a very great extent or degree\nr. in a manner that facilitates\nr. in such a condition or manner, especially as expressed or implied\nr. to a certain unspecified extent or degree",
+        "translation": "adv. 如此, 如是, 如...那样\nconj. 所以, 因此\npron. 这样",
+        "pos": "",
+        "collins": 3,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 48,
+        "frq": 55,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "基础词汇",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        },
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    },
+    "we": {
+      "entry": {
+        "word": "we",
+        "phonetic": "wi:",
+        "definition": "pl.  of I\nobj. The plural nominative case of the pronoun of the first\n   person; the word with which a person in speaking or writing denotes a\n   number or company of which he is one, as the subject of an action\n   expressed by a verb.",
+        "translation": "pron. 我们",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 26,
+        "frq": 24,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        }
+      ]
+    },
+    "were": {
+      "entry": {
+        "word": "were",
+        "phonetic": "wә:",
+        "definition": "v have the quality of being; (copula, used with an adjective or a predicate noun)\nv be identical to; be someone or something\nv occupy a certain position or area; be somewhere\nv have an existence, be extant\nv happen, occur, take place; this was during the visit to my parents' house\"\nv be identical or equivalent to\nv form or compose\nv work in a specific place, with a specific subject, or in a specific function\nv represent, as of a character on stage\nv spend or use time\nv have life, be alive\nv to remain unmolested, undisturbed, or uninterrupted -- used only in infinitive form\nv be priced at",
+        "translation": "be的过去式",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "1:p/0:be",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        }
+      ]
+    },
+    "traveling": {
+      "entry": {
+        "word": "traveling",
+        "phonetic": "'trævliŋ",
+        "definition": "n the act of going from one place to another\nv change location; move, travel, or proceed, also metaphorically\nv undertake a journey or trip\nv make a trip for pleasure\nv travel upon or across\nv undergo transportation as in a vehicle\nv travel from place to place, as for the purpose of finding work, preaching, or acting as a judge",
+        "translation": "a. 旅行的, 旅行用的, 移动的",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "ielts",
+        "bnc": "",
+        "frq": 9505,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "雅思词汇",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        }
+      ]
+    },
+    "up": {
+      "entry": {
+        "word": "up",
+        "phonetic": "ʌp",
+        "definition": "v. raise\na. being or moving higher in position or greater in some value; being above a former position or level\ns. extending or moving toward a higher place\ns. (usually followed by `on' or `for') in readiness",
+        "translation": "a. 向上的, 起床的, 涨的\nadv. 向上, 上涨\nprep. 在...上面, 向...的较高处",
+        "pos": "",
+        "collins": 2,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 52,
+        "frq": 50,
+        "exchange": "d:upped/0:up/i:upping/3:up/1:3/p:upped/s:ups",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "基础词汇",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        }
+      ]
+    },
+    "the": {
+      "entry": {
+        "word": "the",
+        "phonetic": "ðә",
+        "definition": "v. i. See Thee.\ndefinite article. A word placed before nouns to limit or\n   individualize their meaning.\nadv. By that; by how much; by so much; on that account; -- used\n   before comparatives; as, the longer we continue in sin, the more\n   difficult it is to reform.",
+        "translation": "art. 那",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 1,
+        "frq": 1,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        },
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        }
+      ]
+    },
+    "west": {
+      "entry": {
+        "word": "west",
+        "phonetic": "west",
+        "definition": "n. the countries of (originally) Europe and (now including) North America and South America\nn. the cardinal compass point that is a 270 degrees\nn. the region of the United States lying to the west of the Mississippi River\nn. the direction corresponding to the westward cardinal compass point",
+        "translation": "n. 西方, 西部\na. 西方的, 向西的\nadv. 向西, 自西方, 在西方",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk ielts",
+        "bnc": 789,
+        "frq": 665,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "雅思词汇",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        }
+      ]
+    },
+    "coast": {
+      "entry": {
+        "word": "coast",
+        "phonetic": "kәust",
+        "definition": "n. a slope down which sleds may coast\nn. the area within view\nv. move effortlessly; by force of gravity",
+        "translation": "n. 海岸, 滑坡\nv. 沿海岸而行",
+        "pos": "",
+        "collins": 4,
+        "oxford": 1,
+        "tag": "zk gk cet4 cet6 ky",
+        "bnc": 1854,
+        "frq": 2436,
+        "exchange": "s:coasts/i:coasting/p:coasted/3:coasts/d:coasted",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "六级词汇",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        }
+      ]
+    },
+    "in": {
+      "entry": {
+        "word": "in",
+        "phonetic": "in",
+        "definition": "s. holding office\ns. directed or bound inward\ns. currently fashionable\nr. to or toward the inside of",
+        "translation": "prep. 在...期间, 在...之内, 处于...之中, 从事于, 按照, 穿着\nadv. 进入, 朝里, 在里面, 在屋里\na. 在里面的, 在朝的\nn. 执政者, 交情",
+        "pos": "",
+        "collins": 2,
+        "oxford": 1,
+        "tag": "zk gk ielts",
+        "bnc": 6,
+        "frq": 6,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        },
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        },
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        }
+      ]
+    },
+    "a": {
+      "entry": {
+        "word": "a",
+        "phonetic": "ei",
+        "definition": "n. the 1st letter of the Roman alphabet\nn. the blood group whose red cells carry the A antigen",
+        "translation": "第一个字母 A; 一个; 第一的\r\nart. [计] 累加器, 加法器, 地址, 振幅, 模拟, 区域, 面积, 汇编, 组件, 异步",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 5,
+        "frq": 5,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        }
+      ]
+    },
+    "rental": {
+      "entry": {
+        "word": "rental",
+        "phonetic": "'rentl",
+        "definition": "n. the act of paying for the use of something (as an apartment or house or car)\na. available to rent or lease\na. of or relating to rent",
+        "translation": "n. 租费, 租金收入\na. 租赁的, 收取租金的",
+        "pos": "",
+        "collins": 2,
+        "oxford": "",
+        "tag": "toefl ielts",
+        "bnc": 7700,
+        "frq": 4746,
+        "exchange": "s:rentals",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "托福词汇",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        }
+      ]
+    },
+    "car": {
+      "entry": {
+        "word": "car",
+        "phonetic": "kɑ:",
+        "definition": "n. a motor vehicle with four wheels; usually propelled by an internal combustion engine\nn. a wheeled vehicle adapted to the rails of railroad\nn. the compartment that is suspended from an airship and that carries personnel and the cargo and the power plant\nn. where passengers ride up and down",
+        "translation": "n. 汽车, 客车\n[机] 车",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 247,
+        "frq": 289,
+        "exchange": "s:cars",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "基础词汇",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        }
+      ]
+    },
+    "doing": {
+      "entry": {
+        "word": "doing",
+        "phonetic": "'du:iŋ",
+        "definition": "v engage in\nv carry out or perform an action\nv get (something) done\nv proceed or get along\nv give rise to; cause to happen or occur, not always intentionally\nv carry out or practice; as of jobs and professions\nv be sufficient; be adequate, either in quality or quantity\nv create or design, often in a certain way\nv behave in a certain manner; show a certain behavior; conduct or comport oneself\nv spend time in prison or in a labor camp\nv carry on or function\nv arrange attractively\nv travel or traverse (a distance)",
+        "translation": "n. 行为, 活动",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": 5939,
+        "frq": "",
+        "exchange": "1:i/0:do/s:doings",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "中频词",
+      "occurrences": [
+        {
+          "sentence_index": 2,
+          "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing"
+        }
+      ]
+    },
+    "homework": {
+      "entry": {
+        "word": "homework",
+        "phonetic": "'hәumwә:k",
+        "definition": "n. preparatory school work done outside school (especially at home)",
+        "translation": "n. 家庭作业, 家里做的工作\n[经] 家庭作业",
+        "pos": "",
+        "collins": 1,
+        "oxford": 1,
+        "tag": "zk gk ielts",
+        "bnc": 6447,
+        "frq": 4778,
+        "exchange": "s:homeworks/i:homeworking",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "雅思词汇",
+      "occurrences": [
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        }
+      ]
+    },
+    "backseat": {
+      "entry": {
+        "word": "backseat",
+        "phonetic": "'bæksi:t",
+        "definition": "n. a secondary or inferior position or status\nn. a seat at the back of a vehicle (especially the seat at the back of an automobile)",
+        "translation": "n. 后座, 次要位置",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": 40350,
+        "frq": 11127,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        }
+      ]
+    },
+    "like": {
+      "entry": {
+        "word": "like",
+        "phonetic": "laik",
+        "definition": "n. a similar kind\nn. a kind of person\nv. find enjoyable or agreeable\nv. be fond of",
+        "translation": "a. 相似的, 同样的\nvt. 喜欢, 愿意, 想\nvi. 喜欢, 希望\nn. 爱好, 同样的人(或物)\nprep. 象, 如同\nadv. 可能",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 88,
+        "frq": 74,
+        "exchange": "p:liked/3:likes/d:liked/s:likes/i:liking",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "基础词汇",
+      "occurrences": [
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        }
+      ]
+    },
+    "homeschooled": {
+      "entry": {
+        "word": "homeschooled",
+        "phonetic": "",
+        "definition": "",
+        "translation": "",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        }
+      ]
+    },
+    "th": {
+      "entry": {
+        "word": "Th",
+        "phonetic": "",
+        "definition": "n the fifth day of the week; the fourth working day\nn a soft silvery-white tetravalent radioactive metallic element; isotope 232 is used as a power source in nuclear reactors; occurs in thorite and in monazite sands",
+        "translation": "[医] 钍(90号元素)",
+        "pos": "",
+        "collins": "",
+        "oxford": "",
+        "tag": "",
+        "bnc": 2321,
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "高频词",
+      "occurrences": [
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        }
+      ]
+    },
+    "grade": {
+      "entry": {
+        "word": "grade",
+        "phonetic": "greid",
+        "definition": "n. a relative position or degree of value in a graded group\nn. the gradient of a slope or road or other surface\nn. a degree of ablaut\nn. the height of the ground on which something stands",
+        "translation": "n. 等级, 年级, 阶段, 成绩, 程度, 坡度, 斜坡\nvt. 分等, 分级, 评分\nvi. 属于某等级, 逐渐变化",
+        "pos": "",
+        "collins": 3,
+        "oxford": 1,
+        "tag": "zk gk ielts",
+        "bnc": 2822,
+        "frq": 1426,
+        "exchange": "s:grades/d:graded/p:graded/i:grading/3:grades",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "雅思词汇",
+      "occurrences": [
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        }
+      ]
+    },
+    "it's": {
+      "entry": {
+        "word": "it's",
+        "phonetic": "its",
+        "definition": "",
+        "translation": "it is的缩写, it has的缩写",
+        "pos": "",
+        "collins": 5,
+        "oxford": "",
+        "tag": "",
+        "bnc": "",
+        "frq": "",
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "低频词",
+      "occurrences": [
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        },
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    },
+    "wonderful": {
+      "entry": {
+        "word": "wonderful",
+        "phonetic": "'wʌndәful",
+        "definition": "s extraordinarily good or great; used especially as intensifiers",
+        "translation": "a. 令人惊奇的, 奇妙的, 极好的",
+        "pos": "",
+        "collins": 4,
+        "oxford": 1,
+        "tag": "zk gk cet4 cet6 ky",
+        "bnc": 1864,
+        "frq": 1405,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "六级词汇",
+      "occurrences": [
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        }
+      ]
+    },
+    "be": {
+      "entry": {
+        "word": "be",
+        "phonetic": "bi:",
+        "definition": "v. have the quality of being; (copula, used with an adjective or a predicate noun)\nv. be identical to; be someone or something\nv. occupy a certain position or area; be somewhere\nv. happen, occur, take place; this was during the visit to my parents' house\"",
+        "translation": "v. 是, 表示, 在\n[计] 后端, 总线允许",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 2,
+        "frq": 2,
+        "exchange": "p:was/3:is/d:been/i:being",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        }
+      ]
+    },
+    "back": {
+      "entry": {
+        "word": "back",
+        "phonetic": "bæk",
+        "definition": "n. the posterior part of a human (or animal) body from the neck to the end of the spine\nn. the part of something that is furthest from the normal viewer\nn. (football) a person who plays in the backfield\nn. the part of a garment that covers the back of your body",
+        "translation": "a. 后面的\nvt. 使后退, 支持\nvi. 倒退, 背靠\nadv. 向后地\nn. 背部, 后面",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk ielts",
+        "bnc": 105,
+        "frq": 108,
+        "exchange": "d:backed/s:backs/p:backed/i:backing/3:backs",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "雅思词汇",
+      "occurrences": [
+        {
+          "sentence_index": 3,
+          "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back"
+        }
+      ]
+    },
+    "have": {
+      "entry": {
+        "word": "have",
+        "phonetic": "hæv",
+        "definition": "v. have or possess, either in a concrete or an abstract sense\nv. have as a feature\nv. have a personal or business relationship with someone\nv. have left",
+        "translation": "vt. 有, 怀有, 拿, 进行\naux. 已经",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 8,
+        "frq": 8,
+        "exchange": "i:having/p:had/3:has/d:had",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    },
+    "many": {
+      "entry": {
+        "word": "many",
+        "phonetic": "'meni",
+        "definition": "a. a quantifier that can be used with count nouns and is often preceded by `as' or `too' or `so' or `that'; amounting to a large but indefinite number",
+        "translation": "n. 多数, 多数人\na. 许多的\npron. 许多",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 98,
+        "frq": 99,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "基础词汇",
+      "occurrences": [
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    },
+    "of": {
+      "entry": {
+        "word": "of",
+        "phonetic": "ɒv",
+        "definition": "prep. In a general sense, from, or out from; proceeding from;\n   belonging to; relating to; concerning; -- used in a variety of\n   applications; as:\nprep. Denoting that from which anything proceeds; indicating\n   origin, source, descent, and the like; as, he is of a race of kings; he\n   is of noble blood.\nprep. Denoting possession or ownership, or the relation of subject\n   to attribute; as, the apartment of the consul: the power of the king; a\n   man of courage; the gate of heaven.\nprep. Denoting the material of which anything is composed, or that\n   which it contains; as, a throne of gold; a sword of steel; a wreath of\n   mist; a cup of water.\nprep. Denoting part of an aggregate or whole; belonging to a\n   number or quantity mentioned; out of; from amongst; as, of this little\n   he had some to spare; some of the mines were unproductive; most of the\n   company.\nprep. Denoting that by which a person or thing is actuated or\n   impelled; also, the source of a purpose or action; as, they went of\n   their own will; no body can move of itself; he did it of necessity.\nprep. Denoting reference to a thing; about; concerning; relating\n   to; as, to boast of one's achievements.\nprep. Denoting nearness or distance, either in space or time;\n   from; as, within a league of the town; within an hour of the appointed\n   time.\nprep. Denoting identity or equivalence; -- used with a name or\n   appellation, and equivalent to the relation of apposition; as, the\n   continent of America; the city of Rome; the Island of Cuba.\nprep. Denoting the agent, or person by whom, or thing by which,\n   anything is, or is done; by.\nprep. Denoting relation to place or time; belonging to, or\n   connected with; as, men of Athens; the people of the Middle Ages; in\n   the days of Herod.\nprep. Denoting passage from one state to another; from.\nprep. During; in the course of.",
+        "translation": "prep. 的, 属于",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 3,
+        "frq": 4,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    },
+    "you": {
+      "entry": {
+        "word": "you",
+        "phonetic": "ju:",
+        "definition": "dat. & obj. The pronoun of the second person, in the nominative,\n   dative, and objective case, indicating the person or persons addressed.\n   See the Note under Ye.",
+        "translation": "pron. 你, 你们",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 15,
+        "frq": 14,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    },
+    "come": {
+      "entry": {
+        "word": "come",
+        "phonetic": "kʌm",
+        "definition": "v. move toward, travel toward something or somebody or approach something or somebody\nv. come to pass; arrive, as in due course\nv. reach or enter a state, relation, condition, use, or position\nv. to be the product or result",
+        "translation": "vi. 过来, 来, 到达, 出现, 开始\ninterj. 喂",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk ielts",
+        "bnc": 65,
+        "frq": 70,
+        "exchange": "p:came/i:coming/3:comes/d:come/0:come/1:d",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "雅思词汇",
+      "occurrences": [
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    },
+    "out": {
+      "entry": {
+        "word": "out",
+        "phonetic": "aut",
+        "definition": "n. (baseball) a failure by a batter or runner to reach a base safely in baseball\nv. reveal (something) about somebody's identity or lifestyle\nv. be made known; be disclosed or revealed\na. not allowed to continue to bat or run",
+        "translation": "a. 外面的, 熄灭的, 结束的\nadv. 在外, 熄灭, 出现\nprep. 出自, 离去, 向",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 62,
+        "frq": 64,
+        "exchange": "i:outing/p:outed/3:outs/d:outed",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "基础词汇",
+      "occurrences": [
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    },
+    "this": {
+      "entry": {
+        "word": "this",
+        "phonetic": "θis",
+        "definition": "pron. & a. As a demonstrative pronoun, this denotes something\n   that is present or near in place or time, or something just mentioned,\n   or that is just about to be mentioned.\npron. & a. As an adjective, this has the same demonstrative\n   force as the pronoun, but is followed by a noun; as, this book; this\n   way to town.",
+        "translation": "pron. 这, 本\na. 这, 本\nadv. 这么",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 23,
+        "frq": 20,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "常用词",
+      "occurrences": [
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    },
+    "time": {
+      "entry": {
+        "word": "time",
+        "phonetic": "taim",
+        "definition": "n. an instance or single occasion for some event\nn. a period of time considered as a resource under your control and sufficient to accomplish something\nn. an indefinite period (usually marked by specific attributes or activities)\nn. a suitable moment",
+        "translation": "n. 时间, 时侯, 时机, 时期, 期限, 次数, 节拍, 暂停, 规定时间\nvt. 测定...的时间, 记录...的时间, 计时, 定时\na. 时间的, 记时的, 定时的, 定期的, 分期的\n[计] DOS内部命令:用于显示或设定系统的时间",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk ielts",
+        "bnc": 50,
+        "frq": 52,
+        "exchange": "s:times/d:timed/i:timing/p:timed/3:times",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "雅思词汇",
+      "occurrences": [
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    },
+    "around": {
+      "entry": {
+        "word": "around",
+        "phonetic": "ә'raund",
+        "definition": "r. by a circular or circuitous route\nr. in a circle or circular motion\nr. to a particular destination either specified or understood\nr. in circumference",
+        "translation": "prep. 包围, 在...周围, 四处\nadv. 兜着圈子, 在附近, 到处",
+        "pos": "",
+        "collins": 5,
+        "oxford": 1,
+        "tag": "zk gk",
+        "bnc": 397,
+        "frq": 264,
+        "exchange": "",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": false,
+      "difficulty": "基础词汇",
+      "occurrences": [
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    },
+    "amazing": {
+      "entry": {
+        "word": "amazing",
+        "phonetic": "ә'meiziŋ",
+        "definition": "s. surprising greatly\ns. inspiring awe or admiration or wonder",
+        "translation": "a. 令人惊异的",
+        "pos": "",
+        "collins": 3,
+        "oxford": 1,
+        "tag": "gk toefl ielts",
+        "bnc": 3667,
+        "frq": 2294,
+        "exchange": "i:amazing/0:amazing/1:i",
+        "detail": "",
+        "audio": ""
+      },
+      "is_new": true,
+      "difficulty": "托福词汇",
+      "occurrences": [
+        {
+          "sentence_index": 4,
+          "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here."
+        }
+      ]
+    }
+  },
+  "new_words": [
+    {
+      "word": "came",
+      "translation": "come的过去式",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 1,
+        "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first",
+        "timestamp": "00:00:00,000 --> 00:00:08,000"
+      }
+    },
+    {
+      "word": "years",
+      "translation": "n. 年代；岁月；年；年龄",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 1,
+        "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first",
+        "timestamp": "00:00:00,000 --> 00:00:08,000"
+      }
+    },
+    {
+      "word": "was",
+      "translation": "be的过去式",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 1,
+        "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first",
+        "timestamp": "00:00:00,000 --> 00:00:08,000"
+      }
+    },
+    {
+      "word": "release",
+      "translation": "n. 释放, 发泄, 豁免, 发行, 释放证书\nvt. 释放, 解除, 放松, 豁免, 免除, 发布, 放弃, 让与\nn. 发布\n[计] 版本, 发布",
+      "difficulty": "GRE词汇",
+      "first_occurrence": {
+        "sentence_index": 1,
+        "sentence_text": "Yes, I came here. I think about five years ago I was 16 and just about to release my first",
+        "timestamp": "00:00:00,000 --> 00:00:08,000"
+      }
+    },
+    {
+      "word": "single",
+      "translation": "a. 单身的, 单程的, 单一的, 个别的, 孤独的, 专一的\nn. 一个, 单打, 单程票\nvt. 选出\nvi. 击出一垒打\n[计] 单精度型",
+      "difficulty": "雅思词汇",
+      "first_occurrence": {
+        "sentence_index": 2,
+        "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing",
+        "timestamp": "00:00:08,000 --> 00:00:17,600"
+      }
+    },
+    {
+      "word": "mcgraw",
+      "translation": "麦格劳（人名）（苏格兰人、爱尔兰人姓氏）（美国地名）",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 2,
+        "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing",
+        "timestamp": "00:00:08,000 --> 00:00:17,600"
+      }
+    },
+    {
+      "word": "were",
+      "translation": "be的过去式",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 2,
+        "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing",
+        "timestamp": "00:00:08,000 --> 00:00:17,600"
+      }
+    },
+    {
+      "word": "traveling",
+      "translation": "a. 旅行的, 旅行用的, 移动的",
+      "difficulty": "雅思词汇",
+      "first_occurrence": {
+        "sentence_index": 2,
+        "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing",
+        "timestamp": "00:00:08,000 --> 00:00:17,600"
+      }
+    },
+    {
+      "word": "west",
+      "translation": "n. 西方, 西部\na. 西方的, 向西的\nadv. 向西, 自西方, 在西方",
+      "difficulty": "雅思词汇",
+      "first_occurrence": {
+        "sentence_index": 2,
+        "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing",
+        "timestamp": "00:00:08,000 --> 00:00:17,600"
+      }
+    },
+    {
+      "word": "coast",
+      "translation": "n. 海岸, 滑坡\nv. 沿海岸而行",
+      "difficulty": "六级词汇",
+      "first_occurrence": {
+        "sentence_index": 2,
+        "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing",
+        "timestamp": "00:00:08,000 --> 00:00:17,600"
+      }
+    },
+    {
+      "word": "rental",
+      "translation": "n. 租费, 租金收入\na. 租赁的, 收取租金的",
+      "difficulty": "托福词汇",
+      "first_occurrence": {
+        "sentence_index": 2,
+        "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing",
+        "timestamp": "00:00:08,000 --> 00:00:17,600"
+      }
+    },
+    {
+      "word": "doing",
+      "translation": "n. 行为, 活动",
+      "difficulty": "中频词",
+      "first_occurrence": {
+        "sentence_index": 2,
+        "sentence_text": "single Tim McGraw and so we were traveling up the West Coast in a rental car and I was doing",
+        "timestamp": "00:00:08,000 --> 00:00:17,600"
+      }
+    },
+    {
+      "word": "homework",
+      "translation": "n. 家庭作业, 家里做的工作\n[经] 家庭作业",
+      "difficulty": "雅思词汇",
+      "first_occurrence": {
+        "sentence_index": 3,
+        "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back",
+        "timestamp": "00:00:17,600 --> 00:00:21,760"
+      }
+    },
+    {
+      "word": "backseat",
+      "translation": "n. 后座, 次要位置",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 3,
+        "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back",
+        "timestamp": "00:00:17,600 --> 00:00:21,760"
+      }
+    },
+    {
+      "word": "homeschooled",
+      "translation": "",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 3,
+        "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back",
+        "timestamp": "00:00:17,600 --> 00:00:21,760"
+      }
+    },
+    {
+      "word": "grade",
+      "translation": "n. 等级, 年级, 阶段, 成绩, 程度, 坡度, 斜坡\nvt. 分等, 分级, 评分\nvi. 属于某等级, 逐渐变化",
+      "difficulty": "雅思词汇",
+      "first_occurrence": {
+        "sentence_index": 3,
+        "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back",
+        "timestamp": "00:00:17,600 --> 00:00:21,760"
+      }
+    },
+    {
+      "word": "it's",
+      "translation": "it is的缩写, it has的缩写",
+      "difficulty": "低频词",
+      "first_occurrence": {
+        "sentence_index": 3,
+        "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back",
+        "timestamp": "00:00:17,600 --> 00:00:21,760"
+      }
+    },
+    {
+      "word": "wonderful",
+      "translation": "a. 令人惊奇的, 奇妙的, 极好的",
+      "difficulty": "六级词汇",
+      "first_occurrence": {
+        "sentence_index": 3,
+        "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back",
+        "timestamp": "00:00:17,600 --> 00:00:21,760"
+      }
+    },
+    {
+      "word": "back",
+      "translation": "a. 后面的\nvt. 使后退, 支持\nvi. 倒退, 背靠\nadv. 向后地\nn. 背部, 后面",
+      "difficulty": "雅思词汇",
+      "first_occurrence": {
+        "sentence_index": 3,
+        "sentence_text": "my homework in the backseat. I was like homeschooled in 10th grade and it's wonderful to be back",
+        "timestamp": "00:00:17,600 --> 00:00:21,760"
+      }
+    },
+    {
+      "word": "come",
+      "translation": "vi. 过来, 来, 到达, 出现, 开始\ninterj. 喂",
+      "difficulty": "雅思词汇",
+      "first_occurrence": {
+        "sentence_index": 4,
+        "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here.",
+        "timestamp": "00:00:21,760 --> 00:00:28,199"
+      }
+    },
+    {
+      "word": "time",
+      "translation": "n. 时间, 时侯, 时机, 时期, 期限, 次数, 节拍, 暂停, 规定时间\nvt. 测定...的时间, 记录...的时间, 计时, 定时\na. 时间的, 记时的, 定时的, 定期的, 分期的\n[计] DOS内部命令:用于显示或设定系统的时间",
+      "difficulty": "雅思词汇",
+      "first_occurrence": {
+        "sentence_index": 4,
+        "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here.",
+        "timestamp": "00:00:21,760 --> 00:00:28,199"
+      }
+    },
+    {
+      "word": "amazing",
+      "translation": "a. 令人惊异的",
+      "difficulty": "托福词汇",
+      "first_occurrence": {
+        "sentence_index": 4,
+        "sentence_text": "here and have so many of you come out this time around. It's amazing. Yes, I came here.",
+        "timestamp": "00:00:21,760 --> 00:00:28,199"
+      }
+    }
+  ],
+  "statistics": {
+    "total_words": 52,
+    "new_words_count": 22,
+    "coverage_rate": 57.69
+  }
+}
