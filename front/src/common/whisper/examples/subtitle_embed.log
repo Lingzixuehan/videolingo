@@ -1,0 +1,5 @@
+
+=== 2025-11-18T23:12:12.118347 ===
+Video: D:\workspace\videolingo\front\src\common\whisper\examples\input.mp4
+Subtitle: D:\workspace\videolingo\front\src\common\whisper\examples\test_output\input.srt
+Filter: subtitles='D\:/workspace/videolingo/front/src/common/whisper/examples/test_output/input.srt'
