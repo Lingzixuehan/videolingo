@@ -18,6 +18,15 @@
           <option value="grammar">语法</option>
           <option value="note">笔记</option>
         </select>
+        <button class="btn btn-primary" @click="triggerImport">导入词汇</button>
+        <button class="btn btn-secondary" @click="exportCards" :disabled="!allCards.length">导出卡片</button>
+        <input
+          ref="fileInputRef"
+          type="file"
+          accept=".json"
+          style="display: none"
+          @change="handleFileImport"
+        />
       </div>
     </header>
 
@@ -84,14 +93,64 @@
 
 <script setup lang="ts">
 // filepath: d:\savingsomething\CollegeClasses\Soft\MyWork\videolingo\front\src\renderer\pages\Cards.vue
-// ...existing code...
 import { computed, ref } from 'vue';
-import { useCardsStore } from '../store/cards';
+import { useCardsStore, type VocabJSON } from '../store/cards';
 
 const cardsStore = useCardsStore();
 
 const keyword = ref('');
 const filterType = ref<string>('');
+const fileInputRef = ref<HTMLInputElement | null>(null);
+
+// 触发文件选择
+function triggerImport() {
+  fileInputRef.value?.click();
+}
+
+// 处理文件导入
+async function handleFileImport(event: Event) {
+  const input = event.target as HTMLInputElement;
+  const file = input.files?.[0];
+  if (!file) return;
+
+  try {
+    const text = await file.text();
+    const data = JSON.parse(text);
+
+    // 判断是词汇 JSON 还是导出的卡片 JSON
+    if (data.blocks && data.word_map) {
+      // 词汇 JSON 格式
+      const result = cardsStore.importFromVocabJSON(data as VocabJSON);
+      alert(`导入完成！\n总词汇: ${result.total}\n新增: ${result.added}\n跳过(已存在): ${result.skipped}`);
+    } else if (data.cards) {
+      // 导出的卡片 JSON 格式
+      const result = cardsStore.importFromExportedJSON(text);
+      alert(`导入完成！\n总卡片: ${result.total}\n新增: ${result.added}\n跳过(已存在): ${result.skipped}`);
+    } else {
+      alert('无法识别的 JSON 格式。请使用词汇 JSON 或导出的卡片 JSON 文件。');
+    }
+  } catch (e) {
+    alert(`导入失败: ${e instanceof Error ? e.message : '未知错误'}`);
+  } finally {
+    // 重置 input 以允许重复选择同一文件
+    input.value = '';
+  }
+}
+
+// 导出卡片
+function exportCards() {
+  const jsonStr = cardsStore.exportToJSON();
+  const blob = new Blob([jsonStr], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `videolingo-cards-${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
 
 const allCards = computed(() => cardsStore.itemsAll);
 
@@ -204,6 +263,39 @@ function remove(id: string) {
 
 .input-select {
   min-width: 120px;
+}
+
+.btn {
+  height: 32px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.btn-secondary:hover {
+  background: #d1d5db;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .card-list-wrapper {
