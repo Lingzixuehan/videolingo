@@ -2,7 +2,7 @@ image: python:3.12-slim
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/backend/.cache/pip"
-  PYTHONPATH: "$CI_PROJECT_DIR/backend"   # 让 pytest 能 import app
+  PYTHONPATH: "$CI_PROJECT_DIR/backend"
 
 cache:
   key: "$CI_COMMIT_REF_SLUG-backend"
@@ -18,7 +18,7 @@ before_script:
 lint-backend:
   stage: lint
   rules:
-    - changes: ["backend/**/*", "backend/.gitlab-ci.backend.yml", ".gitlab-ci.yml"]
+    - if: '$CI_PIPELINE_SOURCE == "push" || $CI_PIPELINE_SOURCE == "merge_request_event"'
   script:
     - ruff check .
     - mypy app
@@ -26,8 +26,9 @@ lint-backend:
 test-backend:
   stage: test
   rules:
-    - changes: ["backend/**/*", "backend/.gitlab-ci.backend.yml", ".gitlab-ci.yml"]
+    - if: '$CI_PIPELINE_SOURCE == "push" || $CI_PIPELINE_SOURCE == "merge_request_event"'
   script:
+    - alembic upgrade head
     - pytest -q --cov=app --cov-report=term-missing
   coverage: '/TOTAL\s+\d+\s+\d+\s+\d+\s+(\d+%)/'
   artifacts:
@@ -39,6 +40,7 @@ test-backend:
       - junit.xml
   needs: ["lint-backend"]
 
+# 可选：构建镜像，默认关闭
 docker-build-backend:
   stage: build
   image: docker:25.0.3
@@ -49,10 +51,8 @@ docker-build-backend:
     DOCKER_DRIVER: overlay2
     DOCKER_TLS_CERTDIR: "/certs"
   before_script:
-    - echo "Using Docker to build image"
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
   script:
-    # 注意：Dockerfile 和构建上下文都在 backend 目录
     - docker build -f backend/Dockerfile -t "$CI_REGISTRY_IMAGE/backend:$CI_COMMIT_SHORT_SHA" backend
     - docker push "$CI_REGISTRY_IMAGE/backend:$CI_COMMIT_SHORT_SHA"
   rules:
