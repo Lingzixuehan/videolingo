@@ -1,4 +1,5 @@
-from datetime import datetime, timedelta, timezone
+import uuid
+from datetime import UTC, datetime, timedelta
 
 import pytest
 from fastapi import HTTPException
@@ -9,7 +10,6 @@ from app.core.config import settings
 from app.core.security import verify_token
 from app.db import session as db_session
 from app.main import app
-import uuid
 
 client = TestClient(app)
 
@@ -40,7 +40,7 @@ def test_login_wrong_password_triggers_branch():
 def test_verify_token_error_branches():
     # 缺少 sub → 401（覆盖 security.py:36/37）
     t_no_sub = jwt.encode(
-        {"exp": datetime.now(timezone.utc) + timedelta(seconds=60)},
+        {"exp": datetime.now(UTC) + timedelta(seconds=60)},
         settings.SECRET_KEY,
         algorithm=settings.ALGORITHM,
     )
@@ -49,7 +49,7 @@ def test_verify_token_error_branches():
 
     # 错误签名/或过期 → 401（覆盖 security.py:34）
     t_bad_sig = jwt.encode(
-        {"sub": "x@example.com", "exp": datetime.now(timezone.utc) + timedelta(seconds=60)},
+        {"sub": "x@example.com", "exp": datetime.now(UTC) + timedelta(seconds=60)},
         "wrong-secret",
         algorithm=settings.ALGORITHM,
     )
