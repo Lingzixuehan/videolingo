@@ -177,22 +177,35 @@ async function pickAndAddVideos() {
   try {
     const result = await api.pickVideo();
     if (result.canceled || !result.filePaths.length) return;
-
     const fileInfos: { path: string; size?: number }[] = [];
-    for (const path of result.filePaths) {
-      let size: number | undefined;
-      if (api.getFileInfo) {
-        try {
-          const info = await api.getFileInfo(path);
-          size = info.size;
-        } catch (e) {
-          console.warn('获取文件大小失败', path, e);
+    for (const src of result.filePaths) {
+      try {
+        // import (copy) the file into app storage and get returned metadata
+        if (api.importVideo) {
+          const imported = await api.importVideo(src);
+          // imported.name is the stored filename in app userData videos dir
+          fileInfos.push({ path: imported.name, size: imported.size });
+        } else {
+          // fallback: use original path
+          let size: number | undefined;
+          if (api.getFileInfo) {
+            try {
+              const info = await api.getFileInfo(src);
+              size = info.size;
+            } catch (e) {
+              console.warn('获取文件大小失败', src, e);
+            }
+          }
+          fileInfos.push({ path: src, size });
         }
+      } catch (err) {
+        console.error('导入视频失败', src, err);
+        alert('导入视频失败：' + src);
       }
-      fileInfos.push({ path, size });
     }
 
-    videosStore.addVideosFromPaths(fileInfos);
+    // stored path is filename; add to store
+    videosStore.addVideosFromPaths(fileInfos.map(f => ({ path: f.path, size: f.size })));
   } catch (err) {
     console.error('pickVideo error:', err);
     alert('选择视频时出现错误，请稍后重试。');

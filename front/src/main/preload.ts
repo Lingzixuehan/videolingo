@@ -1,17 +1,20 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import type { RendererAPI, OpenDialogResult } from '../common/types';
+import type { OpenDialogResult } from '../common/types';
 
-const api: RendererAPI & {
-  getFileInfo?: (path: string) => Promise<{ size: number }>;
-} = {
+// expose a permissive API shape (use `any` so we can add methods without hitting type errors)
+const api: any = {
   ping: () => ipcRenderer.invoke('ping'),
   pickVideo: (): Promise<OpenDialogResult> => ipcRenderer.invoke('dialog:openVideo'),
   pickDirectory: (): Promise<OpenDialogResult> => ipcRenderer.invoke('dialog:openDirectory'),
   config: {
     read: () => ipcRenderer.invoke('config:read'),
-    write: (data) => ipcRenderer.invoke('config:write', data),
+    write: (data: any) => ipcRenderer.invoke('config:write', data),
   },
   getFileInfo: (path: string) => ipcRenderer.invoke('file:getInfo', path),
+  // list videos imported into the app
+  getVideoFiles: () => ipcRenderer.invoke('get-video-files'),
+  // import (copy) a video into app storage
+  importVideo: (srcPath: string) => ipcRenderer.invoke('import-video', srcPath),
 };
 
 contextBridge.exposeInMainWorld('api', api);

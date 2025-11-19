@@ -141,7 +141,7 @@ export const useVideosStore = defineStore('videos', {
 
       this.addVideo({
         title: '示例视频 test',
-        filePath: '/videos/test.mp4',   // 静态资源路径
+        filePath: '/public/videos/test.mp4',   // 静态资源路径（与 video-server 回退路径一致）
         duration: undefined,           // 可以先空着
         size: undefined,
       });
