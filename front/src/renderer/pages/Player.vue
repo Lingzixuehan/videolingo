@@ -8,8 +8,8 @@
           class="video"
           controls
           muted
-          autoplay
           :src="videoSrc"
+          @error="onVideoElementError"
         >
           您的系统暂不支持 video 标签。
         </video>
@@ -204,7 +204,8 @@ const videoCards = computed(() => {
   return cardsStore.itemsAll.filter((c) => c.videoId === id);
 });
 // tabs 配置
-const tabs = [
+type TabKey = 'subtitles' | 'words' | 'phrases' | 'grammar' | 'notes' | 'cards';
+const tabs: { key: TabKey; label: string }[] = [
   { key: 'subtitles', label: '滚动字幕' },
   { key: 'words', label: '单词' },
   { key: 'phrases', label: '短语 / 俚语' },
@@ -218,20 +219,86 @@ const fallbackVideoSrc = 'https://interactive-examples.mdn.mozilla.net/media/cc0
 
 const videoSrc = computed(() => {
   const v = currentVideo.value;
-  const serverBase = 'http://127.0.0.1:3421';
 
-  // 情况 1：有 filePath（本地或相对）
-  if (v?.filePath) {
-    try {
-      // Use the local video-server to stream files with Range support
-      return `${serverBase}/video?path=${encodeURIComponent(v.filePath)}`;
-    } catch (e) {
-      console.warn('[Player] encode video path fail', e);
-    }
+  // If there is no video, fallback to bundled sample
+  if (!v?.filePath) {
+    return `app://video/${encodeURIComponent('test.mp4')}`;
   }
 
-  // 情况 2：暂时没有有效 filePath 时，使用内置示例 test.mp4（通过 video-server）
-  return `${serverBase}/video?path=${encodeURIComponent('/public/videos/test.mp4')}`;
+  const p = String(v.filePath);
+
+  // If it's already an app:// URL
+  if (p.startsWith('app://')) {
+    // If we're in dev and not running inside Electron, map app:// -> local video-server
+    const ua = typeof navigator !== 'undefined' ? (navigator.userAgent || '') : '';
+    const isElectronRenderer = /Electron/.test(ua) || !!(window as any)?.api;
+    if (import.meta.env.DEV && !isElectronRenderer) {
+      try {
+        const urlObj = new URL(p);
+        const fileName = decodeURIComponent(urlObj.pathname.replace(/^\//, ''));
+        const vsUrl = `http://127.0.0.1:3421/videos/${fileName}`;
+        console.log('[Player] DEV mapping app:// -> video-server', p, '->', vsUrl);
+        return vsUrl;
+      } catch (e) {
+        console.warn('[Player] parse app:// failed', p, e);
+      }
+    }
+    return p;
+  }
+
+  // If it's already a file:// URL use it (but note: file:// may be blocked in dev)
+  if (p.startsWith('file://')) return p;
+
+  // If we're running under an http(s) origin (vite dev server), avoid file:// URLs
+  try {
+    const isHttpOrigin = typeof window !== 'undefined' && window.location && /^https?:/.test(window.location.protocol);
+    // Prefer using a simple local video-server during development to ensure Range + Content-Type
+    if (import.meta.env.DEV) {
+      const rel = p.replace(/^\\\\|^\//, '').replace(/^public\//, '').replace(/^videos\//, 'videos/');
+      const vsUrl = `http://127.0.0.1:3421/${rel}`;
+      console.log('[Player] DEV mapped to local video-server ->', vsUrl);
+      return vsUrl;
+    }
+    // If path points into the `public/` directory, Vite serves it at root.
+    if (isHttpOrigin) {
+      const publicMatch = p.replace(/^\\\\|^\//, '').match(/^public\/(.*)/);
+      if (publicMatch) {
+        const rel = publicMatch[1];
+        const url = `${window.location.origin}/${rel}`;
+        console.log('[Player] mapped public path to dev URL ->', url);
+        return url;
+      }
+      // If the path already looks like a relative path under 'videos/' serve from origin
+      const videosMatch = p.replace(/^\\\\|^\//, '').match(/^videos\/(.*)/);
+      if (videosMatch) {
+        const url = `${window.location.origin}/${p.replace(/^\\/,'')}`;
+        console.log('[Player] mapped videos path to dev URL ->', url);
+        return url;
+      }
+    }
+  } catch (e) {
+    console.warn('[Player] dev mapping check failed', e);
+  }
+
+  // If it's an absolute filesystem path (Windows C:\ or Unix /), return a file:// URL
+  try {
+    if (/^[a-zA-Z]:[\\/]/.test(p) || p.startsWith('/')) {
+      const normalized = p.replace(/\\/g, '/');
+      return encodeURI('file:///' + normalized);
+    }
+  } catch (e) {
+    console.warn('[Player] detect absolute path failed', e);
+  }
+
+  // Otherwise treat as a filename stored in the app's video folder
+  try {
+    const parts = p.split(/[/\\]/);
+    const fileName = parts[parts.length - 1] || p;
+    return `app://video/${encodeURIComponent(fileName)}`;
+  } catch (e) {
+    console.warn('[Player] encode video path fail', e);
+    return `app://video/${encodeURIComponent('test.mp4')}`;
+  }
 });
 
 // 当前视频的笔记列表
@@ -280,6 +347,9 @@ const wordPopup = reactive({
   y: 0,
 });
 
+// track which sources we've already attempted fallback for to avoid infinite retry loops
+const triedFallback = ref<Record<string, boolean>>({});
+
 const wordPopupStyle = computed(() => ({
   left: `${wordPopup.x}px`,
   top: `${wordPopup.y}px`,
@@ -288,6 +358,68 @@ const wordPopupStyle = computed(() => ({
 function onTimeUpdate() {
   if (!videoRef.value) return;
   position.value = videoRef.value.currentTime;
+}
+
+async function tryLoadVideo() {
+  const el = videoRef.value;
+  if (!el) return;
+
+  const src = videoSrc.value;
+  console.log('[Player] tryLoadVideo ->', src);
+
+  // Reset any existing object URL
+  if (el.src && el.src.startsWith('blob:')) {
+    try { URL.revokeObjectURL(el.src); } catch (e) {}
+  }
+
+  // Set src and attempt to play; if playback fails we'll wait for error event
+  try {
+    el.src = src as string;
+    el.load();
+    const p = el.play();
+    if (p && typeof p.then === 'function') {
+      await p;
+      console.log('[Player] play() succeeded');
+    }
+  } catch (err) {
+    console.warn('[Player] initial play() error', err);
+    // let onVideoElementError handle fallback
+  }
+}
+
+async function onVideoElementError(e?: Event) {
+  const el = videoRef.value;
+  if (!el) return;
+  const src = videoSrc.value;
+  console.warn('[Player] video element error, attempting fetch fallback', src, e);
+
+  // Avoid repeated fallback attempts for the same source
+  if (typeof src === 'string' && triedFallback.value[src]) {
+    console.warn('[Player] fallback already attempted for this src, will not retry:', src);
+    console.error('[Player] video error object', el.error);
+    return;
+  }
+
+  try {
+    // Try fetching the resource and using a blob URL as a fallback
+    const resp = await fetch(src as string);
+    if (!resp.ok) throw new Error('fetch failed: ' + resp.status);
+    const blob = await resp.blob();
+    console.log('[Player] fetched blob, size=', blob.size, 'type=', blob.type);
+    const blobUrl = URL.createObjectURL(blob);
+    // mark as tried before assigning to avoid re-entrancy
+    if (typeof src === 'string') triedFallback.value[src] = true;
+    el.src = blobUrl;
+    el.load();
+    await el.play().catch(err => console.warn('[Player] play after blob failed', err));
+    console.log('[Player] playback started using blob fallback');
+    return;
+  } catch (err) {
+    console.error('[Player] blob fallback failed', err);
+  }
+
+  // As a last resort log full error object
+  console.error('[Player] video error object', el.error);
 }
 
 function onLoadedMetadata() {
@@ -407,15 +539,8 @@ onMounted(() => {
       console.log('[Player] play event fired');
     });
 
-        // 尝试主动播放一次
-    const p = el.play();
-    if (p && typeof p.then === 'function') {
-      p.then(() => {
-        console.log('[Player] play() resolved');
-      }).catch(err => {
-        console.log('[Player] play() rejected', err);
-      });
-    }
+        // 使用更稳健的加载/播放流程
+        tryLoadVideo().catch(err => console.warn('[Player] tryLoadVideo failed', err));
   }
 
 
@@ -454,6 +579,11 @@ onUnmounted(() => {
     clearInterval(mockTimer);
     mockTimer = null;
   }
+});
+
+// When the selected video changes, try loading it
+watch(videoSrc, () => {
+  tryLoadVideo().catch(err => console.warn('[Player] tryLoadVideo on change failed', err));
 });
 
 watch(currentSubtitleId, (id) => {

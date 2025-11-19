@@ -55,12 +55,9 @@ function streamFile(filePath, req, res) {
   });
 }
 
-// Serve files under front/public/videos by short path: /videos/<name>
-app.get('/videos/*', (req, res) => {
-  const rel = req.params[0];
-  const filePath = path.join(__dirname, 'public', 'videos', rel);
-  streamFile(filePath, req, res);
-});
+// Serve files under front/public/videos at /videos/<name>
+// Use express.static so we get proper content-type and Range support
+app.use('/videos', express.static(path.join(__dirname, 'public', 'videos')));
 
 // Serve arbitrary path via query param (useful for absolute paths)
 app.get('/video', (req, res) => {

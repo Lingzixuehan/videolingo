@@ -6,7 +6,8 @@ build/
 .env
 npm-debug.log
 package-lock.json
-front/public/videos/
+front/public/
+front/resp.bin
 
 # TypeScript
 *.tsbuildinfo
@@ -24,3 +25,11 @@ venv/
 # OS
 .DS_Store
 Thumbs.db
+
+# Local dev and build artifacts
+front/node_modules/
+*.log
+.env.local
+.env.*.local
+video-server.pid
+front/.cache/
