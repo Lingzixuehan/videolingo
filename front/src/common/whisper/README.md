@@ -378,6 +378,11 @@ python -m whisper.gui.whisper
 - OpenAI Whisper
 - PyTorch
 
+NOTE (临时说明):
+- 本仓库目前在桌面开发模式下提供了一个临时的本地 Python 服务（位于 `front/whisper_server.py`），供 Electron 前端在没有后端部署时调用 `whisper` 模块的功能（提取、翻译、嵌入、标注等）。
+- 这个本地服务是权宜之计：长期应当把处理逻辑整合到后端（例如 `backend/`）或单独部署为可扩展的服务。
+- 使用说明：在 `front` 目录下运行 `python whisper_server.py`（需要先安装 `requirements.txt` 中的依赖）。
+
 ### 详细安装步骤
 
 #### 1. 安装 PyTorch
