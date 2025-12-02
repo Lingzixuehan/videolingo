@@ -33,3 +33,5 @@ front/node_modules/
 .env.*.local
 video-server.pid
 front/.cache/
+front/public/
+.venv/

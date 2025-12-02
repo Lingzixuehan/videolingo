@@ -6,6 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "dev": "concurrently -k \"tsc -w -p tsconfig.main.json\" \"vite\" \"wait-on http://localhost:5173 && electron ./dist/main/main.js\"",
+    "whisper-server": "python ./whisper_server.py",
     "dev:vite": "vite",
     "build:main": "tsc -p tsconfig.main.json",
     "build:renderer": "vite build",

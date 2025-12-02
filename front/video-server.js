@@ -5,6 +5,16 @@ const path = require('path');
 const app = express();
 const PORT = process.env.VIDEO_SERVER_PORT || 3421;
 
+// Basic CORS middleware for all responses (allows fetch from dev origin)
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  // preflight
+  if (req.method === 'OPTIONS') return res.sendStatus(204);
+  next();
+});
+
 function contentTypeFor(file) {
   const ext = path.extname(file).toLowerCase();
   if (ext === '.mp4') return 'video/mp4';
@@ -59,6 +69,9 @@ function streamFile(filePath, req, res) {
 // Use express.static so we get proper content-type and Range support
 app.use('/videos', express.static(path.join(__dirname, 'public', 'videos')));
 
+// Expose the examples directory so demo video files can be fetched
+app.use('/examples', express.static(path.join(__dirname, 'src', 'common', 'whisper', 'examples')));
+
 // Serve arbitrary path via query param (useful for absolute paths)
 app.get('/video', (req, res) => {
   const p = req.query.path;
@@ -68,6 +81,8 @@ app.get('/video', (req, res) => {
   if (!path.isAbsolute(p)) {
     filePath = path.join(__dirname, p.replace(/^\//, ''));
   }
+  // ensure CORS header present on streamed responses as well
+  res.setHeader('Access-Control-Allow-Origin', '*');
   streamFile(filePath, req, res);
 });
 
