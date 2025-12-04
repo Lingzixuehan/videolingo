@@ -4,12 +4,16 @@ from sqlalchemy.orm import Session
 from datetime import timedelta
 
 from database import get_db, engine
-from models import Base, User, Card
-from schemas import UserCreate, UserResponse, Token, CardCreate, CardUpdate, CardResponse, CardListResponse
+from models import Base, User, Card, AuditLog
+from schemas import (
+    UserCreate, UserResponse, Token, CardCreate, CardUpdate,
+    CardResponse, CardListResponse, UserDeleteRequest,
+    AuditLogResponse, AuditLogListResponse
+)
 from auth import (
-    get_password_hash, 
-    verify_password, 
-    create_access_token, 
+    get_password_hash,
+    verify_password,
+    create_access_token,
     verify_token,
     ACCESS_TOKEN_EXPIRE_MINUTES
 )
@@ -35,6 +39,17 @@ def get_current_user(
             detail="用户不存在"
         )
     return user
+
+# 依赖项：获取当前管理员用户
+def get_current_admin(
+    current_user: User = Depends(get_current_user)
+):
+    if not current_user.is_admin:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="需要管理员权限"
+        )
+    return current_user
 
 # 注册接口
 @app.post("/register", response_model=UserResponse)
@@ -255,6 +270,105 @@ def delete_card(
 @app.get("/")
 def root():
     return {"message": "Videolingo Auth API 运行中"}
+
+# ==================== 管理员 API ====================
+
+# 管理员删除用户
+@app.delete("/admin/users/{user_id}", status_code=status.HTTP_200_OK)
+def admin_delete_user(
+    user_id: int,
+    delete_request: UserDeleteRequest,
+    admin_user: User = Depends(get_current_admin),
+    db: Session = Depends(get_db)
+):
+    """
+    管理员删除用户接口
+    - **user_id**: 要删除的用户ID
+    - **reason**: 删除理由（必填）
+
+    返回：操作成功消息（不包含敏感信息）
+    """
+    # 查找要删除的用户
+    target_user = db.query(User).filter(User.id == user_id).first()
+    if not target_user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="用户不存在"
+        )
+
+    # 防止管理员删除自己
+    if target_user.id == admin_user.id:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="不能删除自己"
+        )
+
+    # 记录审计日志
+    audit_log = AuditLog(
+        action="delete_user",
+        operator_id=admin_user.id,
+        target_user_id=target_user.id,
+        reason=delete_request.reason,
+        details={
+            "operator_email": admin_user.email,
+            "deleted_user_id": target_user.id
+        }
+    )
+    db.add(audit_log)
+
+    # 删除用户相关的卡片
+    db.query(Card).filter(Card.user_id == user_id).delete()
+
+    # 删除用户
+    db.delete(target_user)
+    db.commit()
+
+    return {
+        "message": "用户删除成功",
+        "deleted_user_id": user_id,
+        "audit_log_id": audit_log.id
+    }
+
+# 查询审计日志
+@app.get("/admin/audit-logs", response_model=AuditLogListResponse)
+def get_audit_logs(
+    action: str = None,
+    operator_id: int = None,
+    target_user_id: int = None,
+    skip: int = 0,
+    limit: int = 100,
+    admin_user: User = Depends(get_current_admin),
+    db: Session = Depends(get_db)
+):
+    """
+    查询审计日志
+    - **action**: 按操作类型筛选（如 'delete_user'）
+    - **operator_id**: 按操作人ID筛选
+    - **target_user_id**: 按被操作用户ID筛选
+    - **skip**: 跳过的记录数（分页）
+    - **limit**: 返回的记录数（分页）
+    """
+    query = db.query(AuditLog)
+
+    # 按操作类型筛选
+    if action:
+        query = query.filter(AuditLog.action == action)
+
+    # 按操作人筛选
+    if operator_id:
+        query = query.filter(AuditLog.operator_id == operator_id)
+
+    # 按被操作用户筛选
+    if target_user_id:
+        query = query.filter(AuditLog.target_user_id == target_user_id)
+
+    # 获取总数
+    total = query.count()
+
+    # 排序并分页
+    logs = query.order_by(AuditLog.created_at.desc()).offset(skip).limit(limit).all()
+
+    return {"logs": logs, "total": total}
 
 if __name__ == "__main__":
     import uvicorn
