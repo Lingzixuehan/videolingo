@@ -54,3 +54,25 @@ class CardResponse(BaseModel):
 class CardListResponse(BaseModel):
     cards: List[CardResponse]
     total: int
+
+# 管理员删除用户请求模型
+class UserDeleteRequest(BaseModel):
+    reason: str  # 删除理由
+
+# 审计日志响应模型
+class AuditLogResponse(BaseModel):
+    id: int
+    action: str
+    operator_id: int
+    target_user_id: Optional[int]
+    reason: Optional[str]
+    details: Optional[Dict[str, Any]]
+    created_at: datetime
+
+    class Config:
+        orm_mode = True
+
+# 审计日志列表响应模型
+class AuditLogListResponse(BaseModel):
+    logs: List[AuditLogResponse]
+    total: int
