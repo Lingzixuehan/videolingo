@@ -92,9 +92,34 @@
 
         <!-- Tab5：笔记 / 标注 -->
         <div v-else-if="activeTab === 'notes'" class="tab-panel">
-          <p class="placeholder">
-            这里将展示你在此视频中添加的所有标注，并支持跳转到对应时间点。
-          </p>
+          <div class="notes-input">
+            <textarea
+              v-model="newNoteText"
+              class="notes-textarea"
+              rows="3"
+              placeholder="在当前时间记一条笔记，例如听不懂的句子、自己想到的问题……"
+            ></textarea>
+            <button class="notes-add-btn" @click="addNoteAtCurrentTime" :disabled="!newNoteText.trim()">
+              在 {{ formatTimeShort(position) }} 处添加笔记
+            </button>
+          </div>
+
+          <div class="notes-list-wrap">
+            <div v-if="notes.length === 0" class="notes-empty">
+              还没有笔记。播放到有疑问的地方时，在上方输入框写下你的想法，然后点击「添加笔记」。
+            </div>
+            <ul v-else class="notes-list">
+              <li v-for="n in notes" :key="n.id" class="note-item">
+                <button class="note-time" @click="seekToNote(n.time)">
+                  {{ formatTimeShort(n.time) }}
+                </button>
+                <div class="note-text">
+                  {{ n.text }}
+                </div>
+                <button class="note-delete" @click="removeNote(n.id)">删除</button>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <!-- Tab6：本视频相关卡片 -->
@@ -120,11 +145,13 @@ import { computed, onMounted, onUnmounted, reactive, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useVideosStore } from '../store/videos';
 import { useSubtitlesStore } from '../store/subtitles';
+import { useNotesStore } from '../store/notes';
 
 const route = useRoute();
 const router = useRouter();
 const videosStore = useVideosStore();
 const subtitlesStore = useSubtitlesStore();
+const notesStore = useNotesStore();
 
 const videoRef = ref<HTMLVideoElement | null>(null);
 const activeTab = ref<'subtitles' | 'words' | 'phrases' | 'grammar' | 'notes' | 'cards'>(
@@ -150,11 +177,21 @@ const currentVideo = computed(() => {
   return videosStore.items.find((v) => v.id === id) ?? null;
 });
 
+// 当前视频的笔记列表
+const notes = computed(() => {
+  const id = currentVideoId.value;
+  if (!id) return [];
+  return notesStore.notesForVideo(id);
+});
+
+
 // 先用一个假 src，占位用
 const videoSrc = computed(() => {
   // 真实项目中应从 currentVideo.filePath 或后端地址获取
   return '';
 });
+
+const newNoteText = ref('');
 
 // 播放进度 & 时长（简单占位）
 const position = ref(0);
@@ -242,6 +279,42 @@ function onClickDocument(e: MouseEvent) {
   if (target.closest('.word-popup') || target.closest('.subtitle-bar')) return;
   wordPopup.visible = false;
 }
+
+function addNoteAtCurrentTime() {
+  const id = currentVideoId.value;
+  if (!id || !videoRef.value) return;
+  const text = newNoteText.value.trim();
+  if (!text) return;
+  notesStore.addNote({
+    videoId: id,
+    time: videoRef.value.currentTime,
+    text,
+  });
+  newNoteText.value = '';
+}
+
+function seekToNote(time: number) {
+  if (!videoRef.value) return;
+  videoRef.value.currentTime = time;
+  videoRef.value.play();
+}
+
+function removeNote(noteId: string) {
+  const id = currentVideoId.value;
+  if (!id) return;
+  if (!confirm('确定要删除这条笔记吗？')) return;
+  notesStore.removeNote(id, noteId);
+}
+
+function formatTimeShort(sec: number) {
+  const s = Math.floor(sec);
+  const m = Math.floor(s / 60);
+  const ss = s % 60;
+  return `${m.toString().padStart(2, '0')}:${ss.toString().padStart(2, '0')}`;
+}
+
+
+
 
 onMounted(() => {
   // 绑定 video 事件
@@ -469,5 +542,89 @@ function formatTime(sec: number | undefined) {
 .subtitle-item .text-cn {
   font-size: 12px;
   color: #6b7280;
+}
+
+.notes-input {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.notes-textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 60px;
+  padding: 6px 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+.notes-add-btn {
+  align-self: flex-end;
+  border-radius: 999px;
+  border: none;
+  padding: 4px 10px;
+  font-size: 12px;
+  background: #2563eb;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.notes-add-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.notes-list-wrap {
+  margin-top: 4px;
+}
+
+.notes-empty {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.notes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.note-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: #f9fafb;
+}
+
+.note-time {
+  border-radius: 999px;
+  border: none;
+  background: #e5e7eb;
+  padding: 2px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  font-variant-numeric: tabular-nums;
+}
+
+.note-text {
+  font-size: 13px;
+  color: #111827;
+}
+
+.note-delete {
+  border: none;
+  background: transparent;
+  color: #ef4444;
+  font-size: 12px;
+  cursor: pointer;
 }
 </style>
