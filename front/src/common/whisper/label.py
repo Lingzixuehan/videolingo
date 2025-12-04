@@ -10,6 +10,17 @@ try:
 except Exception:
     stardict = None
 
+# 导入词汇难度分级模块
+try:
+    from vocab_level import VocabLevelChecker, VocabLevel, get_level_from_string
+except ImportError:
+    try:
+        from .vocab_level import VocabLevelChecker, VocabLevel, get_level_from_string
+    except ImportError:
+        VocabLevelChecker = None
+        VocabLevel = None
+        get_level_from_string = None
+
 
 def _tokenize(text: str) -> List[str]:
     """将一句话分词为英文单词列表，保留缩写/撇号（如 there's）。"""
@@ -46,12 +57,26 @@ def _generate_candidates(word: str) -> List[str]:
 
 
 class Labeler:
-    def __init__(self, dict_csv_path: str = None):
+    def __init__(self, dict_csv_path: str = None, user_vocab_level: str = 'cet4'):
+        """
+        初始化标注器
+
+        Args:
+            dict_csv_path: 词典 CSV 文件路径
+            user_vocab_level: 用户词汇量等级 ('basic', 'cet4', 'cet6', 'toefl', 'ielts', 'gre', 'advanced')
+        """
         self.dict_csv_path = dict_csv_path or os.path.join(os.path.dirname(__file__), 'ecdict.csv')
         self._dict = None
         if stardict is None:
             raise RuntimeError('stardict 模块不可用，无法加载词典')
         self._load_dict()
+
+        # 初始化词汇难度检查器
+        if VocabLevelChecker is not None:
+            vocab_level = get_level_from_string(user_vocab_level)
+            self.level_checker = VocabLevelChecker(vocab_level)
+        else:
+            self.level_checker = None
 
     def _load_dict(self):
         if not os.path.exists(self.dict_csv_path):
@@ -145,6 +170,7 @@ class Labeler:
         # 对每个块中的单词进行查找
         label_blocks = []
         word_map = {}  # unique word -> entry
+        new_words = []  # 生词列表（超出用户词汇量的单词）
 
         for blk in blocks:
             text = blk['text']
@@ -153,10 +179,51 @@ class Labeler:
             for tok in tokens:
                 key = tok
                 entry = self.lookup(tok)
-                # 记录到 words_info
-                words_info.append({'original': key, 'entry': entry})
-                # 确保每一个词在 word_map 中
-                word_map[key.lower()] = entry
+
+                # 判断是否超出用户词汇量
+                is_new_word = False
+                difficulty_label = ''
+                if self.level_checker is not None:
+                    is_new_word = self.level_checker.is_beyond_level(tok, entry)
+                    difficulty_label = self.level_checker.get_difficulty_label(tok, entry)
+
+                # 记录到 words_info，添加难度信息
+                word_info = {
+                    'original': key,
+                    'entry': entry,
+                    'is_new': is_new_word,  # 是否超纲
+                    'difficulty': difficulty_label  # 难度标签
+                }
+                words_info.append(word_info)
+
+                # 确保每一个词在 word_map 中，并添加难度信息
+                word_key = key.lower()
+                if word_key not in word_map:
+                    word_map[word_key] = {
+                        'entry': entry,
+                        'is_new': is_new_word,
+                        'difficulty': difficulty_label,
+                        'occurrences': []  # 记录出现位置
+                    }
+                # 记录该词在哪个句子中出现
+                word_map[word_key]['occurrences'].append({
+                    'sentence_index': blk['index'],
+                    'sentence_text': blk['text']
+                })
+
+                # 如果是生词，加入生词列表
+                if is_new_word and word_key not in [w['word'].lower() for w in new_words]:
+                    new_words.append({
+                        'word': entry.get('word') or tok,
+                        'translation': entry.get('translation', ''),
+                        'difficulty': difficulty_label,
+                        'first_occurrence': {
+                            'sentence_index': blk['index'],
+                            'sentence_text': blk['text'],
+                            'timestamp': f"{blk['start']} --> {blk['end']}"
+                        }
+                    })
+
             label_blocks.append({
                 'index': blk['index'],
                 'start': blk['start'],
@@ -169,7 +236,13 @@ class Labeler:
             'source': os.path.basename(subtitle_path),
             'path': os.path.abspath(subtitle_path),
             'blocks': label_blocks,
-            'word_map': word_map
+            'word_map': word_map,
+            'new_words': new_words,  # 生词列表
+            'statistics': {  # 统计信息
+                'total_words': len(word_map),
+                'new_words_count': len(new_words),
+                'coverage_rate': round((len(word_map) - len(new_words)) / len(word_map) * 100, 2) if len(word_map) > 0 else 0
+            }
         }
 
         # 输出 JSON
@@ -187,10 +260,21 @@ class Labeler:
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print('用法: python label.py <subtitle.srt> [ecdict.csv]')
+        print('用法: python label.py <subtitle.srt> [ecdict.csv] [user_level]')
+        print('user_level 可选值: basic, cet4, cet6, toefl, ielts, gre, advanced (默认: cet4)')
         sys.exit(1)
     srt = sys.argv[1]
     csvp = sys.argv[2] if len(sys.argv) > 2 else None
-    lab = Labeler(dict_csv_path=csvp) if csvp else Labeler()
+    user_level = sys.argv[3] if len(sys.argv) > 3 else 'cet4'
+
+    lab = Labeler(dict_csv_path=csvp, user_vocab_level=user_level) if csvp else Labeler(user_vocab_level=user_level)
     data = lab.process_subtitle_file(srt)
+
     print(f'生成标签文件，包含 {len(data["blocks"])} 个字幕块，{len(data["word_map"])} 个单词')
+    print(f'统计信息:')
+    print(f'  - 总词汇数: {data["statistics"]["total_words"]}')
+    print(f'  - 生词数: {data["statistics"]["new_words_count"]}')
+    print(f'  - 词汇覆盖率: {data["statistics"]["coverage_rate"]}%')
+    print(f'\n前 10 个生词:')
+    for i, word in enumerate(data["new_words"][:10], 1):
+        print(f'  {i}. {word["word"]} ({word["difficulty"]}) - {word["translation"]}')
